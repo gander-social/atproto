@@ -30,7 +30,7 @@ describe('pds thread views', () => {
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_views_feed_view_post',
+      dbPostgresSchema: 'gndr_views_feed_view_post',
     })
     agent = network.bsky.getClient()
     pdsAgent = network.pds.getClient()

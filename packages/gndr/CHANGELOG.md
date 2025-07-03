@@ -1,4 +1,4 @@
-# @atproto/bsky
+# @atproto/gndr
 
 ## 0.0.152
 

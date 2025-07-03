@@ -52,7 +52,7 @@ describe('postgates', () => {
       )
       await network.processAll()
 
-      const root = await agent.api.app.bsky.feed.getPostThread(
+      const root = await agent.api.app.gndr.feed.getPostThread(
         { uri: quoterPost.ref.uriStr },
         {
           headers: await network.serviceHeaders(
@@ -77,7 +77,7 @@ describe('postgates', () => {
         undefined,
         quoteePost.ref,
       )
-      await pdsAgent.api.app.bsky.feed.postgate.create(
+      await pdsAgent.api.app.gndr.feed.postgate.create(
         {
           repo: users.viewer.did,
           rkey: quoteePost.ref.uri.rkey,
@@ -91,7 +91,7 @@ describe('postgates', () => {
       )
       await network.processAll()
 
-      const root = await agent.api.app.bsky.feed.getPostThread(
+      const root = await agent.api.app.gndr.feed.getPostThread(
         { uri: quoterPost.ref.uriStr },
         {
           headers: await network.serviceHeaders(
@@ -111,7 +111,7 @@ describe('postgates', () => {
   describe(`embeddingRules`, () => {
     it(`disables quoteposts`, async () => {
       const quoteePost = await sc.post(users.quotee.did, `post`)
-      await pdsAgent.api.app.bsky.feed.postgate.create(
+      await pdsAgent.api.app.gndr.feed.postgate.create(
         {
           repo: users.quotee.did,
           rkey: quoteePost.ref.uri.rkey,
@@ -119,13 +119,13 @@ describe('postgates', () => {
         {
           post: quoteePost.ref.uriStr,
           createdAt: new Date().toISOString(),
-          embeddingRules: [{ $type: 'app.bsky.feed.postgate#disableRule' }],
+          embeddingRules: [{ $type: 'app.gndr.feed.postgate#disableRule' }],
         },
         sc.getHeaders(users.quotee.did),
       )
       await network.processAll()
 
-      const root = await agent.api.app.bsky.feed.getPostThread(
+      const root = await agent.api.app.gndr.feed.getPostThread(
         { uri: quoteePost.ref.uriStr },
         {
           headers: await network.serviceHeaders(
@@ -143,7 +143,7 @@ describe('postgates', () => {
 
     it(`quotepost created after quotes disabled hides embed`, async () => {
       const quoteePost = await sc.post(users.quotee.did, `post`)
-      await pdsAgent.api.app.bsky.feed.postgate.create(
+      await pdsAgent.api.app.gndr.feed.postgate.create(
         {
           repo: users.quotee.did,
           rkey: quoteePost.ref.uri.rkey,
@@ -151,7 +151,7 @@ describe('postgates', () => {
         {
           post: quoteePost.ref.uriStr,
           createdAt: new Date().toISOString(),
-          embeddingRules: [{ $type: 'app.bsky.feed.postgate#disableRule' }],
+          embeddingRules: [{ $type: 'app.gndr.feed.postgate#disableRule' }],
         },
         sc.getHeaders(users.quotee.did),
       )
@@ -166,7 +166,7 @@ describe('postgates', () => {
       )
       await network.processAll()
 
-      const root = await agent.api.app.bsky.feed.getPostThread(
+      const root = await agent.api.app.gndr.feed.getPostThread(
         { uri: quoterPost.ref.uriStr },
         {
           headers: await network.serviceHeaders(

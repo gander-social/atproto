@@ -16,7 +16,7 @@ import {
   SkeletonFnInput,
   createPipeline,
 } from '../../../../pipeline'
-import { ListItemInfo } from '../../../../proto/bsky_pb'
+import { ListItemInfo } from '../../../../proto/gndr_pb'
 import { uriToDid as didFromUri } from '../../../../util/uris'
 import { Views } from '../../../../views'
 import { clearlyBadCursor, resHeaders } from '../../../util'

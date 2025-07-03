@@ -1,7 +1,7 @@
 import { ServiceImpl } from '@connectrpc/connect'
 import { sql } from 'kysely'
 import { keyBy } from '@atproto/common'
-import { Service } from '../../../proto/bsky_connect'
+import { Service } from '../../../proto/gndr_connect'
 import { Database } from '../db'
 import { valuesList } from '../db/util'
 

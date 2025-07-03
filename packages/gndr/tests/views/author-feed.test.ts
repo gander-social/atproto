@@ -5,19 +5,19 @@ import { ids } from '../../src/lexicon/lexicons'
 import {
   Record as Profile,
   validateRecord as validatePostRecord,
-} from '../../src/lexicon/types/app/bsky/actor/profile'
-import { isView as isImageEmbed } from '../../src/lexicon/types/app/bsky/embed/images'
-import { isView as isEmbedRecordWithMedia } from '../../src/lexicon/types/app/bsky/embed/recordWithMedia'
-import { isView as isVideoEmbed } from '../../src/lexicon/types/app/bsky/embed/video'
+} from '../../src/lexicon/types/app/gndr/actor/profile'
+import { isView as isImageEmbed } from '../../src/lexicon/types/app/gndr/embed/images'
+import { isView as isEmbedRecordWithMedia } from '../../src/lexicon/types/app/gndr/embed/recordWithMedia'
+import { isView as isVideoEmbed } from '../../src/lexicon/types/app/gndr/embed/video'
 import {
   isPostView,
   isReasonPin,
-} from '../../src/lexicon/types/app/bsky/feed/defs'
+} from '../../src/lexicon/types/app/gndr/feed/defs'
 import {
   ReplyRef,
   isRecord,
   validateReplyRef,
-} from '../../src/lexicon/types/app/bsky/feed/post'
+} from '../../src/lexicon/types/app/gndr/feed/post'
 import { asPredicate } from '../../src/lexicon/util'
 import { uriToDid } from '../../src/util/uris'
 import { VideoEmbed } from '../../src/views/types'

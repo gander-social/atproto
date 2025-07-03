@@ -2,7 +2,7 @@ import assert from 'node:assert'
 import { AtpAgent } from '@atproto/api'
 import { SeedClient, TestNetwork, verificationsSeed } from '@atproto/dev-env'
 import { ids } from '../../src/lexicon/lexicons'
-import { VerificationState } from '../../src/lexicon/types/app/bsky/actor/defs'
+import { VerificationState } from '../../src/lexicon/types/app/gndr/actor/defs'
 
 interface ProfileViewTestCase {
   description: string
@@ -34,13 +34,13 @@ describe('verification views', () => {
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_views_verification',
+      dbPostgresSchema: 'gndr_views_verification',
     })
-    agent = network.bsky.getClient()
+    agent = network.gndr.getClient()
     sc = network.getSeedClient()
     await verificationsSeed(sc)
 
-    labelerDid = network.bsky.ctx.cfg.modServiceDid
+    labelerDid = network.gndr.ctx.cfg.modServiceDid
     await createLabel({
       src: labelerDid,
       uri: sc.dids.impersonator,
@@ -68,7 +68,7 @@ describe('verification views', () => {
     verifier2 = sc.dids.verifier2
     verifier3 = sc.dids.verifier3
 
-    await network.bsky.db.db
+    await network.gndr.db.db
       .updateTable('actor')
       .set({ trustedVerifier: true })
       .where('did', 'in', [verifier1, verifier2, verifier3])
@@ -97,7 +97,7 @@ describe('verification views', () => {
           trustedVerifierStatus: 'valid',
         }),
         getExpectedUrisPrefixes: () => [
-          `at://${verifier2}/app.bsky.graph.verification/`,
+          `at://${verifier2}/app.gndr.graph.verification/`,
         ],
       },
       {
@@ -140,8 +140,8 @@ describe('verification views', () => {
           trustedVerifierStatus: 'none',
         }),
         getExpectedUrisPrefixes: () => [
-          `at://${verifier1}/app.bsky.graph.verification/`,
-          `at://${verifier2}/app.bsky.graph.verification/`,
+          `at://${verifier1}/app.gndr.graph.verification/`,
+          `at://${verifier2}/app.gndr.graph.verification/`,
         ],
       },
       {

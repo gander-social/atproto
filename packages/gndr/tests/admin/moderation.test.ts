@@ -25,10 +25,10 @@ describe('moderation', () => {
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_moderation',
+      dbPostgresSchema: 'gndr_moderation',
     })
 
-    agent = network.bsky.getClient()
+    agent = network.gndr.getClient()
     sc = network.getSeedClient()
     await basicSeed(sc)
     await network.processAll()
@@ -62,14 +62,14 @@ describe('moderation', () => {
       },
       {
         encoding: 'application/json',
-        headers: network.bsky.adminAuthHeaders(),
+        headers: network.gndr.adminAuthHeaders(),
       },
     )
     const res = await agent.api.com.atproto.admin.getSubjectStatus(
       {
         did: repoSubject.did,
       },
-      { headers: network.bsky.adminAuthHeaders() },
+      { headers: network.gndr.adminAuthHeaders() },
     )
     assert(isRepoRef(res.data.subject))
     expect(res.data.subject.did).toEqual(sc.dids.bob)
@@ -85,14 +85,14 @@ describe('moderation', () => {
       },
       {
         encoding: 'application/json',
-        headers: network.bsky.adminAuthHeaders(),
+        headers: network.gndr.adminAuthHeaders(),
       },
     )
     const res = await agent.api.com.atproto.admin.getSubjectStatus(
       {
         did: repoSubject.did,
       },
-      { headers: network.bsky.adminAuthHeaders() },
+      { headers: network.gndr.adminAuthHeaders() },
     )
     assert(isRepoRef(res.data.subject))
     expect(res.data.subject.did).toEqual(sc.dids.bob)
@@ -108,14 +108,14 @@ describe('moderation', () => {
       },
       {
         encoding: 'application/json',
-        headers: network.bsky.adminAuthHeaders(),
+        headers: network.gndr.adminAuthHeaders(),
       },
     )
     const res = await agent.api.com.atproto.admin.getSubjectStatus(
       {
         uri: recordSubject.uri,
       },
-      { headers: network.bsky.adminAuthHeaders() },
+      { headers: network.gndr.adminAuthHeaders() },
     )
     assert(isStrongRef(res.data.subject))
     expect(res.data.subject.uri).toEqual(recordSubject.uri)
@@ -131,14 +131,14 @@ describe('moderation', () => {
       },
       {
         encoding: 'application/json',
-        headers: network.bsky.adminAuthHeaders(),
+        headers: network.gndr.adminAuthHeaders(),
       },
     )
     const res = await agent.api.com.atproto.admin.getSubjectStatus(
       {
         uri: recordSubject.uri,
       },
-      { headers: network.bsky.adminAuthHeaders() },
+      { headers: network.gndr.adminAuthHeaders() },
     )
     assert(isStrongRef(res.data.subject))
     expect(res.data.subject.uri).toEqual(recordSubject.uri)
@@ -151,10 +151,10 @@ describe('moderation', () => {
     let imageUri: string
 
     beforeAll(async () => {
-      blobUri = `${network.bsky.url}/blob/${blobSubject.did}/${blobSubject.cid}`
-      imageUri = network.bsky.ctx.views.imgUriBuilder
+      blobUri = `${network.gndr.url}/blob/${blobSubject.did}/${blobSubject.cid}`
+      imageUri = network.gndr.ctx.views.imgUriBuilder
         .getPresetUri('feed_thumbnail', blobSubject.did, blobSubject.cid)
-        .replace(network.bsky.ctx.cfg.publicUrl || '', network.bsky.url)
+        .replace(network.gndr.ctx.cfg.publicUrl || '', network.gndr.url)
       // Warm image server cache
       await fetch(imageUri)
       const cached = await fetch(imageUri)
@@ -169,7 +169,7 @@ describe('moderation', () => {
         },
         {
           encoding: 'application/json',
-          headers: network.bsky.adminAuthHeaders(),
+          headers: network.gndr.adminAuthHeaders(),
         },
       )
       const res = await agent.api.com.atproto.admin.getSubjectStatus(
@@ -177,7 +177,7 @@ describe('moderation', () => {
           did: blobSubject.did,
           blob: blobSubject.cid,
         },
-        { headers: network.bsky.adminAuthHeaders() },
+        { headers: network.gndr.adminAuthHeaders() },
       )
       assert(isRepoBlobRef(res.data.subject))
       expect(res.data.subject.did).toEqual(blobSubject.did)
@@ -203,7 +203,7 @@ describe('moderation', () => {
         },
         {
           encoding: 'application/json',
-          headers: network.bsky.adminAuthHeaders(),
+          headers: network.gndr.adminAuthHeaders(),
         },
       )
 

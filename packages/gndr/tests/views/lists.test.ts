@@ -3,7 +3,7 @@ import { SeedClient, TestNetwork, basicSeed } from '@atproto/dev-env'
 import { ids } from '../../src/lexicon/lexicons'
 import { forSnapshot } from '../_util'
 
-describe('bsky actor likes feed views', () => {
+describe('gndr actor likes feed views', () => {
   let network: TestNetwork
   let agent: AtpAgent
   let sc: SeedClient
@@ -17,9 +17,9 @@ describe('bsky actor likes feed views', () => {
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_views_actor_lists',
+      dbPostgresSchema: 'gndr_views_actor_lists',
     })
-    agent = network.bsky.getClient()
+    agent = network.gndr.getClient()
     sc = network.getSeedClient()
     await basicSeed(sc)
     await sc.createAccount('eve', {
@@ -75,7 +75,7 @@ describe('bsky actor likes feed views', () => {
   it('does not include reference lists in getActorLists', async () => {
     await sc.createList(eve, 'cool curate list', 'curate')
     await network.processAll()
-    const view = await agent.api.app.bsky.graph.getLists({
+    const view = await agent.api.app.gndr.graph.getLists({
       actor: eve,
     })
     expect(view.data.lists.length).toBe(2)
@@ -83,7 +83,7 @@ describe('bsky actor likes feed views', () => {
   })
 
   it('supports using a handle as getList actor param', async () => {
-    const view = await agent.app.bsky.graph.getLists({
+    const view = await agent.app.gndr.graph.getLists({
       actor: 'eve.test',
     })
     expect(view.data.lists.length).toBe(2)

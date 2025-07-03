@@ -826,7 +826,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.GetListFeed
+     * @generated from rpc gndr.Service.GetListFeed
      */
     getListFeed: {
       name: 'GetListFeed',
@@ -837,7 +837,7 @@ export const Service = {
     /**
      * Threads
      *
-     * @generated from rpc bsky.Service.GetThread
+     * @generated from rpc gndr.Service.GetThread
      */
     getThread: {
       name: 'GetThread',
@@ -848,7 +848,7 @@ export const Service = {
     /**
      * Search
      *
-     * @generated from rpc bsky.Service.SearchActors
+     * @generated from rpc gndr.Service.SearchActors
      */
     searchActors: {
       name: 'SearchActors',
@@ -857,7 +857,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.SearchPosts
+     * @generated from rpc gndr.Service.SearchPosts
      */
     searchPosts: {
       name: 'SearchPosts',
@@ -866,7 +866,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.SearchStarterPacks
+     * @generated from rpc gndr.Service.SearchStarterPacks
      */
     searchStarterPacks: {
       name: 'SearchStarterPacks',
@@ -877,7 +877,7 @@ export const Service = {
     /**
      * Suggestions
      *
-     * @generated from rpc bsky.Service.GetFollowSuggestions
+     * @generated from rpc gndr.Service.GetFollowSuggestions
      */
     getFollowSuggestions: {
       name: 'GetFollowSuggestions',
@@ -886,7 +886,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.GetSuggestedEntities
+     * @generated from rpc gndr.Service.GetSuggestedEntities
      */
     getSuggestedEntities: {
       name: 'GetSuggestedEntities',
@@ -897,7 +897,7 @@ export const Service = {
     /**
      * Labels
      *
-     * @generated from rpc bsky.Service.GetLabels
+     * @generated from rpc gndr.Service.GetLabels
      */
     getLabels: {
       name: 'GetLabels',
@@ -906,7 +906,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.GetAllLabelers
+     * @generated from rpc gndr.Service.GetAllLabelers
      */
     getAllLabelers: {
       name: 'GetAllLabelers',
@@ -917,7 +917,7 @@ export const Service = {
     /**
      * Starter packs
      *
-     * @generated from rpc bsky.Service.GetActorStarterPacks
+     * @generated from rpc gndr.Service.GetActorStarterPacks
      */
     getActorStarterPacks: {
       name: 'GetActorStarterPacks',
@@ -928,7 +928,7 @@ export const Service = {
     /**
      * Sync
      *
-     * @generated from rpc bsky.Service.GetLatestRev
+     * @generated from rpc gndr.Service.GetLatestRev
      */
     getLatestRev: {
       name: 'GetLatestRev',
@@ -939,7 +939,7 @@ export const Service = {
     /**
      * Moderation
      *
-     * @generated from rpc bsky.Service.GetBlobTakedown
+     * @generated from rpc gndr.Service.GetBlobTakedown
      */
     getBlobTakedown: {
       name: 'GetBlobTakedown',
@@ -948,7 +948,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.GetRecordTakedown
+     * @generated from rpc gndr.Service.GetRecordTakedown
      */
     getRecordTakedown: {
       name: 'GetRecordTakedown',
@@ -957,7 +957,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.GetActorTakedown
+     * @generated from rpc gndr.Service.GetActorTakedown
      */
     getActorTakedown: {
       name: 'GetActorTakedown',
@@ -968,7 +968,7 @@ export const Service = {
     /**
      * Identity
      *
-     * @generated from rpc bsky.Service.GetIdentityByDid
+     * @generated from rpc gndr.Service.GetIdentityByDid
      */
     getIdentityByDid: {
       name: 'GetIdentityByDid',
@@ -977,7 +977,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.GetIdentityByHandle
+     * @generated from rpc gndr.Service.GetIdentityByHandle
      */
     getIdentityByHandle: {
       name: 'GetIdentityByHandle',
@@ -988,7 +988,7 @@ export const Service = {
     /**
      * Graph
      *
-     * @generated from rpc bsky.Service.GetFollowsFollowing
+     * @generated from rpc gndr.Service.GetFollowsFollowing
      */
     getFollowsFollowing: {
       name: 'GetFollowsFollowing',
@@ -999,7 +999,7 @@ export const Service = {
     /**
      * Ping
      *
-     * @generated from rpc bsky.Service.Ping
+     * @generated from rpc gndr.Service.Ping
      */
     ping: {
       name: 'Ping',
@@ -1010,7 +1010,7 @@ export const Service = {
     /**
      * Moderation
      *
-     * @generated from rpc bsky.Service.TakedownBlob
+     * @generated from rpc gndr.Service.TakedownBlob
      */
     takedownBlob: {
       name: 'TakedownBlob',
@@ -1019,7 +1019,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.TakedownRecord
+     * @generated from rpc gndr.Service.TakedownRecord
      */
     takedownRecord: {
       name: 'TakedownRecord',
@@ -1028,7 +1028,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.TakedownActor
+     * @generated from rpc gndr.Service.TakedownActor
      */
     takedownActor: {
       name: 'TakedownActor',
@@ -1037,7 +1037,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.UpdateActorUpstreamStatus
+     * @generated from rpc gndr.Service.UpdateActorUpstreamStatus
      */
     updateActorUpstreamStatus: {
       name: 'UpdateActorUpstreamStatus',
@@ -1046,7 +1046,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.UntakedownBlob
+     * @generated from rpc gndr.Service.UntakedownBlob
      */
     untakedownBlob: {
       name: 'UntakedownBlob',
@@ -1055,7 +1055,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.UntakedownRecord
+     * @generated from rpc gndr.Service.UntakedownRecord
      */
     untakedownRecord: {
       name: 'UntakedownRecord',
@@ -1064,7 +1064,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.UntakedownActor
+     * @generated from rpc gndr.Service.UntakedownActor
      */
     untakedownActor: {
       name: 'UntakedownActor',
@@ -1075,7 +1075,7 @@ export const Service = {
     /**
      * Ingestion
      *
-     * @generated from rpc bsky.Service.CreateActorMute
+     * @generated from rpc gndr.Service.CreateActorMute
      */
     createActorMute: {
       name: 'CreateActorMute',
@@ -1084,7 +1084,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.DeleteActorMute
+     * @generated from rpc gndr.Service.DeleteActorMute
      */
     deleteActorMute: {
       name: 'DeleteActorMute',
@@ -1093,7 +1093,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.ClearActorMutes
+     * @generated from rpc gndr.Service.ClearActorMutes
      */
     clearActorMutes: {
       name: 'ClearActorMutes',
@@ -1102,7 +1102,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.CreateActorMutelistSubscription
+     * @generated from rpc gndr.Service.CreateActorMutelistSubscription
      */
     createActorMutelistSubscription: {
       name: 'CreateActorMutelistSubscription',
@@ -1111,7 +1111,7 @@ export const Service = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc bsky.Service.DeleteActorMutelistSubscription
+     * @generated from rpc gndr.Service.DeleteActorMutelistSubscription
      */
     deleteActorMutelistSubscription: {
       name: 'DeleteActorMutelistSubscription',

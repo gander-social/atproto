@@ -4629,7 +4629,7 @@ export const schemaDict = {
           },
           status: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#statusView',
+            ref: 'lex:app.gndr.actor.defs#statusView',
           },
         },
       },
@@ -4674,11 +4674,11 @@ export const schemaDict = {
           },
           associated: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#profileAssociated',
+            ref: 'lex:app.gndr.actor.defs#profileAssociated',
           },
           joinedViaStarterPack: {
             type: 'ref',
-            ref: 'lex:app.bsky.graph.defs#starterPackViewBasic',
+            ref: 'lex:app.gndr.graph.defs#starterPackViewBasic',
           },
           indexedAt: {
             type: 'string',
@@ -4690,7 +4690,7 @@ export const schemaDict = {
           },
           viewer: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#viewerState',
+            ref: 'lex:app.gndr.actor.defs#viewerState',
           },
           labels: {
             type: 'array',
@@ -4705,11 +4705,11 @@ export const schemaDict = {
           },
           verification: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#verificationState',
+            ref: 'lex:app.gndr.actor.defs#verificationState',
           },
           status: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#statusView',
+            ref: 'lex:app.gndr.actor.defs#statusView',
           },
         },
       },
@@ -4730,7 +4730,7 @@ export const schemaDict = {
           },
           chat: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#profileAssociatedChat',
+            ref: 'lex:app.gndr.actor.defs#profileAssociatedChat',
           },
         },
       },
@@ -4754,7 +4754,7 @@ export const schemaDict = {
           },
           mutedByList: {
             type: 'ref',
-            ref: 'lex:app.bsky.graph.defs#listViewBasic',
+            ref: 'lex:app.gndr.graph.defs#listViewBasic',
           },
           blockedBy: {
             type: 'boolean',
@@ -4765,7 +4765,7 @@ export const schemaDict = {
           },
           blockingByList: {
             type: 'ref',
-            ref: 'lex:app.bsky.graph.defs#listViewBasic',
+            ref: 'lex:app.gndr.graph.defs#listViewBasic',
           },
           following: {
             type: 'string',
@@ -4777,7 +4777,7 @@ export const schemaDict = {
           },
           knownFollowers: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#knownFollowers',
+            ref: 'lex:app.gndr.actor.defs#knownFollowers',
           },
         },
       },

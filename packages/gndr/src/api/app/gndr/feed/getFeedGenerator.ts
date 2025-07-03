@@ -7,7 +7,7 @@ import {
   unpackIdentityServices,
 } from '../../../../data-plane'
 import { Server } from '../../../../lexicon'
-import { GetIdentityByDidResponse } from '../../../../proto/bsky_pb'
+import { GetIdentityByDidResponse } from '../../../../proto/gndr_pb'
 import { resHeaders } from '../../../util'
 
 export default function (server: Server, ctx: AppContext) {

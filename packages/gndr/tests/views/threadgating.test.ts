@@ -5,7 +5,7 @@ import { ids } from '../../src/lexicon/lexicons'
 import {
   isNotFoundPost,
   isThreadViewPost,
-} from '../../src/lexicon/types/app/bsky/feed/defs'
+} from '../../src/lexicon/types/app/gndr/feed/defs'
 import { forSnapshot } from '../_util'
 
 describe('views with thread gating', () => {
@@ -16,9 +16,9 @@ describe('views with thread gating', () => {
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_views_thread_gating',
+      dbPostgresSchema: 'gndr_views_thread_gating',
     })
-    agent = network.bsky.getClient()
+    agent = network.gndr.getClient()
     pdsAgent = network.pds.getClient()
     sc = network.getSeedClient()
     await basicSeed(sc)
@@ -40,7 +40,7 @@ describe('views with thread gating', () => {
     user: string,
     blocked: boolean | undefined,
   ) => {
-    const res = await agent.api.app.bsky.feed.getPosts(
+    const res = await agent.api.app.gndr.feed.getPosts(
       { uris: [uri] },
       { headers: await network.serviceHeaders(user, ids.AppBskyFeedGetPosts) },
     )
@@ -50,7 +50,7 @@ describe('views with thread gating', () => {
   it('applies gate for empty rules.', async () => {
     const post = await sc.post(sc.dids.carol, 'empty rules')
     const { uri: threadgateUri } =
-      await pdsAgent.api.app.bsky.feed.threadgate.create(
+      await pdsAgent.api.app.gndr.feed.threadgate.create(
         { repo: sc.dids.carol, rkey: post.ref.uri.rkey },
         { post: post.ref.uriStr, createdAt: iso(), allow: [] },
         sc.getHeaders(sc.dids.carol),
@@ -60,7 +60,7 @@ describe('views with thread gating', () => {
     await network.processAll()
     const {
       data: { thread, threadgate },
-    } = await agent.api.app.bsky.feed.getPostThread(
+    } = await agent.api.app.gndr.feed.getPostThread(
       { uri: post.ref.uriStr },
       {
         headers: await network.serviceHeaders(
@@ -79,7 +79,7 @@ describe('views with thread gating', () => {
 
   it('does not generate notifications when post violates threadgate.', async () => {
     const post = await sc.post(sc.dids.carol, 'notifications')
-    await pdsAgent.api.app.bsky.feed.threadgate.create(
+    await pdsAgent.api.app.gndr.feed.threadgate.create(
       { repo: sc.dids.carol, rkey: post.ref.uri.rkey },
       { post: post.ref.uriStr, createdAt: iso(), allow: [] },
       sc.getHeaders(sc.dids.carol),
@@ -94,7 +94,7 @@ describe('views with thread gating', () => {
     await network.processAll()
     const {
       data: { notifications },
-    } = await agent.api.app.bsky.notification.listNotifications(
+    } = await agent.api.app.gndr.notification.listNotifications(
       {},
       {
         headers: await network.serviceHeaders(
@@ -117,23 +117,23 @@ describe('views with thread gating', () => {
         {
           index: { byteStart: 14, byteEnd: 25 },
           features: [
-            { $type: 'app.bsky.richtext.facet#mention', did: sc.dids.carol },
+            { $type: 'app.gndr.richtext.facet#mention', did: sc.dids.carol },
           ],
         },
         {
           index: { byteStart: 26, byteEnd: 35 },
           features: [
-            { $type: 'app.bsky.richtext.facet#mention', did: sc.dids.dan },
+            { $type: 'app.gndr.richtext.facet#mention', did: sc.dids.dan },
           ],
         },
       ],
     )
-    await pdsAgent.api.app.bsky.feed.threadgate.create(
+    await pdsAgent.api.app.gndr.feed.threadgate.create(
       { repo: sc.dids.carol, rkey: post.ref.uri.rkey },
       {
         post: post.ref.uriStr,
         createdAt: iso(),
-        allow: [{ $type: 'app.bsky.feed.threadgate#mentionRule' }],
+        allow: [{ $type: 'app.gndr.feed.threadgate#mentionRule' }],
       },
       sc.getHeaders(sc.dids.carol),
     )
@@ -153,7 +153,7 @@ describe('views with thread gating', () => {
     await network.processAll()
     const {
       data: { thread: aliceThread },
-    } = await agent.api.app.bsky.feed.getPostThread(
+    } = await agent.api.app.gndr.feed.getPostThread(
       { uri: post.ref.uriStr },
       {
         headers: await network.serviceHeaders(
@@ -167,7 +167,7 @@ describe('views with thread gating', () => {
     await checkReplyDisabled(post.ref.uriStr, sc.dids.alice, true)
     const {
       data: { thread: danThread },
-    } = await agent.api.app.bsky.feed.getPostThread(
+    } = await agent.api.app.gndr.feed.getPostThread(
       { uri: post.ref.uriStr },
       {
         headers: await network.serviceHeaders(
@@ -188,7 +188,7 @@ describe('views with thread gating', () => {
 
   it('applies gate for following rule.', async () => {
     const post = await sc.post(sc.dids.carol, 'following rule')
-    await pdsAgent.api.app.bsky.feed.threadgate.create(
+    await pdsAgent.api.app.gndr.feed.threadgate.create(
       { repo: sc.dids.carol, rkey: post.ref.uri.rkey },
       {
         post: post.ref.uriStr,

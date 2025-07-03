@@ -1,6 +1,6 @@
 import { ServiceImpl } from '@connectrpc/connect'
 import { sql } from 'kysely'
-import { Service } from '../../../proto/bsky_connect'
+import { Service } from '../../../proto/gndr_connect'
 import { Database } from '../db'
 
 export default (db: Database): Partial<ServiceImpl<typeof Service>> => ({

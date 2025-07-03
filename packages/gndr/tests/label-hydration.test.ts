@@ -118,7 +118,7 @@ describe('label hydration', () => {
 
   it('defaults to service labels when no labeler header is provided', async () => {
     const res = await fetch(
-      `${network.pds.url}/xrpc/app.bsky.actor.getProfile?actor=${carol}`,
+      `${network.pds.url}/xrpc/app.gndr.actor.getProfile?actor=${carol}`,
       { headers: sc.getHeaders(bob) },
     )
     const data = await res.json()
@@ -139,7 +139,7 @@ describe('label hydration', () => {
     expect(sortedLabels[1].val).toBe(sortedExpected[1].val)
 
     expect(res.headers.get('atproto-content-labelers')).toEqual(
-      network.bsky.ctx.cfg.labelsFromIssuerDids
+      network.gndr.ctx.cfg.labelsFromIssuerDids
         .map((did) => `${did};redact`)
         .join(','),
     )
@@ -148,7 +148,7 @@ describe('label hydration', () => {
   it('hydrates labels without duplication', async () => {
     AtpAgent.configure({ appLabelers: [alice] })
     pdsAgent.configureLabelers([])
-    const res = await pdsAgent.api.app.bsky.actor.getProfiles(
+    const res = await pdsAgent.api.app.gndr.actor.getProfiles(
       { actors: [carol, carol] },
       { headers: sc.getHeaders(bob) },
     )
@@ -161,8 +161,8 @@ describe('label hydration', () => {
   it('does not hydrate labels from takendown labeler', async () => {
     AtpAgent.configure({ appLabelers: [alice, sc.dids.dan] })
     pdsAgent.configureLabelers([])
-    await network.bsky.ctx.dataplane.takedownActor({ did: alice })
-    const res = await pdsAgent.api.app.bsky.actor.getProfile(
+    await network.gndr.ctx.dataplane.takedownActor({ did: alice })
+    const res = await pdsAgent.api.app.gndr.actor.getProfile(
       { actor: carol },
       { headers: sc.getHeaders(bob) },
     )
@@ -171,25 +171,25 @@ describe('label hydration', () => {
     expect(res.headers['atproto-content-labelers']).toEqual(
       `${sc.dids.dan};redact`, // does not include alice
     )
-    await network.bsky.ctx.dataplane.untakedownActor({ did: alice })
+    await network.gndr.ctx.dataplane.untakedownActor({ did: alice })
   })
 
   it('hydrates labels onto list views.', async () => {
     AtpAgent.configure({ appLabelers: [labelerDid] })
     pdsAgent.configureLabelers([])
 
-    const list = await pdsAgent.api.app.bsky.graph.list.create(
+    const list = await pdsAgent.api.app.gndr.graph.list.create(
       { repo: alice },
       {
         name: "alice's modlist",
-        purpose: 'app.bsky.graph.defs#modlist',
+        purpose: 'app.gndr.graph.defs#modlist',
         createdAt: new Date().toISOString(),
       },
       sc.getHeaders(alice),
     )
     await network.processAll()
     await createLabel({ uri: list.uri, cid: list.cid, val: 'spam' })
-    const res = await pdsAgent.api.app.bsky.graph.getList(
+    const res = await pdsAgent.api.app.gndr.graph.getList(
       { list: list.uri },
       { headers: sc.getHeaders(alice) },
     )
@@ -200,7 +200,7 @@ describe('label hydration', () => {
   })
 
   it('hydrates labels onto feed generator views.', async () => {
-    const feedgen = await pdsAgent.api.app.bsky.feed.generator.create(
+    const feedgen = await pdsAgent.api.app.gndr.feed.generator.create(
       { repo: alice },
       {
         displayName: "alice's feedgen",
@@ -211,7 +211,7 @@ describe('label hydration', () => {
     )
     await network.processAll()
     await createLabel({ uri: feedgen.uri, cid: feedgen.cid, val: 'spam' })
-    const res = await pdsAgent.api.app.bsky.feed.getFeedGenerators(
+    const res = await pdsAgent.api.app.gndr.feed.getFeedGenerators(
       { feeds: [feedgen.uri] },
       { headers: sc.getHeaders(alice) },
     )
@@ -229,7 +229,7 @@ describe('label hydration', () => {
     val: string
     exp?: string
   }) => {
-    await network.bsky.db.db
+    await network.gndr.db.db
       .insertInto('label')
       .values({
         uri: opts.uri,

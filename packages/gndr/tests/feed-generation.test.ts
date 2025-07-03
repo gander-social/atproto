@@ -118,7 +118,7 @@ describe('feed generation', () => {
       sc.getHeaders(alice),
     )
     // Unsupported by feed gen
-    const odd = await pdsAgent.api.app.bsky.feed.generator.create(
+    const odd = await pdsAgent.api.app.gndr.feed.generator.create(
       { repo: alice, rkey: 'odd' },
       {
         did: gen.did,
@@ -130,7 +130,7 @@ describe('feed generation', () => {
     )
 
     const badPaginationLimit =
-      await pdsAgent.api.app.bsky.feed.generator.create(
+      await pdsAgent.api.app.gndr.feed.generator.create(
         { repo: alice, rkey: 'bad-pagination-limit' },
         {
           did: gen.did,
@@ -142,7 +142,7 @@ describe('feed generation', () => {
         sc.getHeaders(alice),
       )
     const badPaginationCursor =
-      await pdsAgent.api.app.bsky.feed.generator.create(
+      await pdsAgent.api.app.gndr.feed.generator.create(
         { repo: alice, rkey: 'bad-pagination-cursor' },
         {
           did: gen.did,
@@ -154,7 +154,7 @@ describe('feed generation', () => {
       )
 
     // Taken-down
-    const prime = await pdsAgent.api.app.bsky.feed.generator.create(
+    const prime = await pdsAgent.api.app.gndr.feed.generator.create(
       { repo: alice, rkey: 'prime' },
       {
         did: gen.did,
@@ -164,7 +164,7 @@ describe('feed generation', () => {
       },
       sc.getHeaders(alice),
     )
-    const needsAuth = await pdsAgent.api.app.bsky.feed.generator.create(
+    const needsAuth = await pdsAgent.api.app.gndr.feed.generator.create(
       { repo: alice, rkey: 'needs-auth' },
       {
         did: gen.did,
@@ -174,19 +174,19 @@ describe('feed generation', () => {
       },
       sc.getHeaders(alice),
     )
-    const contentModeVideo = await pdsAgent.api.app.bsky.feed.generator.create(
+    const contentModeVideo = await pdsAgent.api.app.gndr.feed.generator.create(
       { repo: alice, rkey: 'content-mode-video' },
       {
         did: gen.did,
         displayName: 'Content mode video',
         description: 'Has a contentMode specified',
         createdAt: new Date().toISOString(),
-        contentMode: 'app.bsky.feed.defs#contentModeVideo',
+        contentMode: 'app.gndr.feed.defs#contentModeVideo',
       },
       sc.getHeaders(alice),
     )
     await network.processAll()
-    await network.bsky.ctx.dataplane.takedownRecord({
+    await network.gndr.ctx.dataplane.takedownRecord({
       recordUri: prime.uri,
     })
 
@@ -228,7 +228,7 @@ describe('feed generation', () => {
 
     const results = (results) => results.flatMap((res) => res.feeds)
     const paginator = async (cursor?: string) => {
-      const res = await agent.api.app.bsky.feed.getActorFeeds(
+      const res = await agent.api.app.gndr.feed.getActorFeeds(
         { actor: alice, cursor, limit: 2 },
         {
           headers: await network.serviceHeaders(
@@ -255,12 +255,12 @@ describe('feed generation', () => {
   })
 
   it('embeds feed generator records in posts', async () => {
-    const res = await pdsAgent.api.app.bsky.feed.post.create(
+    const res = await pdsAgent.api.app.gndr.feed.post.create(
       { repo: sc.dids.bob },
       {
         text: 'cool feed!',
         embed: {
-          $type: 'app.bsky.embed.record',
+          $type: 'app.gndr.embed.record',
           record: feedUriAllRef.raw,
         },
         createdAt: new Date().toISOString(),
@@ -268,7 +268,7 @@ describe('feed generation', () => {
       sc.getHeaders(sc.dids.bob),
     )
     await network.processAll()
-    const view = await agent.api.app.bsky.feed.getPosts(
+    const view = await agent.api.app.gndr.feed.getPosts(
       { uris: [res.uri] },
       {
         headers: await network.serviceHeaders(
@@ -282,12 +282,12 @@ describe('feed generation', () => {
   })
 
   it('does not embed taken-down feed generator records in posts', async () => {
-    const res = await pdsAgent.api.app.bsky.feed.post.create(
+    const res = await pdsAgent.api.app.gndr.feed.post.create(
       { repo: sc.dids.bob },
       {
         text: 'weird feed',
         embed: {
-          $type: 'app.bsky.embed.record',
+          $type: 'app.gndr.embed.record',
           record: feedUriPrimeRef.raw,
         },
         createdAt: new Date().toISOString(),
@@ -295,7 +295,7 @@ describe('feed generation', () => {
       sc.getHeaders(sc.dids.bob),
     )
     await network.processAll()
-    const view = await agent.api.app.bsky.feed.getPosts(
+    const view = await agent.api.app.gndr.feed.getPosts(
       { uris: [res.uri] },
       {
         headers: await network.serviceHeaders(

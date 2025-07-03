@@ -1,7 +1,7 @@
 import { ServiceImpl } from '@connectrpc/connect'
 import { keyBy } from '@atproto/common'
-import { Service } from '../../../proto/bsky_connect'
-import { FollowsFollowing } from '../../../proto/bsky_pb'
+import { Service } from '../../../proto/gndr_connect'
+import { FollowsFollowing } from '../../../proto/gndr_pb'
 import { Database } from '../db'
 import { TimeCidKeyset, paginate } from '../db/pagination'
 

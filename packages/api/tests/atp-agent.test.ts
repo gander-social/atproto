@@ -1895,21 +1895,21 @@ describe('agent', () => {
             queuedNudges: ['two', 'three'],
           },
           {
-            $type: 'app.bsky.actor.defs#adultContentPref',
+            $type: 'app.gndr.actor.defs#adultContentPref',
             enabled: false,
           },
           {
-            $type: 'app.bsky.actor.defs#contentLabelPref',
+            $type: 'app.gndr.actor.defs#contentLabelPref',
             label: 'porn',
             visibility: 'ignore',
           },
           {
-            $type: 'app.bsky.actor.defs#contentLabelPref',
+            $type: 'app.gndr.actor.defs#contentLabelPref',
             label: 'nsfw',
             visibility: 'ignore',
           },
           {
-            $type: 'app.bsky.actor.defs#labelersPref',
+            $type: 'app.gndr.actor.defs#labelersPref',
             labelers: [
               {
                 did: 'did:plc:first-labeler',
@@ -1917,12 +1917,12 @@ describe('agent', () => {
             ],
           },
           {
-            $type: 'app.bsky.actor.defs#savedFeedsPref',
-            pinned: ['at://bob.com/app.bsky.feed.generator/fake'],
-            saved: ['at://bob.com/app.bsky.feed.generator/fake'],
+            $type: 'app.gndr.actor.defs#savedFeedsPref',
+            pinned: ['at://bob.com/app.gndr.feed.generator/fake'],
+            saved: ['at://bob.com/app.gndr.feed.generator/fake'],
           },
           {
-            $type: 'app.bsky.actor.defs#savedFeedsPrefV2',
+            $type: 'app.gndr.actor.defs#savedFeedsPrefV2',
             items: [
               {
                 id: expect.any(String),
@@ -1933,12 +1933,12 @@ describe('agent', () => {
             ],
           },
           {
-            $type: 'app.bsky.actor.defs#personalDetailsPref',
+            $type: 'app.gndr.actor.defs#personalDetailsPref',
             birthDate: '2023-09-11T18:05:42.556Z',
           },
 
           {
-            $type: 'app.bsky.actor.defs#feedViewPref',
+            $type: 'app.gndr.actor.defs#feedViewPref',
             feed: 'home',
             hideReplies: false,
             hideRepliesByUnfollowed: true,
@@ -1947,7 +1947,7 @@ describe('agent', () => {
             hideQuotePosts: false,
           },
           {
-            $type: 'app.bsky.actor.defs#threadViewPref',
+            $type: 'app.gndr.actor.defs#threadViewPref',
             sort: 'oldest',
             prioritizeFollowedUsers: true,
           },
@@ -2387,12 +2387,12 @@ describe('agent', () => {
           prefs: AppBskyActorDefs.Preferences,
         ) => AppBskyActorDefs.Preferences | false,
       ) {
-        const res = await agent.app.bsky.actor.getPreferences({})
+        const res = await agent.app.gndr.actor.getPreferences({})
         const newPrefs = cb(res.data.preferences)
         if (newPrefs === false) {
           return
         }
-        await agent.app.bsky.actor.putPreferences({
+        await agent.app.gndr.actor.putPreferences({
           preferences: newPrefs,
         })
       }
@@ -2402,7 +2402,7 @@ describe('agent', () => {
           const mutedWordsPref = prefs.findLast(
             asPredicate(AppBskyActorDefs.validateMutedWordsPref),
           ) || {
-            $type: 'app.bsky.actor.defs#mutedWordsPref',
+            $type: 'app.gndr.actor.defs#mutedWordsPref',
             items: [],
           }
 
@@ -2542,7 +2542,7 @@ describe('agent', () => {
 
     describe('hidden posts', () => {
       let agent: AtpAgent
-      const postUri = 'at://did:plc:fake/app.bsky.feed.post/fake'
+      const postUri = 'at://did:plc:fake/app.gndr.feed.post/fake'
 
       beforeAll(async () => {
         agent = new AtpAgent({ service: network.pds.url })
@@ -2580,7 +2580,7 @@ describe('agent', () => {
     describe(`saved feeds v2`, () => {
       let agent: AtpAgent
       let i = 0
-      const feedUri = () => `at://bob.com/app.bsky.feed.generator/${i++}`
+      const feedUri = () => `at://bob.com/app.gndr.feed.generator/${i++}`
       const listUri = () => `at://bob.com/app.bsky.graph.list/${i++}`
 
       beforeAll(async () => {

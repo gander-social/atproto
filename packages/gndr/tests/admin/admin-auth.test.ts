@@ -20,21 +20,21 @@ describe('admin auth', () => {
   const modServiceDid = 'did:example:mod'
   const altModDid = 'did:example:alt'
   let modServiceKey: Secp256k1Keypair
-  let bskyDid: string
+  let gndrDid: string
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_admin_auth',
-      bsky: {
+      dbPostgresSchema: 'gndr_admin_auth',
+      gndr: {
         modServiceDid,
       },
     })
 
-    bskyDid = network.bsky.ctx.cfg.serverDid
+    gndrDid = network.gndr.ctx.cfg.serverDid
 
     modServiceKey = await Secp256k1Keypair.create()
-    const origResolve = network.bsky.dataplane.idResolver.did.resolve
-    network.bsky.dataplane.idResolver.did.resolve = async function (
+    const origResolve = network.gndr.dataplane.idResolver.did.resolve
+    network.gndr.dataplane.idResolver.did.resolve = async function (
       did: string,
       forceRefresh?: boolean,
     ) {
@@ -59,7 +59,7 @@ describe('admin auth', () => {
       return origResolve.call(this, did, forceRefresh)
     }
 
-    agent = network.bsky.getClient()
+    agent = network.gndr.getClient()
     sc = network.getSeedClient()
     await usersSeed(sc)
     await network.processAll()
@@ -76,7 +76,7 @@ describe('admin auth', () => {
   it('allows service auth requests from the configured appview did', async () => {
     const updateHeaders = await createServiceAuthHeaders({
       iss: modServiceDid,
-      aud: bskyDid,
+      aud: gndrDid,
       lxm: ids.ComAtprotoAdminUpdateSubjectStatus,
       keypair: modServiceKey,
     })
@@ -93,7 +93,7 @@ describe('admin auth', () => {
 
     const getHeaders = await createServiceAuthHeaders({
       iss: modServiceDid,
-      aud: bskyDid,
+      aud: gndrDid,
       lxm: ids.ComAtprotoAdminGetSubjectStatus,
       keypair: modServiceKey,
     })
@@ -109,7 +109,7 @@ describe('admin auth', () => {
   it('does not allow requests from another did', async () => {
     const headers = await createServiceAuthHeaders({
       iss: altModDid,
-      aud: bskyDid,
+      aud: gndrDid,
       lxm: ids.ComAtprotoAdminUpdateSubjectStatus,
       keypair: modServiceKey,
     })
@@ -130,7 +130,7 @@ describe('admin auth', () => {
     const aliceKey = await network.pds.ctx.actorStore.keypair(sc.dids.alice)
     const headers = await createServiceAuthHeaders({
       iss: sc.dids.alice,
-      aud: bskyDid,
+      aud: gndrDid,
       lxm: ids.ComAtprotoAdminUpdateSubjectStatus,
       keypair: aliceKey,
     })
@@ -151,7 +151,7 @@ describe('admin auth', () => {
     const badKey = await Secp256k1Keypair.create()
     const headers = await createServiceAuthHeaders({
       iss: modServiceDid,
-      aud: bskyDid,
+      aud: gndrDid,
       lxm: ids.ComAtprotoAdminUpdateSubjectStatus,
       keypair: badKey,
     })

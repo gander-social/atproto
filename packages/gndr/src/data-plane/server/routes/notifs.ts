@@ -1,7 +1,7 @@
 import { Timestamp } from '@bufbuild/protobuf'
 import { ServiceImpl } from '@connectrpc/connect'
 import { sql } from 'kysely'
-import { Service } from '../../../proto/bsky_connect'
+import { Service } from '../../../proto/gndr_connect'
 import { Database } from '../db'
 import { IsoSortAtKey } from '../db/pagination'
 import { countAll, notSoftDeletedClause } from '../db/util'

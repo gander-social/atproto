@@ -110,8 +110,8 @@ describe('server', () => {
       })
     } finally {
       // restart dataplane server to allow test suite to cleanup
-      network.bsky.dataplane.server.listen(port)
-      await once(network.bsky.dataplane.server, 'listening')
+      network.gndr.dataplane.server.listen(port)
+      await once(network.gndr.dataplane.server, 'listening')
     }
   })
 })

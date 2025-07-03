@@ -1504,12 +1504,12 @@ describe('crud operations', () => {
       },
     )
 
-    const postTakedownPromise = agent.app.bsky.feed.post.get({
+    const postTakedownPromise = agent.app.gndr.feed.post.get({
       repo: aliceAgent.accountDid,
       rkey: postUri.rkey,
     })
     await expect(postTakedownPromise).rejects.toThrow('Could not locate record')
-    const postsTakedown = await agent.app.bsky.feed.post.list({
+    const postsTakedown = await agent.app.gndr.feed.post.list({
       repo: aliceAgent.accountDid,
     })
     expect(postsTakedown.records.map((r) => r.uri)).not.toContain(post.uri)
@@ -1528,7 +1528,7 @@ describe('crud operations', () => {
   })
 
   it("doesn't serve taken-down actor", async () => {
-    const posts = await agent.app.bsky.feed.post.list({
+    const posts = await agent.app.gndr.feed.post.list({
       repo: aliceAgent.accountDid,
     })
     expect(posts.records.length).toBeGreaterThan(0)

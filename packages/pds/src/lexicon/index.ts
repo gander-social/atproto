@@ -183,9 +183,9 @@ import * as ChatBskyConvoSendMessageBatch from './types/chat/gndr/convo/sendMess
 import * as ChatBskyConvoUnmuteConvo from './types/chat/gndr/convo/unmuteConvo.js'
 import * as ChatBskyConvoUpdateAllRead from './types/chat/gndr/convo/updateAllRead.js'
 import * as ChatBskyConvoUpdateRead from './types/chat/gndr/convo/updateRead.js'
-import * as ChatBskyModerationGetActorMetadata from './types/chat/bsky/moderation/getActorMetadata.js'
-import * as ChatBskyModerationGetMessageContext from './types/chat/bsky/moderation/getMessageContext.js'
-import * as ChatBskyModerationUpdateActorAccess from './types/chat/bsky/moderation/updateActorAccess.js'
+import * as ChatBskyModerationGetActorMetadata from './types/chat/gndr/moderation/getActorMetadata.js'
+import * as ChatBskyModerationGetMessageContext from './types/chat/gndr/moderation/getMessageContext.js'
+import * as ChatBskyModerationUpdateActorAccess from './types/chat/gndr/moderation/updateActorAccess.js'
 import * as ToolsOzoneCommunicationCreateTemplate from './types/tools/ozone/communication/createTemplate.js'
 import * as ToolsOzoneCommunicationDeleteTemplate from './types/tools/ozone/communication/deleteTemplate.js'
 import * as ToolsOzoneCommunicationListTemplates from './types/tools/ozone/communication/listTemplates.js'
@@ -233,27 +233,27 @@ export const COM_ATPROTO_MODERATION = {
   DefsReasonAppeal: 'com.atproto.moderation.defs#reasonAppeal',
 }
 export const APP_BSKY_ACTOR = {
-  StatusLive: 'app.bsky.actor.status#live',
+  StatusLive: 'app.gndr.actor.status#live',
 }
 export const APP_BSKY_FEED = {
-  DefsRequestLess: 'app.bsky.feed.defs#requestLess',
-  DefsRequestMore: 'app.bsky.feed.defs#requestMore',
-  DefsClickthroughItem: 'app.bsky.feed.defs#clickthroughItem',
-  DefsClickthroughAuthor: 'app.bsky.feed.defs#clickthroughAuthor',
-  DefsClickthroughReposter: 'app.bsky.feed.defs#clickthroughReposter',
-  DefsClickthroughEmbed: 'app.bsky.feed.defs#clickthroughEmbed',
-  DefsContentModeUnspecified: 'app.bsky.feed.defs#contentModeUnspecified',
-  DefsContentModeVideo: 'app.bsky.feed.defs#contentModeVideo',
-  DefsInteractionSeen: 'app.bsky.feed.defs#interactionSeen',
-  DefsInteractionLike: 'app.bsky.feed.defs#interactionLike',
-  DefsInteractionRepost: 'app.bsky.feed.defs#interactionRepost',
-  DefsInteractionReply: 'app.bsky.feed.defs#interactionReply',
-  DefsInteractionQuote: 'app.bsky.feed.defs#interactionQuote',
-  DefsInteractionShare: 'app.bsky.feed.defs#interactionShare',
+  DefsRequestLess: 'app.gndr.feed.defs#requestLess',
+  DefsRequestMore: 'app.gndr.feed.defs#requestMore',
+  DefsClickthroughItem: 'app.gndr.feed.defs#clickthroughItem',
+  DefsClickthroughAuthor: 'app.gndr.feed.defs#clickthroughAuthor',
+  DefsClickthroughReposter: 'app.gndr.feed.defs#clickthroughReposter',
+  DefsClickthroughEmbed: 'app.gndr.feed.defs#clickthroughEmbed',
+  DefsContentModeUnspecified: 'app.gndr.feed.defs#contentModeUnspecified',
+  DefsContentModeVideo: 'app.gndr.feed.defs#contentModeVideo',
+  DefsInteractionSeen: 'app.gndr.feed.defs#interactionSeen',
+  DefsInteractionLike: 'app.gndr.feed.defs#interactionLike',
+  DefsInteractionRepost: 'app.gndr.feed.defs#interactionRepost',
+  DefsInteractionReply: 'app.gndr.feed.defs#interactionReply',
+  DefsInteractionQuote: 'app.gndr.feed.defs#interactionQuote',
+  DefsInteractionShare: 'app.gndr.feed.defs#interactionShare',
 }
 export const APP_BSKY_GRAPH = {
-  DefsModlist: 'app.bsky.graph.defs#modlist',
-  DefsCuratelist: 'app.bsky.graph.defs#curatelist',
+  DefsModlist: 'app.gndr.graph.defs#modlist',
+  DefsCuratelist: 'app.gndr.graph.defs#curatelist',
   DefsReferencelist: 'app.bsky.graph.defs#referencelist',
 }
 export const TOOLS_OZONE_MODERATION = {

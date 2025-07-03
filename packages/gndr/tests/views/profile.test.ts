@@ -19,9 +19,9 @@ describe('pds profile views', () => {
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_views_profile',
+      dbPostgresSchema: 'gndr_views_profile',
     })
-    agent = network.bsky.getClient()
+    agent = network.gndr.getClient()
     pdsAgent = network.pds.getClient()
     sc = network.getSeedClient()
     await basicSeed(sc)

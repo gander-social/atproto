@@ -28,7 +28,7 @@ import {
   SkeletonFnInput,
   createPipeline,
 } from '../../../../pipeline'
-import { GetIdentityByDidResponse } from '../../../../proto/bsky_pb'
+import { GetIdentityByDidResponse } from '../../../../proto/gndr_pb'
 import { BSKY_USER_AGENT, resHeaders } from '../../../util'
 
 export default function (server: Server, ctx: AppContext) {

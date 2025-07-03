@@ -13,7 +13,7 @@ import {
   SkeletonFnInput,
   createPipeline,
 } from '../../../../pipeline'
-import { Notification } from '../../../../proto/bsky_pb'
+import { Notification } from '../../../../proto/gndr_pb'
 import { uriToDid as didFromUri } from '../../../../util/uris'
 import { Views } from '../../../../views'
 import { resHeaders } from '../../../util'

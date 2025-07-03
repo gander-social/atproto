@@ -4,8 +4,8 @@ import * as ui8 from 'uint8arrays'
 import { keyBy } from '@atproto/common'
 import { AtUri } from '@atproto/syntax'
 import { ids } from '../../../lexicon/lexicons'
-import { Service } from '../../../proto/bsky_connect'
-import { PostRecordMeta, Record } from '../../../proto/bsky_pb'
+import { Service } from '../../../proto/gndr_connect'
+import { PostRecordMeta, Record } from '../../../proto/gndr_pb'
 import { Database } from '../db'
 
 export default (db: Database): Partial<ServiceImpl<typeof Service>> => ({

@@ -666,7 +666,7 @@ export async function blockDeletionAuth(
   await sc.block(blocker.did, blocked.did)
   await sc.block(op.did, opBlocked.did)
 
-  const db = sc.network.bsky.db.db
+  const db = sc.network.gndr.db.db
   await createLabel(db, {
     src: labelerDid,
     uri: auth.did,
@@ -745,7 +745,7 @@ export async function threadgated(sc: SeedClient<TestNetwork>) {
     })
   })
 
-  await sc.agent.app.bsky.feed.threadgate.create(
+  await sc.agent.app.gndr.feed.threadgate.create(
     {
       repo: op.did,
       rkey: root.ref.uri.rkey,
@@ -806,7 +806,7 @@ export async function tags(sc: SeedClient<TestNetwork>) {
 
   await sc.follow(viewer.did, following.did)
 
-  const db = sc.network.bsky.db.db
+  const db = sc.network.gndr.db.db
   await createTag(db, { uri: r['1'].ref.uriStr, val: TAG_BUMP_DOWN })
   await createTag(db, { uri: r['0.1'].ref.uriStr, val: TAG_BUMP_DOWN })
   await createTag(db, { uri: r['1.1'].ref.uriStr, val: TAG_BUMP_DOWN })

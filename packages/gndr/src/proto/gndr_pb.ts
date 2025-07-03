@@ -1242,11 +1242,11 @@ export class GetProfileRecordsRequest extends Message<GetProfileRecordsRequest> 
 }
 
 /**
- * @generated from message bsky.GetProfileRecordsResponse
+ * @generated from message gndr.GetProfileRecordsResponse
  */
 export class GetProfileRecordsResponse extends Message<GetProfileRecordsResponse> {
   /**
-   * @generated from field: repeated bsky.Record records = 1;
+   * @generated from field: repeated gndr.Record records = 1;
    */
   records: Record[] = []
 
@@ -1256,7 +1256,7 @@ export class GetProfileRecordsResponse extends Message<GetProfileRecordsResponse
   }
 
   static readonly runtime: typeof proto3 = proto3
-  static readonly typeName = 'bsky.GetProfileRecordsResponse'
+  static readonly typeName = 'gndr.GetProfileRecordsResponse'
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: 'records', kind: 'message', T: Record, repeated: true },
   ])
@@ -1297,7 +1297,7 @@ export class GetProfileRecordsResponse extends Message<GetProfileRecordsResponse
 }
 
 /**
- * @generated from message bsky.GetActorChatDeclarationRecordsRequest
+ * @generated from message gndr.GetActorChatDeclarationRecordsRequest
  */
 export class GetActorChatDeclarationRecordsRequest extends Message<GetActorChatDeclarationRecordsRequest> {
   /**
@@ -1311,7 +1311,7 @@ export class GetActorChatDeclarationRecordsRequest extends Message<GetActorChatD
   }
 
   static readonly runtime: typeof proto3 = proto3
-  static readonly typeName = 'bsky.GetActorChatDeclarationRecordsRequest'
+  static readonly typeName = 'gndr.GetActorChatDeclarationRecordsRequest'
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     {
       no: 1,
@@ -1367,11 +1367,11 @@ export class GetActorChatDeclarationRecordsRequest extends Message<GetActorChatD
 }
 
 /**
- * @generated from message bsky.GetActorChatDeclarationRecordsResponse
+ * @generated from message gndr.GetActorChatDeclarationRecordsResponse
  */
 export class GetActorChatDeclarationRecordsResponse extends Message<GetActorChatDeclarationRecordsResponse> {
   /**
-   * @generated from field: repeated bsky.Record records = 1;
+   * @generated from field: repeated gndr.Record records = 1;
    */
   records: Record[] = []
 
@@ -1381,7 +1381,7 @@ export class GetActorChatDeclarationRecordsResponse extends Message<GetActorChat
   }
 
   static readonly runtime: typeof proto3 = proto3
-  static readonly typeName = 'bsky.GetActorChatDeclarationRecordsResponse'
+  static readonly typeName = 'gndr.GetActorChatDeclarationRecordsResponse'
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: 'records', kind: 'message', T: Record, repeated: true },
   ])
@@ -1431,7 +1431,7 @@ export class GetActorChatDeclarationRecordsResponse extends Message<GetActorChat
 }
 
 /**
- * @generated from message bsky.GetStatusRecordsRequest
+ * @generated from message gndr.GetStatusRecordsRequest
  */
 export class GetStatusRecordsRequest extends Message<GetStatusRecordsRequest> {
   /**
@@ -1445,7 +1445,7 @@ export class GetStatusRecordsRequest extends Message<GetStatusRecordsRequest> {
   }
 
   static readonly runtime: typeof proto3 = proto3
-  static readonly typeName = 'bsky.GetStatusRecordsRequest'
+  static readonly typeName = 'gndr.GetStatusRecordsRequest'
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     {
       no: 1,

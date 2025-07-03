@@ -12,7 +12,7 @@ describe('blob resolver', () => {
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_blob_resolver',
+      dbPostgresSchema: 'gndr_blob_resolver',
     })
     const sc = network.getSeedClient()
     await basicSeed(sc)
@@ -28,7 +28,7 @@ describe('blob resolver', () => {
 
   it('resolves blob with good signature check.', async () => {
     const response = await request(
-      new URL(`/blob/${fileDid}/${fileCid.toString()}`, network.bsky.url),
+      new URL(`/blob/${fileDid}/${fileCid.toString()}`, network.gndr.url),
     )
     expect(response.statusCode).toEqual(200)
     expect(response.headers['content-type']).toEqual('image/jpeg')
@@ -44,7 +44,7 @@ describe('blob resolver', () => {
   it('404s on missing blob.', async () => {
     const badCid = await cidForCbor({ unknown: true })
     const response = await request(
-      new URL(`/blob/${fileDid}/${badCid.toString()}`, network.bsky.url),
+      new URL(`/blob/${fileDid}/${badCid.toString()}`, network.gndr.url),
     )
     expect(response.statusCode).toEqual(404)
     await expect(response.body.json()).resolves.toEqual({
@@ -59,7 +59,7 @@ describe('blob resolver', () => {
     const response = await request(
       new URL(
         `/blob/${nonExistingDid}/${fileCid.toString()}`,
-        network.bsky.url,
+        network.gndr.url,
       ),
     )
     expect(response.statusCode).toEqual(404)
@@ -71,7 +71,7 @@ describe('blob resolver', () => {
 
   it('400s on invalid did.', async () => {
     const response = await request(
-      new URL(`/blob/did::/${fileCid.toString()}`, network.bsky.url),
+      new URL(`/blob/did::/${fileCid.toString()}`, network.gndr.url),
     )
     expect(response.statusCode).toEqual(400)
     await expect(response.body.json()).resolves.toEqual({
@@ -82,7 +82,7 @@ describe('blob resolver', () => {
 
   it('400s on invalid cid.', async () => {
     const response = await request(
-      new URL(`/blob/${fileDid}/barfy`, network.bsky.url),
+      new URL(`/blob/${fileDid}/barfy`, network.gndr.url),
     )
     expect(response.statusCode).toEqual(400)
     await expect(response.body.json()).resolves.toEqual({
@@ -95,7 +95,7 @@ describe('blob resolver', () => {
     const missingCid = await cidForCbor('missing-file')
 
     const response = await request(
-      new URL(`/blob/${fileDid}/${missingCid}`, network.bsky.url),
+      new URL(`/blob/${fileDid}/${missingCid}`, network.gndr.url),
     )
     expect(response.statusCode).toEqual(404)
     await expect(response.body.json()).resolves.toEqual({
@@ -113,7 +113,7 @@ describe('blob resolver', () => {
 
   it('fails to fetch bytes on blob with bad signature check.', async () => {
     const response = await request(
-      new URL(`/blob/${fileDid}/${fileCid.toString()}`, network.bsky.url),
+      new URL(`/blob/${fileDid}/${fileCid.toString()}`, network.gndr.url),
     )
 
     expect(response.statusCode).toEqual(404)

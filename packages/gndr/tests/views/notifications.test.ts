@@ -1,6 +1,6 @@
 import { AtpAgent } from '@atproto/api'
 import { SeedClient, TestNetwork, basicSeed } from '@atproto/dev-env'
-import { delayCursor } from '../../src/api/app/bsky/notification/listNotifications'
+import { delayCursor } from '../../src/api/app/gndr/notification/listNotifications'
 import { ids } from '../../src/lexicon/lexicons'
 import { Notification } from '../../src/lexicon/types/app/bsky/notification/listNotifications'
 import { forSnapshot, paginateAll } from '../_util'

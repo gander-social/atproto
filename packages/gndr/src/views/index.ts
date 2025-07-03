@@ -1954,7 +1954,7 @@ export class Views {
   externalEmbed(did: string, embed: ExternalEmbed): $Typed<ExternalEmbedView> {
     const { uri, title, description, thumb } = embed.external
     return {
-      $type: 'app.bsky.embed.external#view',
+      $type: 'app.gndr.embed.external#view',
       external: {
         uri,
         title,
@@ -1971,13 +1971,13 @@ export class Views {
   }
 
   embedNotFound(uri: string): {
-    $type: 'app.bsky.embed.record#view'
+    $type: 'app.gndr.embed.record#view'
     record: $Typed<EmbedNotFound>
   } {
     return {
-      $type: 'app.bsky.embed.record#view',
+      $type: 'app.gndr.embed.record#view',
       record: {
-        $type: 'app.bsky.embed.record#viewNotFound',
+        $type: 'app.gndr.embed.record#viewNotFound',
         uri,
         notFound: true,
       },
@@ -1985,13 +1985,13 @@ export class Views {
   }
 
   embedDetached(uri: string): {
-    $type: 'app.bsky.embed.record#view'
+    $type: 'app.gndr.embed.record#view'
     record: $Typed<EmbedDetached>
   } {
     return {
-      $type: 'app.bsky.embed.record#view',
+      $type: 'app.gndr.embed.record#view',
       record: {
-        $type: 'app.bsky.embed.record#viewDetached',
+        $type: 'app.gndr.embed.record#viewDetached',
         uri,
         detached: true,
       },

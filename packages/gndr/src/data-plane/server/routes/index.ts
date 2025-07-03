@@ -1,6 +1,6 @@
 import { ConnectRouter } from '@connectrpc/connect'
 import { IdResolver } from '@atproto/identity'
-import { Service } from '../../../proto/bsky_connect'
+import { Service } from '../../../proto/gndr_connect'
 import { Database } from '../db'
 import blocks from './blocks'
 import feedGens from './feed-gens'

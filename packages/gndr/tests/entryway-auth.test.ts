@@ -158,14 +158,14 @@ describe('entryway auth', () => {
       .setSubject(alice)
       .setIssuedAt()
       .setExpirationTime('60mins')
-      .setAudience('did:web:fake.server.bsky.network')
+      .setAudience('did:web:fake.server.gndr.network')
       .setProtectedHeader({
         typ: 'at+jwt', // https://www.rfc-editor.org/rfc/rfc9068.html
         alg: 'ES256K',
       })
     const token = await signer.sign(jwtPrivKey)
-    const feedUri = AtUri.make(alice, 'app.bsky.feed.generator', 'fake-feed')
-    const attempt = agent.app.bsky.feed.getFeed(
+    const feedUri = AtUri.make(alice, 'app.gndr.feed.generator', 'fake-feed')
+    const attempt = agent.app.gndr.feed.getFeed(
       { feed: feedUri.toString() },
       { headers: { authorization: `Bearer ${token}` } },
     )

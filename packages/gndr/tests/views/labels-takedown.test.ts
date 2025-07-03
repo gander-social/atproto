@@ -3,7 +3,7 @@ import { AppBskyLabelerDefs, AtpAgent } from '@atproto/api'
 import { RecordRef, SeedClient, TestNetwork, basicSeed } from '@atproto/dev-env'
 import { ids } from '../../src/lexicon/lexicons'
 
-describe('bsky takedown labels', () => {
+describe('gndr takedown labels', () => {
   let network: TestNetwork
   let agent: AtpAgent
   let pdsAgent: AtpAgent
@@ -19,9 +19,9 @@ describe('bsky takedown labels', () => {
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_views_takedown_labels',
+      dbPostgresSchema: 'gndr_views_takedown_labels',
     })
-    agent = network.bsky.getClient()
+    agent = network.gndr.getClient()
     pdsAgent = network.pds.getClient()
     sc = network.getSeedClient()
     await basicSeed(sc)
@@ -29,7 +29,7 @@ describe('bsky takedown labels', () => {
     aliceListRef = await sc.createList(sc.dids.alice, 'alice list', 'mod')
     // carol blocks dan via alice's (takendown) list
     await sc.addToList(sc.dids.alice, sc.dids.dan, aliceListRef)
-    await pdsAgent.app.bsky.graph.listblock.create(
+    await pdsAgent.app.gndr.graph.listblock.create(
       { repo: sc.dids.carol },
       {
         subject: aliceListRef.uriStr,
@@ -40,7 +40,7 @@ describe('bsky takedown labels', () => {
     carolListRef = await sc.createList(sc.dids.carol, 'carol list', 'mod')
     // alice blocks dan via carol's list, and carol is takendown
     await sc.addToList(sc.dids.carol, sc.dids.dan, carolListRef)
-    await pdsAgent.app.bsky.graph.listblock.create(
+    await pdsAgent.app.gndr.graph.listblock.create(
       { repo: sc.dids.alice },
       {
         subject: carolListRef.uriStr,
@@ -128,7 +128,7 @@ describe('bsky takedown labels', () => {
     }))
     AtpAgent.configure({ appLabelers: [src] })
 
-    await network.bsky.db.db.insertInto('label').values(labels).execute()
+    await network.gndr.db.db.insertInto('label').values(labels).execute()
   })
 
   afterAll(async () => {
@@ -136,11 +136,11 @@ describe('bsky takedown labels', () => {
   })
 
   it('takesdown profiles', async () => {
-    const attempt = agent.api.app.bsky.actor.getProfile({
+    const attempt = agent.api.app.gndr.actor.getProfile({
       actor: sc.dids.carol,
     })
     await expect(attempt).rejects.toThrow('Account has been suspended')
-    const res = await agent.api.app.bsky.actor.getProfiles({
+    const res = await agent.api.app.gndr.actor.getProfiles({
       actors: [sc.dids.alice, sc.dids.bob, sc.dids.carol],
     })
     expect(res.data.profiles.length).toBe(2)
@@ -156,7 +156,7 @@ describe('bsky takedown labels', () => {
       sc.posts[sc.dids.dan][1].ref.uriStr,
       sc.replies[sc.dids.alice][0].ref.uriStr,
     ]
-    const res = await agent.api.app.bsky.feed.getPosts({ uris })
+    const res = await agent.api.app.gndr.feed.getPosts({ uris })
 
     expect(res.data.posts.length).toBe(4)
     expect(res.data.posts.some((p) => p.author.did === sc.dids.carol)).toBe(
@@ -171,20 +171,20 @@ describe('bsky takedown labels', () => {
 
   it('takesdown lists', async () => {
     // record takedown
-    const attempt1 = agent.api.app.bsky.graph.getList({
+    const attempt1 = agent.api.app.gndr.graph.getList({
       list: aliceListRef.uriStr,
     })
     await expect(attempt1).rejects.toThrow('List not found')
 
     // actor takedown
-    const attempt2 = agent.api.app.bsky.graph.getList({
+    const attempt2 = agent.api.app.gndr.graph.getList({
       list: carolListRef.uriStr,
     })
     await expect(attempt2).rejects.toThrow('List not found')
   })
 
   it('halts application of mod lists', async () => {
-    const { data: profile } = await agent.app.bsky.actor.getProfile(
+    const { data: profile } = await agent.app.gndr.actor.getProfile(
       {
         actor: sc.dids.dan, // blocked via alice's takendown list
       },
@@ -203,7 +203,7 @@ describe('bsky takedown labels', () => {
   })
 
   it('author takedown halts application of mod lists', async () => {
-    const { data: profile } = await agent.app.bsky.actor.getProfile(
+    const { data: profile } = await agent.app.gndr.actor.getProfile(
       {
         actor: sc.dids.dan, // blocked via carol's list, and carol is takendown
       },
@@ -222,7 +222,7 @@ describe('bsky takedown labels', () => {
   })
 
   it('takesdown feed generators', async () => {
-    const res = await agent.api.app.bsky.feed.getFeedGenerators({
+    const res = await agent.api.app.gndr.feed.getFeedGenerators({
       feeds: [aliceGenRef.uriStr, bobGenRef.uriStr, carolGenRef.uriStr],
     })
     expect(res.data.feeds.length).toBe(1)
@@ -230,7 +230,7 @@ describe('bsky takedown labels', () => {
   })
 
   it('takesdown labelers', async () => {
-    const res = await agent.api.app.bsky.labeler.getServices({
+    const res = await agent.api.app.gndr.labeler.getServices({
       dids: [sc.dids.labeler1, sc.dids.labeler2],
     })
     expect(res.data.views.length).toBe(1)
@@ -240,7 +240,7 @@ describe('bsky takedown labels', () => {
 
   it('only applies if the relevant labeler is configured', async () => {
     AtpAgent.configure({ appLabelers: ['did:web:example.com'] })
-    const res = await agent.api.app.bsky.actor.getProfile({
+    const res = await agent.api.app.gndr.actor.getProfile({
       actor: sc.dids.carol,
     })
     expect(res.data.did).toEqual(sc.dids.carol)

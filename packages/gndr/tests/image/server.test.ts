@@ -12,7 +12,7 @@ describe('image processing server', () => {
 
   beforeAll(async () => {
     network = await TestNetwork.create({
-      dbPostgresSchema: 'bsky_image_processing_server',
+      dbPostgresSchema: 'gndr_image_processing_server',
     })
     const sc = network.getSeedClient()
     await basicSeed(sc)
@@ -33,7 +33,7 @@ describe('image processing server', () => {
           did: fileDid,
           cid: fileCid.toString(),
         })}`,
-        network.bsky.url,
+        network.gndr.url,
       ),
     )
 
@@ -61,7 +61,7 @@ describe('image processing server', () => {
       did: fileDid,
       cid: fileCid.toString(),
     })
-    const url = new URL(`/img${path}`, network.bsky.url)
+    const url = new URL(`/img${path}`, network.gndr.url)
 
     const res1 = await fetch(url)
     expect(res1.headers.get('x-cache')).toEqual('miss')
@@ -85,7 +85,7 @@ describe('image processing server', () => {
       cid: missingCid.toString(),
     })
 
-    const url = new URL(`/img${path}`, network.bsky.url)
+    const url = new URL(`/img${path}`, network.gndr.url)
 
     const res = await fetch(url)
     expect(res.status).toEqual(404)
