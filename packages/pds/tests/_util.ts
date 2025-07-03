@@ -8,7 +8,7 @@ import { AtUri } from '@atproto/syntax'
 import {
   FeedViewPost,
   isReasonRepost,
-} from '../src/lexicon/types/app/bsky/feed/defs'
+} from '../src/lexicon/types/app/gndr/feed/defs'
 
 // Swap out identifiers and dates with stable
 // values for the purpose of snapshot testing
@@ -70,7 +70,7 @@ export const forSnapshot = (obj: unknown) => {
         .replace(cid, take(cids, cid))
     }
     if (str.match(/\/img\/[^/]+\/.+\/did:plc:[^/]+\/[^/]+@[\w]+$/)) {
-      // Match image urls (bsky w/ presets)
+      // Match image urls (gndr w/ presets)
       const match = str.match(
         /\/img\/[^/]+\/.+\/(did:plc:[^/]+)\/([^/]+)@[\w]+$/,
       )

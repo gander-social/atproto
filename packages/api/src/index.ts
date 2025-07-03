@@ -29,7 +29,7 @@ export { Agent } from './agent'
 
 export { AtpAgent, type AtpAgentOptions } from './atp-agent'
 export { CredentialSession } from './atp-agent'
-export { BskyAgent } from './bsky-agent'
+export { BskyAgent } from './gndr-agent'
 
 export {
   /** @deprecated */

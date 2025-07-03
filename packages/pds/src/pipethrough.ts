@@ -61,7 +61,7 @@ export const proxyHandler = (ctx: AppContext): CatchallHandler => {
         'accept-encoding': req.headers['accept-encoding'] || 'identity',
         'accept-language': req.headers['accept-language'],
         'atproto-accept-labelers': req.headers['atproto-accept-labelers'],
-        'x-bsky-topics': req.headers['x-bsky-topics'],
+        'x-gndr-topics': req.headers['x-gndr-topics'],
 
         'content-type': body && req.headers['content-type'],
         'content-encoding': body && req.headers['content-encoding'],
@@ -154,7 +154,7 @@ export async function pipethrough(
     headers: {
       'accept-language': req.headers['accept-language'],
       'atproto-accept-labelers': req.headers['atproto-accept-labelers'],
-      'x-bsky-topics': req.headers['x-bsky-topics'],
+      'x-gndr-topics': req.headers['x-gndr-topics'],
 
       // Because we sometimes need to interpret the response (e.g. during
       // read-after-write, through asPipeThroughBuffer()), we need to ask the
@@ -246,10 +246,10 @@ export const parseProxyHeader = async (
 
   // Special case a configured appview, while still proxying correctly any other appview
   if (
-    ctx.cfg.bskyAppView &&
-    proxyTo === `${ctx.cfg.bskyAppView.did}#bsky_appview`
+    ctx.cfg.gndrAppView &&
+    proxyTo === `${ctx.cfg.gndrAppView.did}#gndr_appview`
   ) {
-    return { did, url: ctx.cfg.bskyAppView.url }
+    return { did, url: ctx.cfg.gndrAppView.url }
   }
 
   return { did, url }
@@ -330,7 +330,7 @@ async function pipethroughRequest(
 
     // Note "XRPCClientError" is used instead of "XRPCServerError" in order to
     // allow users of this function to capture & handle these errors (namely in
-    // "app.bsky.feed.getPostThread").
+    // "app.gndr.feed.getPostThread").
     throw new XRPCClientError(
       upstream.statusCode === 500
         ? ResponseType.UpstreamFailure
@@ -539,7 +539,7 @@ const defaultService = (
     case ids.ComAtprotoModerationCreateReport:
       return ctx.cfg.reportService
     default:
-      return ctx.cfg.bskyAppView
+      return ctx.cfg.gndrAppView
   }
 }
 

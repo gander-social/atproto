@@ -1,4 +1,4 @@
 packages/api/src/client
-packages/bsky/src/lexicon
+packages/gndr/src/lexicon
 packages/pds/src/lexicon
 packages/ozone/src/lexicon

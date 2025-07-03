@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.listitem",
+  "id": "app.gndr.graph.listitem",
   "defs": {
     "main": {
       "type": "record",
@@ -18,7 +18,7 @@
           "list": {
             "type": "string",
             "format": "at-uri",
-            "description": "Reference (AT-URI) to the list record (app.bsky.graph.list)."
+            "description": "Reference (AT-URI) to the list record (app.gndr.graph.list)."
           },
           "createdAt": { "type": "string", "format": "datetime" }
         }

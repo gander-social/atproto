@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.embed.defs",
+  "id": "app.gndr.embed.defs",
   "defs": {
     "aspectRatio": {
       "type": "object",

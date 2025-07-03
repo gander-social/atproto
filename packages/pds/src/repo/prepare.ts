@@ -24,12 +24,12 @@ import {
 } from '@atproto/syntax'
 import { hasExplicitSlur } from '../handle/explicit-slurs'
 import * as lex from '../lexicon/lexicons'
-import * as AppBskyActorProfile from '../lexicon/types/app/bsky/actor/profile'
-import * as AppBskyFeedGenerator from '../lexicon/types/app/bsky/feed/generator'
-import * as AppBskyFeedPost from '../lexicon/types/app/bsky/feed/post'
-import * as AppBskyGraphList from '../lexicon/types/app/bsky/graph/list'
-import * as AppBskyGraphStarterpack from '../lexicon/types/app/bsky/graph/starterpack'
-import { isTag } from '../lexicon/types/app/bsky/richtext/facet'
+import * as AppBskyActorProfile from '../lexicon/types/app/gndr/actor/profile'
+import * as AppBskyFeedGenerator from '../lexicon/types/app/gndr/feed/generator'
+import * as AppBskyFeedPost from '../lexicon/types/app/gndr/feed/post'
+import * as AppBskyGraphList from '../lexicon/types/app/gndr/graph/list'
+import * as AppBskyGraphStarterpack from '../lexicon/types/app/gndr/graph/starterpack'
+import { isTag } from '../lexicon/types/app/gndr/richtext/facet'
 import { asPredicate } from '../lexicon/util'
 import {
   InvalidRecordError,

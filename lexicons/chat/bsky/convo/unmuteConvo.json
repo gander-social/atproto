@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "chat.bsky.convo.unmuteConvo",
+  "id": "chat.gndr.convo.unmuteConvo",
   "defs": {
     "main": {
       "type": "procedure",
@@ -22,7 +22,7 @@
           "properties": {
             "convo": {
               "type": "ref",
-              "ref": "chat.bsky.convo.defs#convoView"
+              "ref": "chat.gndr.convo.defs#convoView"
             }
           }
         }

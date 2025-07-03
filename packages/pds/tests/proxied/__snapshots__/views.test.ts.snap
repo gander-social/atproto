@@ -8,7 +8,7 @@ Object {
     "lists": 0,
     "starterPacks": 0,
   },
-  "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
+  "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
   "createdAt": "1970-01-01T00:00:00.000Z",
   "description": "hi im bob label_me",
   "did": "user(0)",
@@ -60,7 +60,7 @@ Object {
         "lists": 1,
         "starterPacks": 0,
       },
-      "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
+      "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
       "createdAt": "1970-01-01T00:00:00.000Z",
       "description": "its me!",
       "did": "user(0)",
@@ -92,7 +92,7 @@ Object {
           "count": 2,
           "followers": Array [
             Object {
-              "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
+              "avatar": "https://gndr.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
               "createdAt": "1970-01-01T00:00:00.000Z",
               "did": "user(2)",
               "displayName": "bobby",
@@ -128,7 +128,7 @@ Object {
         "lists": 0,
         "starterPacks": 0,
       },
-      "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
+      "avatar": "https://gndr.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
       "createdAt": "1970-01-01T00:00:00.000Z",
       "description": "hi im bob label_me",
       "did": "user(2)",
@@ -176,7 +176,7 @@ exports[`proxies view requests actor.getSuggestions 1`] = `
 Object {
   "actors": Array [
     Object {
-      "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
+      "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
       "createdAt": "1970-01-01T00:00:00.000Z",
       "description": "hi im bob label_me",
       "did": "user(0)",
@@ -191,7 +191,7 @@ Object {
           "count": 1,
           "followers": Array [
             Object {
-              "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
+              "avatar": "https://gndr.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
               "createdAt": "1970-01-01T00:00:00.000Z",
               "did": "user(2)",
               "displayName": "ali",
@@ -241,7 +241,7 @@ Object {
           "count": 1,
           "followers": Array [
             Object {
-              "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
+              "avatar": "https://gndr.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
               "createdAt": "1970-01-01T00:00:00.000Z",
               "did": "user(2)",
               "displayName": "ali",
@@ -282,7 +282,7 @@ Object {
 exports[`proxies view requests actor.searchActor 1`] = `
 Array [
   Object {
-    "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
+    "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
     "createdAt": "1970-01-01T00:00:00.000Z",
     "description": "its me!",
     "did": "user(0)",
@@ -311,7 +311,7 @@ Array [
     },
   },
   Object {
-    "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
+    "avatar": "https://gndr.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
     "createdAt": "1970-01-01T00:00:00.000Z",
     "description": "hi im bob label_me",
     "did": "user(2)",
@@ -358,7 +358,7 @@ Array [
     "associated": Object {
       "labeler": true,
     },
-    "description": "The pretend version of mod.bsky.app",
+    "description": "The pretend version of mod.gndr.app",
     "did": "user(6)",
     "displayName": "Dev-env Moderation",
     "handle": "mod-authority.test",
@@ -375,7 +375,7 @@ Array [
 exports[`proxies view requests actor.searchActorTypeahead 1`] = `
 Array [
   Object {
-    "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
+    "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
     "createdAt": "1970-01-01T00:00:00.000Z",
     "did": "user(0)",
     "displayName": "ali",
@@ -402,7 +402,7 @@ Array [
     },
   },
   Object {
-    "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
+    "avatar": "https://gndr.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
     "createdAt": "1970-01-01T00:00:00.000Z",
     "did": "user(2)",
     "displayName": "bobby",
@@ -466,7 +466,7 @@ Object {
     Object {
       "post": Object {
         "author": Object {
-          "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
+          "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "did": "user(0)",
           "displayName": "bobby",
@@ -481,12 +481,12 @@ Object {
         },
         "cid": "cids(0)",
         "embed": Object {
-          "$type": "app.bsky.embed.images#view",
+          "$type": "app.gndr.embed.images#view",
           "images": Array [
             Object {
               "alt": "../dev-env/assets/key-landscape-small.jpg",
-              "fullsize": "https://bsky.public.url/img/feed_fullsize/plain/user(1)/cids(2)@jpeg",
-              "thumb": "https://bsky.public.url/img/feed_thumbnail/plain/user(1)/cids(2)@jpeg",
+              "fullsize": "https://gndr.public.url/img/feed_fullsize/plain/user(1)/cids(2)@jpeg",
+              "thumb": "https://gndr.public.url/img/feed_thumbnail/plain/user(1)/cids(2)@jpeg",
             },
           ],
         },
@@ -495,10 +495,10 @@ Object {
         "likeCount": 0,
         "quoteCount": 0,
         "record": Object {
-          "$type": "app.bsky.feed.post",
+          "$type": "app.gndr.feed.post",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "embed": Object {
-            "$type": "app.bsky.embed.images",
+            "$type": "app.gndr.embed.images",
             "images": Array [
               Object {
                 "alt": "../dev-env/assets/key-landscape-small.jpg",
@@ -535,9 +535,9 @@ Object {
       },
       "reply": Object {
         "parent": Object {
-          "$type": "app.bsky.feed.defs#postView",
+          "$type": "app.gndr.feed.defs#postView",
           "author": Object {
-            "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(1)@jpeg",
+            "avatar": "https://gndr.public.url/img/avatar/plain/user(3)/cids(1)@jpeg",
             "createdAt": "1970-01-01T00:00:00.000Z",
             "did": "user(2)",
             "displayName": "ali",
@@ -569,7 +569,7 @@ Object {
           "likeCount": 3,
           "quoteCount": 0,
           "record": Object {
-            "$type": "app.bsky.feed.post",
+            "$type": "app.gndr.feed.post",
             "createdAt": "1970-01-01T00:00:00.000000Z",
             "text": "again",
           },
@@ -582,9 +582,9 @@ Object {
           },
         },
         "root": Object {
-          "$type": "app.bsky.feed.defs#postView",
+          "$type": "app.gndr.feed.defs#postView",
           "author": Object {
-            "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(1)@jpeg",
+            "avatar": "https://gndr.public.url/img/avatar/plain/user(3)/cids(1)@jpeg",
             "createdAt": "1970-01-01T00:00:00.000Z",
             "did": "user(2)",
             "displayName": "ali",
@@ -616,7 +616,7 @@ Object {
           "likeCount": 3,
           "quoteCount": 0,
           "record": Object {
-            "$type": "app.bsky.feed.post",
+            "$type": "app.gndr.feed.post",
             "createdAt": "1970-01-01T00:00:00.000000Z",
             "text": "again",
           },
@@ -633,7 +633,7 @@ Object {
     Object {
       "post": Object {
         "author": Object {
-          "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
+          "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "did": "user(0)",
           "displayName": "bobby",
@@ -652,7 +652,7 @@ Object {
         "likeCount": 0,
         "quoteCount": 0,
         "record": Object {
-          "$type": "app.bsky.feed.post",
+          "$type": "app.gndr.feed.post",
           "createdAt": "1970-01-01T00:00:00.000+00:00",
           "text": "bobby boy here",
         },
@@ -668,7 +668,7 @@ Object {
     Object {
       "post": Object {
         "author": Object {
-          "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
+          "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "did": "user(0)",
           "displayName": "bobby",
@@ -687,7 +687,7 @@ Object {
         "likeCount": 0,
         "quoteCount": 1,
         "record": Object {
-          "$type": "app.bsky.feed.post",
+          "$type": "app.gndr.feed.post",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "langs": Array [
             "en-US",
@@ -715,7 +715,7 @@ Object {
   "view": Object {
     "cid": "cids(0)",
     "creator": Object {
-      "avatar": "https://bsky.public.url/img/avatar/plain/user(2)/cids(1)@jpeg",
+      "avatar": "https://gndr.public.url/img/avatar/plain/user(2)/cids(1)@jpeg",
       "createdAt": "1970-01-01T00:00:00.000Z",
       "description": "its me!",
       "did": "user(1)",
@@ -760,7 +760,7 @@ Object {
     Object {
       "cid": "cids(0)",
       "creator": Object {
-        "avatar": "https://bsky.public.url/img/avatar/plain/user(2)/cids(1)@jpeg",
+        "avatar": "https://gndr.public.url/img/avatar/plain/user(2)/cids(1)@jpeg",
         "createdAt": "1970-01-01T00:00:00.000Z",
         "description": "its me!",
         "did": "user(1)",
@@ -806,7 +806,7 @@ Object {
   "likes": Array [
     Object {
       "actor": Object {
-        "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
+        "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(0)@jpeg",
         "createdAt": "1970-01-01T00:00:00.000Z",
         "description": "hi im bob label_me",
         "did": "user(0)",
@@ -826,7 +826,7 @@ Object {
     },
     Object {
       "actor": Object {
-        "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
+        "avatar": "https://gndr.public.url/img/avatar/plain/user(3)/cids(0)@jpeg",
         "createdAt": "1970-01-01T00:00:00.000Z",
         "description": "its me!",
         "did": "user(2)",
@@ -869,7 +869,7 @@ Object {
     Object {
       "post": Object {
         "author": Object {
-          "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
+          "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "did": "user(0)",
           "displayName": "ali",
@@ -901,7 +901,7 @@ Object {
         "likeCount": 0,
         "quoteCount": 0,
         "record": Object {
-          "$type": "app.bsky.feed.post",
+          "$type": "app.gndr.feed.post",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "reply": Object {
             "parent": Object {
@@ -925,7 +925,7 @@ Object {
       },
       "reply": Object {
         "grandparentAuthor": Object {
-          "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
+          "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "did": "user(0)",
           "displayName": "ali",
@@ -952,7 +952,7 @@ Object {
           },
         },
         "parent": Object {
-          "$type": "app.bsky.feed.defs#postView",
+          "$type": "app.gndr.feed.defs#postView",
           "author": Object {
             "avatar": "https://bsky.public.url/img/avatar/plain/user(3)/cids(1)@jpeg",
             "createdAt": "1970-01-01T00:00:00.000Z",
@@ -1388,7 +1388,7 @@ Object {
                   },
                 },
               ],
-              "text": "@alice.bluesky.xyz is the best",
+              "text": "@alice.gander.xyz is the best",
             },
           },
         },

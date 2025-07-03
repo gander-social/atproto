@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "chat.bsky.convo.getLog",
+  "id": "chat.gndr.convo.getLog",
   "defs": {
     "main": {
       "type": "query",
@@ -23,16 +23,16 @@
               "items": {
                 "type": "union",
                 "refs": [
-                  "chat.bsky.convo.defs#logBeginConvo",
-                  "chat.bsky.convo.defs#logAcceptConvo",
-                  "chat.bsky.convo.defs#logLeaveConvo",
-                  "chat.bsky.convo.defs#logMuteConvo",
-                  "chat.bsky.convo.defs#logUnmuteConvo",
-                  "chat.bsky.convo.defs#logCreateMessage",
-                  "chat.bsky.convo.defs#logDeleteMessage",
-                  "chat.bsky.convo.defs#logReadMessage",
-                  "chat.bsky.convo.defs#logAddReaction",
-                  "chat.bsky.convo.defs#logRemoveReaction"
+                  "chat.gndr.convo.defs#logBeginConvo",
+                  "chat.gndr.convo.defs#logAcceptConvo",
+                  "chat.gndr.convo.defs#logLeaveConvo",
+                  "chat.gndr.convo.defs#logMuteConvo",
+                  "chat.gndr.convo.defs#logUnmuteConvo",
+                  "chat.gndr.convo.defs#logCreateMessage",
+                  "chat.gndr.convo.defs#logDeleteMessage",
+                  "chat.gndr.convo.defs#logReadMessage",
+                  "chat.gndr.convo.defs#logAddReaction",
+                  "chat.gndr.convo.defs#logRemoveReaction"
                 ]
               }
             }

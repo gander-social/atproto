@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "chat.bsky.convo.addReaction",
+  "id": "chat.gndr.convo.addReaction",
   "defs": {
     "main": {
       "type": "procedure",
@@ -31,7 +31,7 @@
           "properties": {
             "message": {
               "type": "ref",
-              "ref": "chat.bsky.convo.defs#messageView"
+              "ref": "chat.gndr.convo.defs#messageView"
             }
           }
         }

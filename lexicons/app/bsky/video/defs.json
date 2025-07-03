@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.video.defs",
+  "id": "app.gndr.video.defs",
   "defs": {
     "jobStatus": {
       "type": "object",

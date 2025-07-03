@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.getPostThreadV2",
+  "id": "app.gndr.unspecced.getPostThreadV2",
   "defs": {
     "main": {
       "type": "query",
@@ -62,7 +62,7 @@
             },
             "threadgate": {
               "type": "ref",
-              "ref": "app.bsky.feed.defs#threadgateView"
+              "ref": "app.gndr.feed.defs#threadgateView"
             },
             "hasHiddenReplies": {
               "type": "boolean",
@@ -99,7 +99,7 @@
       "type": "object",
       "required": ["post", "moreParents", "moreReplies", "opThread"],
       "properties": {
-        "post": { "type": "ref", "ref": "app.bsky.feed.defs#postView" },
+        "post": { "type": "ref", "ref": "app.gndr.feed.defs#postView" },
         "moreParents": {
           "type": "boolean",
           "description": "This post has more parents that were not present in the response. This is just a boolean, without the number of parents."
@@ -126,7 +126,7 @@
       "type": "object",
       "required": ["author"],
       "properties": {
-        "author": { "type": "ref", "ref": "app.bsky.feed.defs#blockedAuthor" }
+        "author": { "type": "ref", "ref": "app.gndr.feed.defs#blockedAuthor" }
       }
     }
   }

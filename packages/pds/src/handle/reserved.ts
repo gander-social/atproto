@@ -10,8 +10,8 @@ const atpSpecific = [
   'xrpc',
   'lex',
   'lexicon',
-  'bsky',
-  'bluesky',
+  'gndr',
+  'gander',
   'handle',
 ]
 

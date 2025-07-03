@@ -3,7 +3,7 @@ import {
   isLink,
   isMention,
   isTag,
-} from '../src/client/types/app/bsky/richtext/facet'
+} from '../src/client/types/app/gndr/richtext/facet'
 
 describe('detectFacets', () => {
   const agent = new AtpAgent({ service: 'http://localhost' })
@@ -45,7 +45,7 @@ describe('detectFacets', () => {
     'start middle end.com/foo/bar?baz=bux#hash',
     'newline1.com\nnewline2.com',
     'a example.com/index.php php link',
-    'a trailing bsky.app: colon',
+    'a trailing gndr.app: colon',
 
     'not.. a..url ..here',
     'e.g.',
@@ -167,7 +167,7 @@ describe('detectFacets', () => {
       ['example.com/index.php', 'https://example.com/index.php'],
       [' php link'],
     ],
-    [['a trailing '], ['bsky.app', 'https://bsky.app'], [': colon']],
+    [['a trailing '], ['gndr.app', 'https://gndr.app'], [': colon']],
 
     [['not.. a..url ..here']],
     [['e.g.']],

@@ -396,7 +396,7 @@ describe('AtpAgent', () => {
 
     // put the agent through the auth flow
     try {
-      await agent.app.bsky.feed.getTimeline()
+      await agent.app.gndr.feed.getTimeline()
       throw new Error('Should have failed')
     } catch (e: any) {
       // the original error passes through
@@ -520,7 +520,7 @@ describe('AtpAgent', () => {
 const createPost = async (agent: AtpAgent) => {
   return agent.com.atproto.repo.createRecord({
     repo: agent.accountDid,
-    collection: 'app.bsky.feed.post',
+    collection: 'app.gndr.feed.post',
     record: {
       text: 'hello there',
       createdAt: new Date().toISOString(),

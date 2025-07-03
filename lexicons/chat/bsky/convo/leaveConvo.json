@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "chat.bsky.convo.leaveConvo",
+  "id": "chat.gndr.convo.leaveConvo",
   "defs": {
     "main": {
       "type": "procedure",

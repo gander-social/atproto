@@ -192,7 +192,7 @@ if (AppBskyFeedPost.isRecord(post)) {
 
 ### Rich text
 
-Some records (ie posts) use the `app.bsky.richtext` lexicon. At the moment richtext is only used for links and mentions, but it will be extended over time to include bold, italic, and so on.
+Some records (ie posts) use the `app.gndr.richtext` lexicon. At the moment richtext is only used for links and mentions, but it will be extended over time to include bold, italic, and so on.
 
 ℹ️ It is **strongly** recommended to use this package's `RichText` library. Javascript encodes strings in utf16 while the protocol (and most other programming environments) use utf8. Converting between the two is challenging, but `RichText` handles that for you.
 
@@ -205,7 +205,7 @@ const rt = new RichText({
 })
 await rt.detectFacets(agent) // automatically detects mentions and links
 const postRecord = {
-  $type: 'app.bsky.feed.post',
+  $type: 'app.gndr.feed.post',
   text: rt.text,
   facets: rt.facets,
   createdAt: new Date().toISOString(),
@@ -217,7 +217,7 @@ for (const segment of rt.segments()) {
   if (segment.isLink()) {
     markdown += `[${segment.text}](${segment.link?.uri})`
   } else if (segment.isMention()) {
-    markdown += `[${segment.text}](https://my-bsky-app.com/user/${segment.mention?.did})`
+    markdown += `[${segment.text}](https://my-gndr-app.com/user/${segment.mention?.did})`
   } else {
     markdown += segment.text
   }
@@ -315,26 +315,26 @@ The AT Protocol identifies methods and records with reverse-DNS names. You can u
 ```typescript
 const res1 = await agent.com.atproto.repo.createRecord({
   did: alice.did,
-  collection: 'app.bsky.feed.post',
+  collection: 'app.gndr.feed.post',
   record: {
-    $type: 'app.bsky.feed.post',
+    $type: 'app.gndr.feed.post',
     text: 'Hello, world!',
     createdAt: new Date().toISOString(),
   },
 })
 const res2 = await agent.com.atproto.repo.listRecords({
   repo: alice.did,
-  collection: 'app.bsky.feed.post',
+  collection: 'app.gndr.feed.post',
 })
 
-const res3 = await agent.app.bsky.feed.post.create(
+const res3 = await agent.app.gndr.feed.post.create(
   { repo: alice.did },
   {
     text: 'Hello, world!',
     createdAt: new Date().toISOString(),
   },
 )
-const res4 = await agent.app.bsky.feed.post.list({ repo: alice.did })
+const res4 = await agent.app.gndr.feed.post.list({ repo: alice.did })
 ```
 
 ### Non-browser configuration
@@ -367,7 +367,7 @@ const agent = new AtpAgent({
 
 This project is dual-licensed under MIT and Apache 2.0 terms:
 
-- MIT license ([LICENSE-MIT.txt](https://github.com/bluesky-social/atproto/blob/main/LICENSE-MIT.txt) or http://opensource.org/licenses/MIT)
-- Apache License, Version 2.0, ([LICENSE-APACHE.txt](https://github.com/bluesky-social/atproto/blob/main/LICENSE-APACHE.txt) or http://www.apache.org/licenses/LICENSE-2.0)
+- MIT license ([LICENSE-MIT.txt](https://github.com/gander-social/atproto/blob/main/LICENSE-MIT.txt) or http://opensource.org/licenses/MIT)
+- Apache License, Version 2.0, ([LICENSE-APACHE.txt](https://github.com/gander-social/atproto/blob/main/LICENSE-APACHE.txt) or http://www.apache.org/licenses/LICENSE-2.0)
 
 Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.

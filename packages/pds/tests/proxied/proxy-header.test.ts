@@ -69,7 +69,7 @@ describe('proxy header', () => {
   })
 
   it('proxies requests based on header', async () => {
-    const path = `/xrpc/app.bsky.actor.getProfile?actor=${alice}`
+    const path = `/xrpc/app.gndr.actor.getProfile?actor=${alice}`
     await fetch(`${network.pds.url}${path}`, {
       headers: {
         ...sc.getHeaders(alice),
@@ -83,7 +83,7 @@ describe('proxy header', () => {
     const verified = await verifyJwt(
       req.auth.replace('Bearer ', ''),
       proxyServer.did,
-      'app.bsky.actor.getProfile',
+      'app.gndr.actor.getProfile',
       (iss) => network.pds.ctx.idResolver.did.resolveAtprotoKey(iss, true),
     )
     expect(verified.aud).toBe(proxyServer.did)
@@ -91,7 +91,7 @@ describe('proxy header', () => {
   })
 
   it('fails on a non-existant did', async () => {
-    const path = `/xrpc/app.bsky.actor.getProfile?actor=${alice}`
+    const path = `/xrpc/app.gndr.actor.getProfile?actor=${alice}`
     const response = await fetch(`${network.pds.url}${path}`, {
       headers: {
         ...sc.getHeaders(alice),
@@ -107,7 +107,7 @@ describe('proxy header', () => {
   })
 
   it('fails when a service is not specified', async () => {
-    const path = `/xrpc/app.bsky.actor.getProfile?actor=${alice}`
+    const path = `/xrpc/app.gndr.actor.getProfile?actor=${alice}`
     const response = await fetch(`${network.pds.url}${path}`, {
       headers: {
         ...sc.getHeaders(alice),
@@ -123,7 +123,7 @@ describe('proxy header', () => {
   })
 
   it('fails on a non-existant service', async () => {
-    const path = `/xrpc/app.bsky.actor.getProfile?actor=${alice}`
+    const path = `/xrpc/app.gndr.actor.getProfile?actor=${alice}`
     const response = await fetch(`${network.pds.url}${path}`, {
       headers: {
         ...sc.getHeaders(alice),

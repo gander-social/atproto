@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "chat.bsky.actor.deleteAccount",
+  "id": "chat.gndr.actor.deleteAccount",
   "defs": {
     "main": {
       "type": "procedure",

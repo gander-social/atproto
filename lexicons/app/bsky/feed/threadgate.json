@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.feed.threadgate",
+  "id": "app.gndr.feed.threadgate",
   "defs": {
     "main": {
       "type": "record",

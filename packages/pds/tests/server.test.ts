@@ -85,7 +85,7 @@ describe('server', () => {
     const createRes = await agent.com.atproto.repo.createRecord(
       {
         repo: alice,
-        collection: 'app.bsky.feed.post',
+        collection: 'app.gndr.feed.post',
         record,
       },
       { headers: sc.getHeaders(alice), encoding: 'application/json' },

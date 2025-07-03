@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.notification.updateSeen",
+  "id": "app.gndr.notification.updateSeen",
   "defs": {
     "main": {
       "type": "procedure",

@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.getActorStarterPacks",
+  "id": "app.gndr.graph.getActorStarterPacks",
   "defs": {
     "main": {
       "type": "query",
@@ -30,7 +30,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.graph.defs#starterPackViewBasic"
+                "ref": "app.gndr.graph.defs#starterPackViewBasic"
               }
             }
           }

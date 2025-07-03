@@ -3,13 +3,13 @@ import util from 'node:util'
 import { request } from 'undici'
 import { AtpAgent } from '@atproto/api'
 import { RecordRef, SeedClient, TestNetwork } from '@atproto/dev-env'
-import { isView as isExternalEmbedView } from '../../src/lexicon/types/app/bsky/embed/external'
-import { isView as isImagesEmbedView } from '../../src/lexicon/types/app/bsky/embed/images'
-import { isView as isRecordEmbedView } from '../../src/lexicon/types/app/bsky/embed/record'
+import { isView as isExternalEmbedView } from '../../src/lexicon/types/app/gndr/embed/external'
+import { isView as isImagesEmbedView } from '../../src/lexicon/types/app/gndr/embed/images'
+import { isView as isRecordEmbedView } from '../../src/lexicon/types/app/gndr/embed/record'
 import {
   ThreadViewPost,
   isThreadViewPost,
-} from '../../src/lexicon/types/app/bsky/feed/defs'
+} from '../../src/lexicon/types/app/gndr/feed/defs'
 import basicSeed from '../seeds/basic'
 
 describe('proxy read after write', () => {
@@ -26,11 +26,11 @@ describe('proxy read after write', () => {
     })
     agent = network.pds.getClient()
     sc = network.getSeedClient()
-    await basicSeed(sc, { addModLabels: network.bsky })
+    await basicSeed(sc, { addModLabels: network.gndr })
     await network.processAll()
     alice = sc.dids.alice
     carol = sc.dids.carol
-    await network.bsky.sub.destroy()
+    await network.gndr.sub.destroy()
   })
 
   afterAll(async () => {
@@ -39,7 +39,7 @@ describe('proxy read after write', () => {
 
   it('handles read after write on profiles', async () => {
     await sc.updateProfile(alice, { displayName: 'blah' })
-    const res = await agent.api.app.bsky.actor.getProfile(
+    const res = await agent.api.app.gndr.actor.getProfile(
       { actor: alice },
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -48,7 +48,7 @@ describe('proxy read after write', () => {
   })
 
   it('handles image formatting', async () => {
-    assert(network.pds.ctx.cfg.bskyAppView)
+    assert(network.pds.ctx.cfg.gndrAppView)
     const blob = await sc.uploadFile(
       alice,
       '../dev-env/assets/key-landscape-small.jpg',
@@ -56,13 +56,13 @@ describe('proxy read after write', () => {
     )
     await sc.updateProfile(alice, { displayName: 'blah', avatar: blob.image })
 
-    const res = await agent.api.app.bsky.actor.getProfile(
+    const res = await agent.api.app.gndr.actor.getProfile(
       { actor: alice },
       { headers: { ...sc.getHeaders(alice) } },
     )
     expect(res.data.avatar).toEqual(
       util.format(
-        network.pds.ctx.cfg.bskyAppView.cdnUrlPattern,
+        network.pds.ctx.cfg.gndrAppView.cdnUrlPattern,
         'avatar',
         alice,
         blob.image.ref.toString(),
@@ -71,7 +71,7 @@ describe('proxy read after write', () => {
   })
 
   it('handles read after write on getAuthorFeed', async () => {
-    const res = await agent.api.app.bsky.feed.getAuthorFeed(
+    const res = await agent.api.app.gndr.feed.getAuthorFeed(
       { actor: alice },
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -100,7 +100,7 @@ describe('proxy read after write', () => {
     )
     replyRef1 = reply1.ref
     replyRef2 = reply2.ref
-    const res = await agent.api.app.bsky.feed.getPostThread(
+    const res = await agent.api.app.gndr.feed.getPostThread(
       { uri: sc.posts[alice][0].ref.uriStr },
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -115,7 +115,7 @@ describe('proxy read after write', () => {
     const aliceHandle = sc.accounts[alice].handle
     const handleUriStr = thread.post.uri.replace(alice, aliceHandle)
     expect(handleUriStr).not.toEqual(thread.post.uri)
-    const handleRes = await agent.api.app.bsky.feed.getPostThread(
+    const handleRes = await agent.api.app.gndr.feed.getPostThread(
       { uri: handleUriStr },
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -123,7 +123,7 @@ describe('proxy read after write', () => {
   })
 
   it('handles read after write on a thread that is not found on appview', async () => {
-    const res = await agent.api.app.bsky.feed.getPostThread(
+    const res = await agent.api.app.gndr.feed.getPostThread(
       { uri: replyRef1.uriStr },
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -140,7 +140,7 @@ describe('proxy read after write', () => {
     const aliceHandle = sc.accounts[alice].handle
     const handleUriStr = thread.post.uri.replace(alice, aliceHandle)
     expect(handleUriStr).not.toEqual(thread.post.uri)
-    const handleRes = await agent.api.app.bsky.feed.getPostThread(
+    const handleRes = await agent.api.app.gndr.feed.getPostThread(
       { uri: handleUriStr },
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -148,13 +148,13 @@ describe('proxy read after write', () => {
   })
 
   it('handles read after write on threads with record embeds', async () => {
-    assert(network.pds.ctx.cfg.bskyAppView)
+    assert(network.pds.ctx.cfg.gndrAppView)
     const img = await sc.uploadFile(
       alice,
       '../dev-env/assets/key-landscape-small.jpg',
       'image/jpeg',
     )
-    const replyRes1 = await agent.api.app.bsky.feed.post.create(
+    const replyRes1 = await agent.api.app.gndr.feed.post.create(
       { repo: alice },
       {
         text: 'images test',
@@ -163,7 +163,7 @@ describe('proxy read after write', () => {
           parent: sc.posts[alice][2].ref.raw,
         },
         embed: {
-          $type: 'app.bsky.embed.images',
+          $type: 'app.gndr.embed.images',
           images: [
             {
               image: img.image,
@@ -176,7 +176,7 @@ describe('proxy read after write', () => {
       },
       sc.getHeaders(alice),
     )
-    const replyRes2 = await agent.api.app.bsky.feed.post.create(
+    const replyRes2 = await agent.api.app.gndr.feed.post.create(
       { repo: alice },
       {
         text: 'external test',
@@ -188,7 +188,7 @@ describe('proxy read after write', () => {
           },
         },
         embed: {
-          $type: 'app.bsky.embed.external',
+          $type: 'app.gndr.embed.external',
           external: {
             uri: 'https://example.com',
             title: 'TestImage',
@@ -201,7 +201,7 @@ describe('proxy read after write', () => {
       sc.getHeaders(alice),
     )
 
-    const res = await agent.api.app.bsky.feed.getPostThread(
+    const res = await agent.api.app.gndr.feed.getPostThread(
       { uri: sc.posts[alice][2].ref.uriStr },
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -217,7 +217,7 @@ describe('proxy read after write', () => {
     assert(isImagesEmbedView(embed))
     expect(embed.images[0].fullsize).toEqual(
       util.format(
-        network.pds.ctx.cfg.bskyAppView.cdnUrlPattern,
+        network.pds.ctx.cfg.gndrAppView.cdnUrlPattern,
         'feed_fullsize',
         alice,
         img.image.ref.toString(),
@@ -234,7 +234,7 @@ describe('proxy read after write', () => {
     expect(external.external.title).toEqual('TestImage')
     expect(external.external.thumb).toEqual(
       util.format(
-        network.pds.ctx.cfg.bskyAppView.cdnUrlPattern,
+        network.pds.ctx.cfg.gndrAppView.cdnUrlPattern,
         'feed_thumbnail',
         alice,
         img.image.ref.toString(),
@@ -243,7 +243,7 @@ describe('proxy read after write', () => {
   })
 
   it('handles read after write on threads with record embeds', async () => {
-    const replyRes = await agent.api.app.bsky.feed.post.create(
+    const replyRes = await agent.api.app.gndr.feed.post.create(
       { repo: alice },
       {
         text: 'blah',
@@ -252,14 +252,14 @@ describe('proxy read after write', () => {
           parent: sc.posts[carol][0].ref.raw,
         },
         embed: {
-          $type: 'app.bsky.embed.record',
+          $type: 'app.gndr.embed.record',
           record: sc.posts[alice][0].ref.raw,
         },
         createdAt: new Date().toISOString(),
       },
       sc.getHeaders(alice),
     )
-    const res = await agent.api.app.bsky.feed.getPostThread(
+    const res = await agent.api.app.gndr.feed.getPostThread(
       { uri: sc.posts[carol][0].ref.uriStr },
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -276,7 +276,7 @@ describe('proxy read after write', () => {
   })
 
   it('handles read after write on getTimeline', async () => {
-    const postRes = await agent.api.app.bsky.feed.post.create(
+    const postRes = await agent.api.app.gndr.feed.post.create(
       { repo: alice },
       {
         text: 'poast',
@@ -284,7 +284,7 @@ describe('proxy read after write', () => {
       },
       sc.getHeaders(alice),
     )
-    const res = await agent.api.app.bsky.feed.getTimeline(
+    const res = await agent.api.app.gndr.feed.getTimeline(
       {},
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -292,7 +292,7 @@ describe('proxy read after write', () => {
   })
 
   it('returns lag headers', async () => {
-    const res = await agent.api.app.bsky.feed.getTimeline(
+    const res = await agent.api.app.gndr.feed.getTimeline(
       {},
       { headers: { ...sc.getHeaders(alice) } },
     )
@@ -303,13 +303,13 @@ describe('proxy read after write', () => {
   })
 
   it('negotiates encoding', async () => {
-    const identity = await agent.api.app.bsky.feed.getTimeline(
+    const identity = await agent.api.app.gndr.feed.getTimeline(
       {},
       { headers: { ...sc.getHeaders(alice), 'accept-encoding': 'identity' } },
     )
     expect(identity.headers['content-encoding']).toBeUndefined()
 
-    const gzip = await agent.api.app.bsky.feed.getTimeline(
+    const gzip = await agent.api.app.gndr.feed.getTimeline(
       {},
       {
         headers: { ...sc.getHeaders(alice), 'accept-encoding': 'gzip, *;q=0' },
@@ -322,7 +322,7 @@ describe('proxy read after write', () => {
     // Not using the "agent" because "fetch()" will add "accept-encoding: gzip,
     // deflate" if not "accept-encoding" header is provided
     const res = await request(
-      new URL(`/xrpc/app.bsky.feed.getTimeline`, agent.dispatchUrl),
+      new URL(`/xrpc/app.gndr.feed.getTimeline`, agent.dispatchUrl),
       {
         headers: { ...sc.getHeaders(alice) },
       },
@@ -332,7 +332,7 @@ describe('proxy read after write', () => {
   })
 
   it('falls back to identity encoding', async () => {
-    const invalid = await agent.api.app.bsky.feed.getTimeline(
+    const invalid = await agent.api.app.gndr.feed.getTimeline(
       {},
       { headers: { ...sc.getHeaders(alice), 'accept-encoding': 'invalid' } },
     )
@@ -342,7 +342,7 @@ describe('proxy read after write', () => {
 
   it('errors when failing to negotiate encoding', async () => {
     await expect(
-      agent.api.app.bsky.feed.getTimeline(
+      agent.api.app.gndr.feed.getTimeline(
         {},
         {
           headers: {
@@ -361,7 +361,7 @@ describe('proxy read after write', () => {
 
   it('errors on invalid content-encoding format', async () => {
     await expect(
-      agent.api.app.bsky.feed.getTimeline(
+      agent.api.app.gndr.feed.getTimeline(
         {},
         {
           headers: {

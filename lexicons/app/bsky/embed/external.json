@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.embed.external",
+  "id": "app.gndr.embed.external",
   "defs": {
     "main": {
       "type": "object",

@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.list",
+  "id": "app.gndr.graph.list",
   "defs": {
     "main": {
       "type": "record",
@@ -13,7 +13,7 @@
           "purpose": {
             "type": "ref",
             "description": "Defines the purpose of the list (aka, moderation-oriented or curration-oriented)",
-            "ref": "app.bsky.graph.defs#listPurpose"
+            "ref": "app.gndr.graph.defs#listPurpose"
           },
           "name": {
             "type": "string",
@@ -28,7 +28,7 @@
           },
           "descriptionFacets": {
             "type": "array",
-            "items": { "type": "ref", "ref": "app.bsky.richtext.facet" }
+            "items": { "type": "ref", "ref": "app.gndr.richtext.facet" }
           },
           "avatar": {
             "type": "blob",

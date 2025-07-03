@@ -13,7 +13,7 @@ export default async (sc: SeedClient, max = Infinity) => {
         await sc.createAccount(handle, {
           handle: handle,
           password: 'password',
-          email: `${handle}@bsky.app`,
+          email: `${handle}@gndr.app`,
         })
         if (displayName !== null) {
           await sc.createProfile(sc.dids[handle], displayName, '')
@@ -32,7 +32,7 @@ export default async (sc: SeedClient, max = Infinity) => {
 //     await sc.createAccount(handle, {
 //       handle: handle,
 //       password: 'password',
-//       email: `${handle}@bsky.app`,
+//       email: `${handle}@gndr.app`,
 //     })
 //     if (displayName !== null) {
 //       await sc.createProfile(sc.dids[handle], displayName, '')

@@ -129,16 +129,16 @@ describe('blob deletes', () => {
         writes: [
           {
             $type: 'com.atproto.repo.applyWrites#delete',
-            collection: 'app.bsky.feed.post',
+            collection: 'app.gndr.feed.post',
             rkey: post.ref.uri.rkey,
           },
           {
             $type: 'com.atproto.repo.applyWrites#create',
-            collection: 'app.bsky.feed.post',
+            collection: 'app.gndr.feed.post',
             value: {
               text: 'post2',
               embed: {
-                $type: 'app.bsky.embed.images',
+                $type: 'app.gndr.embed.images',
                 images: [
                   {
                     image: img.image,

@@ -23,8 +23,8 @@ This is an AT Protocol Personal Data Server (aka, an atproto PDS)
 
 Most API routes are under /xrpc/
 
-      Code: https://github.com/bluesky-social/atproto
- Self-Host: https://github.com/bluesky-social/pds
+      Code: https://github.com/gander-social/atproto
+ Self-Host: https://github.com/gander-social/pds
   Protocol: https://atproto.com
 `)
   })

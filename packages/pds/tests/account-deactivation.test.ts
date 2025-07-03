@@ -136,7 +136,7 @@ describe('account deactivation', () => {
     const createAttempt = agent.com.atproto.repo.createRecord(
       {
         repo: alice,
-        collection: 'app.bsky.feed.post',
+        collection: 'app.gndr.feed.post',
         record: {
           text: 'blah',
           createdAt: new Date().toISOString(),

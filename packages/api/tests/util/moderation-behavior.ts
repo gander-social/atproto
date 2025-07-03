@@ -172,7 +172,7 @@ export class ModerationBehaviorSuiteRunner {
       }),
       author,
       labels: (scenario.labels.post || []).map((val) =>
-        m.label({ val, uri: `at://${author.did}/app.bsky.feed.post/fake` }),
+        m.label({ val, uri: `at://${author.did}/app.gndr.feed.post/fake` }),
       ),
       embed: scenario.quoteAuthor
         ? m.embedRecordView({
@@ -182,7 +182,7 @@ export class ModerationBehaviorSuiteRunner {
             labels: (scenario.labels.quotedPost || []).map((val) =>
               m.label({
                 val,
-                uri: `at://${author.did}/app.bsky.feed.post/fake`,
+                uri: `at://${author.did}/app.gndr.feed.post/fake`,
               }),
             ),
             author: this.profileViewBasic(scenario.quoteAuthor, {
@@ -217,7 +217,7 @@ export class ModerationBehaviorSuiteRunner {
         labels.push(
           m.label({
             val: l,
-            uri: `at://did:web:${name}/app.bsky.actor.profile/self`,
+            uri: `at://did:web:${name}/app.gndr.actor.profile/self`,
           }),
         )
       }
@@ -234,7 +234,7 @@ export class ModerationBehaviorSuiteRunner {
         blockedBy: def.blockedBy,
         blocking:
           def.blocking || def.blockingByList
-            ? 'at://did:web:self.test/app.bsky.graph.block/fake'
+            ? 'at://did:web:self.test/app.gndr.graph.block/fake'
             : undefined,
         blockingByList: def.blockingByList
           ? m.listViewBasic({ name: 'Fake List' })

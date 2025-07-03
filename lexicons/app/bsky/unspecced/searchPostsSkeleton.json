@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.searchPostsSkeleton",
+  "id": "app.gndr.unspecced.searchPostsSkeleton",
   "defs": {
     "main": {
       "type": "query",
@@ -92,7 +92,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.unspecced.defs#skeletonSearchPost"
+                "ref": "app.gndr.unspecced.defs#skeletonSearchPost"
               }
             }
           }

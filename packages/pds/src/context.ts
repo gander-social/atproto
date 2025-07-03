@@ -40,7 +40,7 @@ import {
   createSecretKeyObject,
 } from './auth-verifier'
 import { BackgroundQueue } from './background'
-import { BskyAppView } from './bsky-app-view'
+import { BskyAppView } from './gndr-app-view'
 import { ServerConfig, ServerSecrets } from './config'
 import { Crawlers } from './crawlers'
 import { DidSqliteCache } from './did-cache'
@@ -68,7 +68,7 @@ export type AppContextOptions = {
   redisScratch?: Redis
   ratelimitCreator?: RateLimiterCreator
   crawlers: Crawlers
-  bskyAppView?: BskyAppView
+  gndrAppView?: BskyAppView
   moderationAgent?: AtpAgent
   reportingAgent?: AtpAgent
   entrywayAgent?: AtpAgent
@@ -96,7 +96,7 @@ export class AppContext {
   public redisScratch?: Redis
   public ratelimitCreator?: RateLimiterCreator
   public crawlers: Crawlers
-  public bskyAppView?: BskyAppView
+  public gndrAppView?: BskyAppView
   public moderationAgent: AtpAgent | undefined
   public reportingAgent: AtpAgent | undefined
   public entrywayAgent: AtpAgent | undefined
@@ -123,7 +123,7 @@ export class AppContext {
     this.redisScratch = opts.redisScratch
     this.ratelimitCreator = opts.ratelimitCreator
     this.crawlers = opts.crawlers
-    this.bskyAppView = opts.bskyAppView
+    this.gndrAppView = opts.gndrAppView
     this.moderationAgent = opts.moderationAgent
     this.reportingAgent = opts.reportingAgent
     this.entrywayAgent = opts.entrywayAgent
@@ -226,8 +226,8 @@ export class AppContext {
       }
     }
 
-    const bskyAppView = cfg.bskyAppView
-      ? new BskyAppView(cfg.bskyAppView)
+    const gndrAppView = cfg.gndrAppView
+      ? new BskyAppView(cfg.gndrAppView)
       : undefined
 
     const moderationAgent = cfg.modService
@@ -255,7 +255,7 @@ export class AppContext {
 
     const imageUrlBuilder = new ImageUrlBuilder(
       cfg.service.hostname,
-      bskyAppView,
+      gndrAppView,
     )
 
     const actorStore = new ActorStore(cfg.actorStore, {
@@ -284,7 +284,7 @@ export class AppContext {
     const localViewer = LocalViewer.creator(
       accountManager,
       imageUrlBuilder,
-      bskyAppView,
+      gndrAppView,
     )
 
     // An agent for performing HTTP requests based on user provided URLs.
@@ -366,7 +366,7 @@ export class AppContext {
             scopes_supported: [
               'transition:email',
               'transition:generic',
-              'transition:chat.bsky',
+              'transition:chat.gndr',
             ],
           },
           // If the PDS is both an authorization server & resource server (no
@@ -417,7 +417,7 @@ export class AppContext {
       redisScratch,
       ratelimitCreator,
       crawlers,
-      bskyAppView,
+      gndrAppView,
       moderationAgent,
       reportingAgent,
       entrywayAgent,
@@ -433,8 +433,8 @@ export class AppContext {
   }
 
   async appviewAuthHeaders(did: string, lxm: string) {
-    assert(this.bskyAppView)
-    return this.serviceAuthHeaders(did, this.bskyAppView.did, lxm)
+    assert(this.gndrAppView)
+    return this.serviceAuthHeaders(did, this.gndrAppView.did, lxm)
   }
 
   async entrywayAuthHeaders(req: express.Request, did: string, lxm: string) {

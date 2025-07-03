@@ -16,9 +16,9 @@ describe('feedgen proxy view', () => {
     })
     agent = network.pds.getClient()
     sc = network.getSeedClient()
-    await basicSeed(sc, { addModLabels: network.bsky })
+    await basicSeed(sc, { addModLabels: network.gndr })
 
-    feedUri = AtUri.make(sc.dids.alice, 'app.bsky.feed.generator', 'mutuals')
+    feedUri = AtUri.make(sc.dids.alice, 'app.gndr.feed.generator', 'mutuals')
 
     const feedGen = await network.createFeedGen({
       [feedUri.toString()]: ({ params }) => {
@@ -38,7 +38,7 @@ describe('feedgen proxy view', () => {
     })
 
     // publish feed
-    await agent.api.app.bsky.feed.generator.create(
+    await agent.api.app.gndr.feed.generator.create(
       { repo: sc.dids.alice, rkey: feedUri.rkey },
       {
         did: feedGen.did,
@@ -55,7 +55,7 @@ describe('feedgen proxy view', () => {
   })
 
   it('performs basic proxy of getFeed', async () => {
-    const { data: feed } = await agent.api.app.bsky.feed.getFeed(
+    const { data: feed } = await agent.api.app.gndr.feed.getFeed(
       { feed: feedUri.toString() },
       {
         headers: { ...sc.getHeaders(sc.dids.alice) },

@@ -6,7 +6,7 @@ Object {
     Object {
       "post": Object {
         "author": Object {
-          "avatar": "https://bsky.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
+          "avatar": "https://gndr.public.url/img/avatar/plain/user(1)/cids(1)@jpeg",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "did": "user(0)",
           "displayName": "ali",
@@ -46,7 +46,7 @@ Object {
         "likeCount": 0,
         "quoteCount": 0,
         "record": Object {
-          "$type": "app.bsky.feed.post",
+          "$type": "app.gndr.feed.post",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "labels": Object {
             "$type": "com.atproto.label.defs#selfLabels",
@@ -82,27 +82,27 @@ Object {
         },
         "cid": "cids(3)",
         "embed": Object {
-          "$type": "app.bsky.embed.recordWithMedia#view",
+          "$type": "app.gndr.embed.recordWithMedia#view",
           "media": Object {
-            "$type": "app.bsky.embed.images#view",
+            "$type": "app.gndr.embed.images#view",
             "images": Array [
               Object {
                 "alt": "../dev-env/assets/key-landscape-small.jpg",
-                "fullsize": "https://bsky.public.url/img/feed_fullsize/plain/user(3)/cids(4)@jpeg",
-                "thumb": "https://bsky.public.url/img/feed_thumbnail/plain/user(3)/cids(4)@jpeg",
+                "fullsize": "https://gndr.public.url/img/feed_fullsize/plain/user(3)/cids(4)@jpeg",
+                "thumb": "https://gndr.public.url/img/feed_thumbnail/plain/user(3)/cids(4)@jpeg",
               },
               Object {
                 "alt": "../dev-env/assets/key-alt.jpg",
-                "fullsize": "https://bsky.public.url/img/feed_fullsize/plain/user(3)/cids(5)@jpeg",
-                "thumb": "https://bsky.public.url/img/feed_thumbnail/plain/user(3)/cids(5)@jpeg",
+                "fullsize": "https://gndr.public.url/img/feed_fullsize/plain/user(3)/cids(5)@jpeg",
+                "thumb": "https://gndr.public.url/img/feed_thumbnail/plain/user(3)/cids(5)@jpeg",
               },
             ],
           },
           "record": Object {
             "record": Object {
-              "$type": "app.bsky.embed.record#viewRecord",
+              "$type": "app.gndr.embed.record#viewRecord",
               "author": Object {
-                "avatar": "https://bsky.public.url/img/avatar/plain/user(5)/cids(1)@jpeg",
+                "avatar": "https://gndr.public.url/img/avatar/plain/user(5)/cids(1)@jpeg",
                 "createdAt": "1970-01-01T00:00:00.000Z",
                 "did": "user(4)",
                 "displayName": "bobby",
@@ -125,7 +125,7 @@ Object {
               "repostCount": 0,
               "uri": "record(5)",
               "value": Object {
-                "$type": "app.bsky.feed.post",
+                "$type": "app.gndr.feed.post",
                 "createdAt": "1970-01-01T00:00:00.000Z",
                 "langs": Array [
                   "en-US",
@@ -141,12 +141,12 @@ Object {
         "likeCount": 2,
         "quoteCount": 1,
         "record": Object {
-          "$type": "app.bsky.feed.post",
+          "$type": "app.gndr.feed.post",
           "createdAt": "1970-01-01T00:00:00.000Z",
           "embed": Object {
-            "$type": "app.bsky.embed.recordWithMedia",
+            "$type": "app.gndr.embed.recordWithMedia",
             "media": Object {
-              "$type": "app.bsky.embed.images",
+              "$type": "app.gndr.embed.images",
               "images": Array [
                 Object {
                   "alt": "../dev-env/assets/key-landscape-small.jpg",

@@ -156,8 +156,8 @@ describe('account migration', () => {
     expect(statusRes3.data.expectedBlobs).toBe(3)
     expect(statusRes3.data.importedBlobs).toBe(3)
 
-    const prefs = await oldAgent.api.app.bsky.actor.getPreferences()
-    await newAgent.api.app.bsky.actor.putPreferences(prefs.data)
+    const prefs = await oldAgent.api.app.gndr.actor.getPreferences()
+    await newAgent.api.app.gndr.actor.putPreferences(prefs.data)
 
     const getDidCredentials =
       await newAgent.com.atproto.identity.getRecommendedDidCredentials()
@@ -202,7 +202,7 @@ describe('account migration', () => {
       validDid: false,
     })
 
-    const postRes = await newAgent.api.app.bsky.feed.post.create(
+    const postRes = await newAgent.api.app.gndr.feed.post.create(
       { repo: alice },
       {
         text: 'new pds!',
@@ -210,7 +210,7 @@ describe('account migration', () => {
       },
     )
     const postUri = new AtUri(postRes.uri)
-    const fetchedPost = await newAgent.api.app.bsky.feed.post.get({
+    const fetchedPost = await newAgent.api.app.gndr.feed.post.get({
       repo: postUri.hostname,
       rkey: postUri.rkey,
     })

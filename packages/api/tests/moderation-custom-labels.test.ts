@@ -223,7 +223,7 @@ describe('Moderation: custom labels', () => {
         res = moderatePost(
           mock.postView({
             record: {
-              $type: 'app.bsky.feed.post',
+              $type: 'app.gndr.feed.post',
               text: 'Hello',
               createdAt: new Date().toISOString(),
             },
@@ -234,7 +234,7 @@ describe('Moderation: custom labels', () => {
             labels: [
               mock.label({
                 val: 'custom',
-                uri: 'at://did:web:bob.test/app.bsky.feed.post/fake',
+                uri: 'at://did:web:bob.test/app.gndr.feed.post/fake',
                 src: 'did:web:labeler.test',
               }),
             ],
@@ -249,7 +249,7 @@ describe('Moderation: custom labels', () => {
             labels: [
               mock.label({
                 val: 'custom',
-                uri: 'at://did:web:bob.test/app.bsky.actor.profile/self',
+                uri: 'at://did:web:bob.test/app.gndr.actor.profile/self',
                 src: 'did:web:labeler.test',
               }),
             ],

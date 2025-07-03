@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.getSuggestedUsers",
+  "id": "app.gndr.unspecced.getSuggestedUsers",
   "defs": {
     "main": {
       "type": "query",
@@ -30,7 +30,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.actor.defs#profileView"
+                "ref": "app.gndr.actor.defs#profileView"
               }
             }
           }

@@ -1,10 +1,10 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.getSuggestedStarterPacksSkeleton",
+  "id": "app.gndr.unspecced.getSuggestedStarterPacksSkeleton",
   "defs": {
     "main": {
       "type": "query",
-      "description": "Get a skeleton of suggested starterpacks. Intended to be called and hydrated by app.bsky.unspecced.getSuggestedStarterpacks",
+      "description": "Get a skeleton of suggested starterpacks. Intended to be called and hydrated by app.gndr.unspecced.getSuggestedStarterpacks",
       "parameters": {
         "type": "params",
         "properties": {

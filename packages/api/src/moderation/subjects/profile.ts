@@ -21,6 +21,6 @@ export function filterProfileLabels(labels?: Label[]): Label[] {
     return []
   }
   return labels.filter((label) =>
-    label.uri.endsWith('/app.bsky.actor.profile/self'),
+    label.uri.endsWith('/app.gndr.actor.profile/self'),
   )
 }

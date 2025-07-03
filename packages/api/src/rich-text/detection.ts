@@ -23,14 +23,14 @@ export function detectFacets(text: UnicodeString): Facet[] | undefined {
 
       const start = text.utf16.indexOf(match[3], match.index) - 1
       facets.push({
-        $type: 'app.bsky.richtext.facet',
+        $type: 'app.gndr.richtext.facet',
         index: {
           byteStart: text.utf16IndexToUtf8Index(start),
           byteEnd: text.utf16IndexToUtf8Index(start + match[3].length + 1),
         },
         features: [
           {
-            $type: 'app.bsky.richtext.facet#mention',
+            $type: 'app.gndr.richtext.facet#mention',
             did: match[3], // must be resolved afterwards
           },
         ],
@@ -67,7 +67,7 @@ export function detectFacets(text: UnicodeString): Facet[] | undefined {
         },
         features: [
           {
-            $type: 'app.bsky.richtext.facet#link',
+            $type: 'app.gndr.richtext.facet#link',
             uri,
           },
         ],
@@ -96,7 +96,7 @@ export function detectFacets(text: UnicodeString): Facet[] | undefined {
         },
         features: [
           {
-            $type: 'app.bsky.richtext.facet#tag',
+            $type: 'app.gndr.richtext.facet#tag',
             tag: tag,
           },
         ],

@@ -24,7 +24,7 @@ export const mock = {
     embed?: AppBskyFeedPost.Record['embed']
   }): $Typed<AppBskyFeedPost.Record> {
     return {
-      $type: 'app.bsky.feed.post',
+      $type: 'app.gndr.feed.post',
       text,
       facets,
       reply,
@@ -54,8 +54,8 @@ export const mock = {
     labels?: ComAtprotoLabelDefs.Label[]
   }): $Typed<AppBskyFeedDefs.PostView> {
     return {
-      $type: 'app.bsky.feed.defs#postView',
-      uri: `at://${author.did}/app.bsky.feed.post/fake`,
+      $type: 'app.gndr.feed.defs#postView',
+      uri: `at://${author.did}/app.gndr.feed.post/fake`,
       cid: FAKE_CID,
       author,
       record,
@@ -79,10 +79,10 @@ export const mock = {
     labels?: ComAtprotoLabelDefs.Label[]
   }): $Typed<AppBskyEmbedRecord.View> {
     return {
-      $type: 'app.bsky.embed.record#view',
+      $type: 'app.gndr.embed.record#view',
       record: {
-        $type: 'app.bsky.embed.record#viewRecord',
-        uri: `at://${author.did}/app.bsky.feed.post/fake`,
+        $type: 'app.gndr.embed.record#viewRecord',
+        uri: `at://${author.did}/app.gndr.feed.post/fake`,
         cid: FAKE_CID,
         author,
         value: record,
@@ -146,10 +146,10 @@ export const mock = {
 
   listViewBasic({ name }: { name: string }): AppBskyGraphDefs.ListViewBasic {
     return {
-      uri: 'at://did:plc:fake/app.bsky.graph.list/fake',
+      uri: 'at://did:plc:fake/app.gndr.graph.list/fake',
       cid: FAKE_CID,
       name,
-      purpose: 'app.bsky.graph.defs#modlist',
+      purpose: 'app.gndr.graph.defs#modlist',
       indexedAt: new Date().toISOString(),
     }
   },
@@ -164,11 +164,11 @@ export const mock = {
     labels?: ComAtprotoLabelDefs.Label[]
   }): AppBskyNotificationListNotifications.Notification {
     return {
-      uri: `at://${author.did}/app.bsky.feed.post/fake`,
+      uri: `at://${author.did}/app.gndr.feed.post/fake`,
       cid: FAKE_CID,
       author,
       reason: 'reply',
-      reasonSubject: `at://${author.did}/app.bsky.feed.post/fake-parent`,
+      reasonSubject: `at://${author.did}/app.gndr.feed.post/fake-parent`,
       record,
       isRead: false,
       indexedAt: new Date().toISOString(),
@@ -186,12 +186,12 @@ export const mock = {
     labels?: ComAtprotoLabelDefs.Label[]
   }): AppBskyNotificationListNotifications.Notification {
     return {
-      uri: `at://${author.did}/app.bsky.graph.follow/fake`,
+      uri: `at://${author.did}/app.gndr.graph.follow/fake`,
       cid: FAKE_CID,
       author,
       reason: 'follow',
       record: {
-        $type: 'app.bsky.graph.follow',
+        $type: 'app.gndr.graph.follow',
         createdAt: new Date().toISOString(),
         subject: subjectDid,
       },

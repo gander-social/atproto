@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.feed.getFeedGenerator",
+  "id": "app.gndr.feed.getFeedGenerator",
   "defs": {
     "main": {
       "type": "query",
@@ -24,7 +24,7 @@
           "properties": {
             "view": {
               "type": "ref",
-              "ref": "app.bsky.feed.defs#generatorView"
+              "ref": "app.gndr.feed.defs#generatorView"
             },
             "isOnline": {
               "type": "boolean",

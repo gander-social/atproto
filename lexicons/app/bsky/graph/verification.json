@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.verification",
+  "id": "app.gndr.graph.verification",
   "defs": {
     "main": {
       "type": "record",

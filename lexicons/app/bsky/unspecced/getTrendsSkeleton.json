@@ -1,10 +1,10 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.getTrendsSkeleton",
+  "id": "app.gndr.unspecced.getTrendsSkeleton",
   "defs": {
     "main": {
       "type": "query",
-      "description": "Get the skeleton of trends on the network. Intended to be called and then hydrated through app.bsky.unspecced.getTrends",
+      "description": "Get the skeleton of trends on the network. Intended to be called and then hydrated through app.gndr.unspecced.getTrends",
       "parameters": {
         "type": "params",
         "properties": {
@@ -31,7 +31,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.unspecced.defs#skeletonTrend"
+                "ref": "app.gndr.unspecced.defs#skeletonTrend"
               }
             }
           }

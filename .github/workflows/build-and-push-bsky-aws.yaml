@@ -1,4 +1,4 @@
-name: build-and-push-bsky-aws
+name: build-and-push-gndr-aws
 on:
   push:
     branches:
@@ -7,11 +7,11 @@ env:
   REGISTRY: ${{ secrets.AWS_ECR_REGISTRY_USEAST2_PACKAGES_REGISTRY }}
   USERNAME: ${{ secrets.AWS_ECR_REGISTRY_USEAST2_PACKAGES_USERNAME }}
   PASSWORD: ${{ secrets.AWS_ECR_REGISTRY_USEAST2_PACKAGES_PASSWORD }}
-  IMAGE_NAME: bsky-app-view
+  IMAGE_NAME: gndr-app-view
 
 jobs:
-  bsky-container-aws:
-    if: github.repository == 'bluesky-social/atproto'
+  gndr-container-aws:
+    if: github.repository == 'gander-social/atproto'
     runs-on: ubuntu-22.04
     permissions:
       contents: read
@@ -47,7 +47,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          file: ./services/bsky/Dockerfile
+          file: ./services/gndr/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha

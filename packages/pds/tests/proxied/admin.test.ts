@@ -29,7 +29,7 @@ describe('proxies admin requests', () => {
       )
     await basicSeed(sc, {
       inviteCode: invite.code,
-      addModLabels: network.bsky,
+      addModLabels: network.gndr,
     })
     const modAccount = await sc.createAccount('moderator', {
       handle: 'testmod.test',
@@ -230,7 +230,7 @@ describe('proxies admin requests', () => {
     )
     await network.processAll()
     // check profile and labels
-    const tryGetProfileAppview = agent.api.app.bsky.actor.getProfile(
+    const tryGetProfileAppview = agent.api.app.gndr.actor.getProfile(
       { actor: sc.dids.alice },
       {
         headers: { ...sc.getHeaders(sc.dids.carol) },
@@ -260,7 +260,7 @@ describe('proxies admin requests', () => {
     )
     await network.processAll()
     // check profile and labels
-    const { data: profileAppview } = await agent.api.app.bsky.actor.getProfile(
+    const { data: profileAppview } = await agent.api.app.gndr.actor.getProfile(
       { actor: sc.dids.alice },
       {
         headers: { ...sc.getHeaders(sc.dids.carol) },

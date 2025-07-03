@@ -35,12 +35,12 @@ describe('pds posts record creation', () => {
       createdAt: new Date().toISOString(),
     }
 
-    const res = await agent.api.app.bsky.feed.post.create(
+    const res = await agent.api.app.gndr.feed.post.create(
       { repo: sc.dids.alice },
       post,
       sc.getHeaders(sc.dids.alice),
     )
-    const { value: record } = await agent.api.app.bsky.feed.post.get({
+    const { value: record } = await agent.api.app.gndr.feed.post.get({
       repo: sc.dids.alice,
       rkey: new AtUri(res.uri).rkey,
     })
@@ -59,12 +59,12 @@ describe('pds posts record creation', () => {
       createdAt: new Date().toISOString(),
     }
 
-    const res = await agent.api.app.bsky.feed.post.create(
+    const res = await agent.api.app.gndr.feed.post.create(
       { repo: sc.dids.alice },
       post,
       sc.getHeaders(sc.dids.alice),
     )
-    const { value: record } = await agent.api.app.bsky.feed.post.get({
+    const { value: record } = await agent.api.app.gndr.feed.post.get({
       repo: sc.dids.alice,
       rkey: new AtUri(res.uri).rkey,
     })

@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.video.getJobStatus",
+  "id": "app.gndr.video.getJobStatus",
   "defs": {
     "main": {
       "type": "query",
@@ -22,7 +22,7 @@
           "properties": {
             "jobStatus": {
               "type": "ref",
-              "ref": "app.bsky.video.defs#jobStatus"
+              "ref": "app.gndr.video.defs#jobStatus"
             }
           }
         }

@@ -511,15 +511,15 @@ export class AuthVerifier {
         )
       }
 
-      const scopeEquivalent: AuthScope = oauthScopes.has('transition:chat.bsky')
+      const scopeEquivalent: AuthScope = oauthScopes.has('transition:chat.gndr')
         ? AuthScope.AppPassPrivileged
         : AuthScope.AppPass
 
       if (!scopes.includes(scopeEquivalent)) {
-        // AppPassPrivileged is sufficient but was not provided "transition:chat.bsky"
+        // AppPassPrivileged is sufficient but was not provided "transition:chat.gndr"
         if (scopes.includes(AuthScope.AppPassPrivileged)) {
           throw new InvalidRequestError(
-            'Missing required scope: transition:chat.bsky',
+            'Missing required scope: transition:chat.gndr',
             'InvalidToken',
           )
         }

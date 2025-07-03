@@ -169,7 +169,7 @@ describe('Moderation: custom labels', () => {
         postLabels = [
           mock.label({
             val: 'custom',
-            uri: 'at://did:web:carla.test/app.bsky.feed.post/fake',
+            uri: 'at://did:web:carla.test/app.gndr.feed.post/fake',
             src: 'did:web:labeler.test',
           }),
         ]
@@ -177,7 +177,7 @@ describe('Moderation: custom labels', () => {
         profileLabels = [
           mock.label({
             val: 'custom',
-            uri: 'at://did:web:carla.test/app.bsky.actor.profile/self',
+            uri: 'at://did:web:carla.test/app.gndr.actor.profile/self',
             src: 'did:web:labeler.test',
           }),
         ]
@@ -193,7 +193,7 @@ describe('Moderation: custom labels', () => {
 
       const post = mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },

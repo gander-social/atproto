@@ -17,7 +17,7 @@ describe('proxies appview procedures', () => {
     })
     agent = network.pds.getClient()
     sc = network.getSeedClient()
-    await basicSeed(sc, { addModLabels: network.bsky })
+    await basicSeed(sc, { addModLabels: network.gndr })
     await network.processAll()
     alice = sc.dids.alice
     bob = sc.dids.bob
@@ -30,14 +30,14 @@ describe('proxies appview procedures', () => {
 
   it('maintains muted actors.', async () => {
     // mute actors
-    await agent.api.app.bsky.graph.muteActor(
+    await agent.api.app.gndr.graph.muteActor(
       { actor: bob },
       {
         headers: sc.getHeaders(alice),
         encoding: 'application/json',
       },
     )
-    await agent.api.app.bsky.graph.muteActor(
+    await agent.api.app.gndr.graph.muteActor(
       { actor: carol },
       {
         headers: sc.getHeaders(alice),
@@ -45,7 +45,7 @@ describe('proxies appview procedures', () => {
       },
     )
     // check
-    const { data: result1 } = await agent.api.app.bsky.graph.getMutes(
+    const { data: result1 } = await agent.api.app.gndr.graph.getMutes(
       {},
       { headers: sc.getHeaders(alice) },
     )
@@ -54,7 +54,7 @@ describe('proxies appview procedures', () => {
       'bob.test',
     ])
     // unmute actors
-    await agent.api.app.bsky.graph.unmuteActor(
+    await agent.api.app.gndr.graph.unmuteActor(
       { actor: bob },
       {
         headers: sc.getHeaders(alice),
@@ -62,7 +62,7 @@ describe('proxies appview procedures', () => {
       },
     )
     // check
-    const { data: result2 } = await agent.api.app.bsky.graph.getMutes(
+    const { data: result2 } = await agent.api.app.gndr.graph.getMutes(
       {},
       { headers: sc.getHeaders(alice) },
     )
@@ -71,21 +71,21 @@ describe('proxies appview procedures', () => {
 
   it('maintains muted actor lists.', async () => {
     // setup lists
-    const bobList = await agent.api.app.bsky.graph.list.create(
+    const bobList = await agent.api.app.gndr.graph.list.create(
       { repo: bob },
       {
         name: 'bob mutes',
-        purpose: 'app.bsky.graph.defs#modlist',
+        purpose: 'app.gndr.graph.defs#modlist',
         description: "bob's list of mutes",
         createdAt: new Date().toISOString(),
       },
       sc.getHeaders(bob),
     )
-    const carolList = await agent.api.app.bsky.graph.list.create(
+    const carolList = await agent.api.app.gndr.graph.list.create(
       { repo: carol },
       {
         name: 'carol mutes',
-        purpose: 'app.bsky.graph.defs#modlist',
+        purpose: 'app.gndr.graph.defs#modlist',
         description: "carol's list of mutes",
         createdAt: new Date().toISOString(),
       },
@@ -94,14 +94,14 @@ describe('proxies appview procedures', () => {
     await network.processAll()
 
     // mute lists
-    await agent.api.app.bsky.graph.muteActorList(
+    await agent.api.app.gndr.graph.muteActorList(
       { list: bobList.uri },
       {
         headers: sc.getHeaders(alice),
         encoding: 'application/json',
       },
     )
-    await agent.api.app.bsky.graph.muteActorList(
+    await agent.api.app.gndr.graph.muteActorList(
       { list: carolList.uri },
       {
         headers: sc.getHeaders(alice),
@@ -110,7 +110,7 @@ describe('proxies appview procedures', () => {
     )
     await network.processAll()
     // check
-    const { data: result1 } = await agent.api.app.bsky.graph.getListMutes(
+    const { data: result1 } = await agent.api.app.gndr.graph.getListMutes(
       {},
       { headers: sc.getHeaders(alice) },
     )
@@ -119,7 +119,7 @@ describe('proxies appview procedures', () => {
       bobList.uri,
     ])
     // unmute lists
-    await agent.api.app.bsky.graph.unmuteActorList(
+    await agent.api.app.gndr.graph.unmuteActorList(
       { list: bobList.uri },
       {
         headers: sc.getHeaders(alice),
@@ -127,7 +127,7 @@ describe('proxies appview procedures', () => {
       },
     )
     // check
-    const { data: result2 } = await agent.api.app.bsky.graph.getListMutes(
+    const { data: result2 } = await agent.api.app.gndr.graph.getListMutes(
       {},
       { headers: sc.getHeaders(alice) },
     )
@@ -137,7 +137,7 @@ describe('proxies appview procedures', () => {
   it('maintains notification last seen state.', async () => {
     // check original notifs
     const { data: result1 } =
-      await agent.api.app.bsky.notification.listNotifications(
+      await agent.api.app.gndr.notification.listNotifications(
         {},
         { headers: sc.getHeaders(alice) },
       )
@@ -149,7 +149,7 @@ describe('proxies appview procedures', () => {
     ).toBe(true)
     // update last seen
     const { indexedAt: lastSeenAt } = result1.notifications[2]
-    await agent.api.app.bsky.notification.updateSeen(
+    await agent.api.app.gndr.notification.updateSeen(
       { seenAt: lastSeenAt },
       {
         headers: sc.getHeaders(alice),
@@ -158,7 +158,7 @@ describe('proxies appview procedures', () => {
     )
     // check
     const { data: result2 } =
-      await agent.api.app.bsky.notification.listNotifications(
+      await agent.api.app.gndr.notification.listNotifications(
         {},
         { headers: sc.getHeaders(alice) },
       )

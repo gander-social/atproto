@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.getTrendingTopics",
+  "id": "app.gndr.unspecced.getTrendingTopics",
   "defs": {
     "main": {
       "type": "query",
@@ -31,14 +31,14 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.unspecced.defs#trendingTopic"
+                "ref": "app.gndr.unspecced.defs#trendingTopic"
               }
             },
             "suggested": {
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.unspecced.defs#trendingTopic"
+                "ref": "app.gndr.unspecced.defs#trendingTopic"
               }
             }
           }

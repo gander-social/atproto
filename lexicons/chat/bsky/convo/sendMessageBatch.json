@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "chat.bsky.convo.sendMessageBatch",
+  "id": "chat.gndr.convo.sendMessageBatch",
   "defs": {
     "main": {
       "type": "procedure",
@@ -31,7 +31,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "chat.bsky.convo.defs#messageView"
+                "ref": "chat.gndr.convo.defs#messageView"
               }
             }
           }
@@ -45,7 +45,7 @@
         "convoId": { "type": "string" },
         "message": {
           "type": "ref",
-          "ref": "chat.bsky.convo.defs#messageInput"
+          "ref": "chat.gndr.convo.defs#messageInput"
         }
       }
     }

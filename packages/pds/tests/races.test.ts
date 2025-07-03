@@ -51,7 +51,7 @@ describe('races', () => {
   it('handles races in record routes', async () => {
     const write = await prepareCreate({
       did,
-      collection: 'app.bsky.feed.post',
+      collection: 'app.gndr.feed.post',
       record: {
         text: 'one',
         createdAt: new Date().toISOString(),
@@ -61,14 +61,14 @@ describe('races', () => {
 
     const processPromise = processCommitWithWait(did, write, 500)
 
-    const createdPost = await agent.api.app.bsky.feed.post.create(
+    const createdPost = await agent.api.app.gndr.feed.post.create(
       { repo: did },
       { text: 'two', createdAt: new Date().toISOString() },
     )
 
     await processPromise
 
-    const listed = await agent.api.app.bsky.feed.post.list({ repo: did })
+    const listed = await agent.api.app.gndr.feed.post.list({ repo: did })
     expect(listed.records.length).toBe(2)
 
     const carRes = await agent.api.com.atproto.sync.getRepo({ did })

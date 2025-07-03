@@ -24,21 +24,21 @@ describe('RichText', () => {
     })
     expect(rt.facets).toEqual([
       {
-        $type: 'app.bsky.richtext.facet',
+        $type: 'app.gndr.richtext.facet',
         index: { byteStart: 0, byteEnd: 1 },
         features: [
           {
-            $type: 'app.bsky.richtext.facet#link',
+            $type: 'app.gndr.richtext.facet#link',
             uri: 'https://example.com',
           },
         ],
       },
       {
-        $type: 'app.bsky.richtext.facet',
+        $type: 'app.gndr.richtext.facet',
         index: { byteStart: 1, byteEnd: 2 },
         features: [
           {
-            $type: 'app.bsky.richtext.facet#mention',
+            $type: 'app.gndr.richtext.facet#mention',
             did: 'did:plc:1234',
           },
         ],
@@ -69,21 +69,21 @@ describe('RichText', () => {
     })
     expect(rt.facets).toEqual([
       {
-        $type: 'app.bsky.richtext.facet',
+        $type: 'app.gndr.richtext.facet',
         index: { byteStart: 0, byteEnd: 25 },
         features: [
           {
-            $type: 'app.bsky.richtext.facet#link',
+            $type: 'app.gndr.richtext.facet#link',
             uri: 'https://example.com',
           },
         ],
       },
       {
-        $type: 'app.bsky.richtext.facet',
+        $type: 'app.gndr.richtext.facet',
         index: { byteStart: 25, byteEnd: 50 },
         features: [
           {
-            $type: 'app.bsky.richtext.facet#mention',
+            $type: 'app.gndr.richtext.facet#mention',
             did: 'did:plc:1234',
           },
         ],
@@ -565,7 +565,7 @@ describe('RichText#segments', () => {
           index: { byteStart: 0, byteEnd: 3 },
           features: [
             {
-              $type: 'app.bsky.richtext.facet#mention',
+              $type: 'app.gndr.richtext.facet#mention',
               did: 'did:plc:123',
             },
           ],
@@ -574,7 +574,7 @@ describe('RichText#segments', () => {
           index: { byteStart: 4, byteEnd: 7 },
           features: [
             {
-              $type: 'app.bsky.richtext.facet#link',
+              $type: 'app.gndr.richtext.facet#link',
               uri: 'https://example.com',
             },
           ],

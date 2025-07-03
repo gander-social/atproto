@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.follow",
+  "id": "app.gndr.graph.follow",
   "defs": {
     "main": {
       "type": "record",

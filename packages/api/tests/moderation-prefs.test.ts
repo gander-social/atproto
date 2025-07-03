@@ -1,6 +1,6 @@
 import { TestNetworkNoAppView } from '@atproto/dev-env'
 import { DEFAULT_LABEL_SETTINGS } from '../src'
-import { isContentLabelPref } from '../src/client/types/app/bsky/actor/defs'
+import { isContentLabelPref } from '../src/client/types/app/gndr/actor/defs'
 import './util/moderation-behavior'
 
 describe('agent', () => {
@@ -25,25 +25,25 @@ describe('agent', () => {
       password: 'password',
     })
 
-    await agent.app.bsky.actor.putPreferences({
+    await agent.app.gndr.actor.putPreferences({
       preferences: [
         {
-          $type: 'app.bsky.actor.defs#contentLabelPref',
+          $type: 'app.gndr.actor.defs#contentLabelPref',
           label: 'porn',
           visibility: 'show',
         },
         {
-          $type: 'app.bsky.actor.defs#contentLabelPref',
+          $type: 'app.gndr.actor.defs#contentLabelPref',
           label: 'nudity',
           visibility: 'show',
         },
         {
-          $type: 'app.bsky.actor.defs#contentLabelPref',
+          $type: 'app.gndr.actor.defs#contentLabelPref',
           label: 'sexual',
           visibility: 'show',
         },
         {
-          $type: 'app.bsky.actor.defs#contentLabelPref',
+          $type: 'app.gndr.actor.defs#contentLabelPref',
           label: 'graphic-media',
           visibility: 'show',
         },
@@ -82,7 +82,7 @@ describe('agent', () => {
         prioritizeFollowedUsers: true,
         sort: 'hotness',
       },
-      bskyAppState: {
+      gndrAppState: {
         activeProgressGuide: undefined,
         queuedNudges: [],
         nuxs: [],
@@ -139,7 +139,7 @@ describe('agent', () => {
         sort: 'hotness',
         prioritizeFollowedUsers: true,
       },
-      bskyAppState: {
+      gndrAppState: {
         activeProgressGuide: undefined,
         queuedNudges: [],
         nuxs: [],
@@ -181,7 +181,7 @@ describe('agent', () => {
         sort: 'hotness',
         prioritizeFollowedUsers: true,
       },
-      bskyAppState: {
+      gndrAppState: {
         activeProgressGuide: undefined,
         queuedNudges: [],
         nuxs: [],
@@ -245,7 +245,7 @@ describe('agent', () => {
         sort: 'hotness',
         prioritizeFollowedUsers: true,
       },
-      bskyAppState: {
+      gndrAppState: {
         activeProgressGuide: undefined,
         queuedNudges: [],
         nuxs: [],
@@ -361,7 +361,7 @@ describe('agent', () => {
 
     await agent.setContentLabelPref('nsfw', 'hide')
     await agent.setContentLabelPref('porn', 'hide')
-    const a = await agent.app.bsky.actor.getPreferences({})
+    const a = await agent.app.gndr.actor.getPreferences({})
 
     const nsfwSettings = a.data.preferences.filter(
       (pref) => isContentLabelPref(pref) && pref.label === 'nsfw',

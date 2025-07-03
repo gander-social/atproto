@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.video.uploadVideo",
+  "id": "app.gndr.video.uploadVideo",
   "defs": {
     "main": {
       "type": "procedure",
@@ -16,7 +16,7 @@
           "properties": {
             "jobStatus": {
               "type": "ref",
-              "ref": "app.bsky.video.defs#jobStatus"
+              "ref": "app.gndr.video.defs#jobStatus"
             }
           }
         }

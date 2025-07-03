@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.feed.describeFeedGenerator",
+  "id": "app.gndr.feed.describeFeedGenerator",
   "defs": {
     "main": {
       "type": "query",

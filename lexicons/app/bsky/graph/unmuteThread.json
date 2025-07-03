@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.unmuteThread",
+  "id": "app.gndr.graph.unmuteThread",
   "defs": {
     "main": {
       "type": "procedure",

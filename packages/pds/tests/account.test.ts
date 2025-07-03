@@ -303,7 +303,7 @@ describe('account', () => {
     await expect(tryHandle('did:john')).rejects.toThrow(
       'Input/handle must be a valid handle',
     )
-    await expect(tryHandle('john.bsky.io')).rejects.toThrow(
+    await expect(tryHandle('john.gndr.io')).rejects.toThrow(
       'Not a supported handle domain',
     )
     await expect(tryHandle('j.test')).rejects.toThrow('Handle too short')

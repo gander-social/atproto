@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "chat.bsky.convo.defs",
+  "id": "chat.gndr.convo.defs",
   "defs": {
     "messageRef": {
       "type": "object",
@@ -23,11 +23,11 @@
         "facets": {
           "type": "array",
           "description": "Annotations of text (mentions, URLs, hashtags, etc)",
-          "items": { "type": "ref", "ref": "app.bsky.richtext.facet" }
+          "items": { "type": "ref", "ref": "app.gndr.richtext.facet" }
         },
         "embed": {
           "type": "union",
-          "refs": ["app.bsky.embed.record"]
+          "refs": ["app.gndr.embed.record"]
         }
       }
     },
@@ -45,11 +45,11 @@
         "facets": {
           "type": "array",
           "description": "Annotations of text (mentions, URLs, hashtags, etc)",
-          "items": { "type": "ref", "ref": "app.bsky.richtext.facet" }
+          "items": { "type": "ref", "ref": "app.gndr.richtext.facet" }
         },
         "embed": {
           "type": "union",
-          "refs": ["app.bsky.embed.record#view"]
+          "refs": ["app.gndr.embed.record#view"]
         },
         "reactions": {
           "type": "array",
@@ -111,7 +111,7 @@
           "type": "array",
           "items": {
             "type": "ref",
-            "ref": "chat.bsky.actor.defs#profileViewBasic"
+            "ref": "chat.gndr.actor.defs#profileViewBasic"
           }
         },
         "lastMessage": {

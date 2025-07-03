@@ -3,7 +3,7 @@
   "references": [
     { "path": "./packages/api" },
     { "path": "./packages/aws" },
-    { "path": "./packages/bsky" },
+    { "path": "./packages/gndr" },
     { "path": "./packages/bsync" },
     { "path": "./packages/common" },
     { "path": "./packages/common-web" },

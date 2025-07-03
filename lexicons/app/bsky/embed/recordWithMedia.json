@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.embed.recordWithMedia",
+  "id": "app.gndr.embed.recordWithMedia",
   "description": "A representation of a record embedded in a Bluesky record (eg, a post), alongside other compatible embeds. For example, a quote post and image, or a quote post and external URL card.",
   "defs": {
     "main": {
@@ -9,14 +9,14 @@
       "properties": {
         "record": {
           "type": "ref",
-          "ref": "app.bsky.embed.record"
+          "ref": "app.gndr.embed.record"
         },
         "media": {
           "type": "union",
           "refs": [
-            "app.bsky.embed.images",
-            "app.bsky.embed.video",
-            "app.bsky.embed.external"
+            "app.gndr.embed.images",
+            "app.gndr.embed.video",
+            "app.gndr.embed.external"
           ]
         }
       }
@@ -27,14 +27,14 @@
       "properties": {
         "record": {
           "type": "ref",
-          "ref": "app.bsky.embed.record#view"
+          "ref": "app.gndr.embed.record#view"
         },
         "media": {
           "type": "union",
           "refs": [
-            "app.bsky.embed.images#view",
-            "app.bsky.embed.video#view",
-            "app.bsky.embed.external#view"
+            "app.gndr.embed.images#view",
+            "app.gndr.embed.video#view",
+            "app.gndr.embed.external#view"
           ]
         }
       }

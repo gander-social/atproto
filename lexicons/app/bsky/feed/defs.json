@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.feed.defs",
+  "id": "app.gndr.feed.defs",
   "defs": {
     "postView": {
       "type": "object",
@@ -10,17 +10,17 @@
         "cid": { "type": "string", "format": "cid" },
         "author": {
           "type": "ref",
-          "ref": "app.bsky.actor.defs#profileViewBasic"
+          "ref": "app.gndr.actor.defs#profileViewBasic"
         },
         "record": { "type": "unknown" },
         "embed": {
           "type": "union",
           "refs": [
-            "app.bsky.embed.images#view",
-            "app.bsky.embed.video#view",
-            "app.bsky.embed.external#view",
-            "app.bsky.embed.record#view",
-            "app.bsky.embed.recordWithMedia#view"
+            "app.gndr.embed.images#view",
+            "app.gndr.embed.video#view",
+            "app.gndr.embed.external#view",
+            "app.gndr.embed.record#view",
+            "app.gndr.embed.recordWithMedia#view"
           ]
         },
         "replyCount": { "type": "integer" },
@@ -88,7 +88,7 @@
         },
         "grandparentAuthor": {
           "type": "ref",
-          "ref": "app.bsky.actor.defs#profileViewBasic",
+          "ref": "app.gndr.actor.defs#profileViewBasic",
           "description": "When parent is a reply to another post, this is the author of that post."
         }
       }
@@ -97,7 +97,7 @@
       "type": "object",
       "required": ["by", "indexedAt"],
       "properties": {
-        "by": { "type": "ref", "ref": "app.bsky.actor.defs#profileViewBasic" },
+        "by": { "type": "ref", "ref": "app.gndr.actor.defs#profileViewBasic" },
         "uri": { "type": "string", "format": "at-uri" },
         "cid": { "type": "string", "format": "cid" },
         "indexedAt": { "type": "string", "format": "datetime" }
@@ -148,7 +148,7 @@
       "required": ["did"],
       "properties": {
         "did": { "type": "string", "format": "did" },
-        "viewer": { "type": "ref", "ref": "app.bsky.actor.defs#viewerState" }
+        "viewer": { "type": "ref", "ref": "app.gndr.actor.defs#viewerState" }
       }
     },
     "generatorView": {
@@ -158,7 +158,7 @@
         "uri": { "type": "string", "format": "at-uri" },
         "cid": { "type": "string", "format": "cid" },
         "did": { "type": "string", "format": "did" },
-        "creator": { "type": "ref", "ref": "app.bsky.actor.defs#profileView" },
+        "creator": { "type": "ref", "ref": "app.gndr.actor.defs#profileView" },
         "displayName": { "type": "string" },
         "description": {
           "type": "string",
@@ -167,7 +167,7 @@
         },
         "descriptionFacets": {
           "type": "array",
-          "items": { "type": "ref", "ref": "app.bsky.richtext.facet" }
+          "items": { "type": "ref", "ref": "app.gndr.richtext.facet" }
         },
         "avatar": { "type": "string", "format": "uri" },
         "likeCount": { "type": "integer", "minimum": 0 },
@@ -180,8 +180,8 @@
         "contentMode": {
           "type": "string",
           "knownValues": [
-            "app.bsky.feed.defs#contentModeUnspecified",
-            "app.bsky.feed.defs#contentModeVideo"
+            "app.gndr.feed.defs#contentModeUnspecified",
+            "app.gndr.feed.defs#contentModeVideo"
           ]
         },
         "indexedAt": { "type": "string", "format": "datetime" }
@@ -228,7 +228,7 @@
         "record": { "type": "unknown" },
         "lists": {
           "type": "array",
-          "items": { "type": "ref", "ref": "app.bsky.graph.defs#listViewBasic" }
+          "items": { "type": "ref", "ref": "app.gndr.graph.defs#listViewBasic" }
         }
       }
     },
@@ -239,18 +239,18 @@
         "event": {
           "type": "string",
           "knownValues": [
-            "app.bsky.feed.defs#requestLess",
-            "app.bsky.feed.defs#requestMore",
-            "app.bsky.feed.defs#clickthroughItem",
-            "app.bsky.feed.defs#clickthroughAuthor",
-            "app.bsky.feed.defs#clickthroughReposter",
-            "app.bsky.feed.defs#clickthroughEmbed",
-            "app.bsky.feed.defs#interactionSeen",
-            "app.bsky.feed.defs#interactionLike",
-            "app.bsky.feed.defs#interactionRepost",
-            "app.bsky.feed.defs#interactionReply",
-            "app.bsky.feed.defs#interactionQuote",
-            "app.bsky.feed.defs#interactionShare"
+            "app.gndr.feed.defs#requestLess",
+            "app.gndr.feed.defs#requestMore",
+            "app.gndr.feed.defs#clickthroughItem",
+            "app.gndr.feed.defs#clickthroughAuthor",
+            "app.gndr.feed.defs#clickthroughReposter",
+            "app.gndr.feed.defs#clickthroughEmbed",
+            "app.gndr.feed.defs#interactionSeen",
+            "app.gndr.feed.defs#interactionLike",
+            "app.gndr.feed.defs#interactionRepost",
+            "app.gndr.feed.defs#interactionReply",
+            "app.gndr.feed.defs#interactionQuote",
+            "app.gndr.feed.defs#interactionShare"
           ]
         },
         "feedContext": {
@@ -295,7 +295,7 @@
     },
     "contentModeVideo": {
       "type": "token",
-      "description": "Declares the feed generator returns posts containing app.bsky.embed.video embeds."
+      "description": "Declares the feed generator returns posts containing app.gndr.embed.video embeds."
     },
     "interactionSeen": {
       "type": "token",

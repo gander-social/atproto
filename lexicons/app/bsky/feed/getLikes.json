@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.feed.getLikes",
+  "id": "app.gndr.feed.getLikes",
   "defs": {
     "main": {
       "type": "query",
@@ -51,7 +51,7 @@
       "properties": {
         "indexedAt": { "type": "string", "format": "datetime" },
         "createdAt": { "type": "string", "format": "datetime" },
-        "actor": { "type": "ref", "ref": "app.bsky.actor.defs#profileView" }
+        "actor": { "type": "ref", "ref": "app.gndr.actor.defs#profileView" }
       }
     }
   }

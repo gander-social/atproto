@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.feed.postgate",
+  "id": "app.gndr.feed.postgate",
   "defs": {
     "main": {
       "type": "record",

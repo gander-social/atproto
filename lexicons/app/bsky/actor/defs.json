@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.actor.defs",
+  "id": "app.gndr.actor.defs",
   "defs": {
     "profileViewBasic": {
       "type": "object",
@@ -99,7 +99,7 @@
         },
         "joinedViaStarterPack": {
           "type": "ref",
-          "ref": "app.bsky.graph.defs#starterPackViewBasic"
+          "ref": "app.gndr.graph.defs#starterPackViewBasic"
         },
         "indexedAt": { "type": "string", "format": "datetime" },
         "createdAt": { "type": "string", "format": "datetime" },
@@ -149,13 +149,13 @@
         "muted": { "type": "boolean" },
         "mutedByList": {
           "type": "ref",
-          "ref": "app.bsky.graph.defs#listViewBasic"
+          "ref": "app.gndr.graph.defs#listViewBasic"
         },
         "blockedBy": { "type": "boolean" },
         "blocking": { "type": "string", "format": "at-uri" },
         "blockingByList": {
           "type": "ref",
-          "ref": "app.bsky.graph.defs#listViewBasic"
+          "ref": "app.gndr.graph.defs#listViewBasic"
         },
         "following": { "type": "string", "format": "at-uri" },
         "followedBy": { "type": "string", "format": "at-uri" },
@@ -245,7 +245,7 @@
           "#interestsPref",
           "#mutedWordsPref",
           "#hiddenPostsPref",
-          "#bskyAppStatePref",
+          "#gndrAppStatePref",
           "#labelersPref",
           "#postInteractionSettingsPref",
           "#verificationPrefs"
@@ -302,7 +302,7 @@
           "type": "array",
           "items": {
             "type": "ref",
-            "ref": "app.bsky.actor.defs#savedFeed"
+            "ref": "app.gndr.actor.defs#savedFeed"
           }
         }
       }
@@ -420,7 +420,7 @@
           "description": "The intended targets of the muted word.",
           "items": {
             "type": "ref",
-            "ref": "app.bsky.actor.defs#mutedWordTarget"
+            "ref": "app.gndr.actor.defs#mutedWordTarget"
           }
         },
         "actorTarget": {
@@ -444,7 +444,7 @@
           "type": "array",
           "items": {
             "type": "ref",
-            "ref": "app.bsky.actor.defs#mutedWord"
+            "ref": "app.gndr.actor.defs#mutedWord"
           },
           "description": "A list of words the account owner has muted."
         }
@@ -484,13 +484,13 @@
         }
       }
     },
-    "bskyAppStatePref": {
-      "description": "A grab bag of state that's specific to the bsky.app program. Third-party apps shouldn't use this.",
+    "gndrAppStatePref": {
+      "description": "A grab bag of state that's specific to the gndr.app program. Third-party apps shouldn't use this.",
       "type": "object",
       "properties": {
         "activeProgressGuide": {
           "type": "ref",
-          "ref": "#bskyAppProgressGuide"
+          "ref": "#gndrAppProgressGuide"
         },
         "queuedNudges": {
           "description": "An array of tokens which identify nudges (modals, popups, tours, highlight dots) that should be shown to the user.",
@@ -504,12 +504,12 @@
           "maxLength": 100,
           "items": {
             "type": "ref",
-            "ref": "app.bsky.actor.defs#nux"
+            "ref": "app.gndr.actor.defs#nux"
           }
         }
       }
     },
-    "bskyAppProgressGuide": {
+    "gndrAppProgressGuide": {
       "description": "If set, an active progress guide. Once completed, can be set to undefined. Should have unspecced fields tracking progress.",
       "type": "object",
       "required": ["guide"],
@@ -567,10 +567,10 @@
           "items": {
             "type": "union",
             "refs": [
-              "app.bsky.feed.threadgate#mentionRule",
-              "app.bsky.feed.threadgate#followerRule",
-              "app.bsky.feed.threadgate#followingRule",
-              "app.bsky.feed.threadgate#listRule"
+              "app.gndr.feed.threadgate#mentionRule",
+              "app.gndr.feed.threadgate#followerRule",
+              "app.gndr.feed.threadgate#followingRule",
+              "app.gndr.feed.threadgate#listRule"
             ]
           }
         },
@@ -580,7 +580,7 @@
           "maxLength": 5,
           "items": {
             "type": "union",
-            "refs": ["app.bsky.feed.postgate#disableRule"]
+            "refs": ["app.gndr.feed.postgate#disableRule"]
           }
         }
       }
@@ -592,13 +592,13 @@
         "status": {
           "type": "string",
           "description": "The status for the account.",
-          "knownValues": ["app.bsky.actor.status#live"]
+          "knownValues": ["app.gndr.actor.status#live"]
         },
         "record": { "type": "unknown" },
         "embed": {
           "type": "union",
           "description": "An optional embed associated with the status.",
-          "refs": ["app.bsky.embed.external#view"]
+          "refs": ["app.gndr.embed.external#view"]
         },
         "expiresAt": {
           "type": "string",

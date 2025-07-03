@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.feed.sendInteractions",
+  "id": "app.gndr.feed.sendInteractions",
   "defs": {
     "main": {
       "type": "procedure",
@@ -15,7 +15,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.feed.defs#interaction"
+                "ref": "app.gndr.feed.defs#interaction"
               }
             }
           }

@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.feed.getPosts",
+  "id": "app.gndr.feed.getPosts",
   "defs": {
     "main": {
       "type": "query",
@@ -25,7 +25,7 @@
           "properties": {
             "posts": {
               "type": "array",
-              "items": { "type": "ref", "ref": "app.bsky.feed.defs#postView" }
+              "items": { "type": "ref", "ref": "app.gndr.feed.defs#postView" }
             }
           }
         }

@@ -178,7 +178,7 @@ describe('file uploads', () => {
       displayName: 'Alice',
       avatar: uploadA.blob,
     })
-    const profileA = await agent.api.app.bsky.actor.profile.get({
+    const profileA = await agent.api.app.gndr.actor.profile.get({
       repo: alice,
       rkey: 'self',
     })
@@ -188,7 +188,7 @@ describe('file uploads', () => {
       displayName: 'Bob',
       avatar: uploadB.blob,
     })
-    const profileB = await agent.api.app.bsky.actor.profile.get({
+    const profileB = await agent.api.app.gndr.actor.profile.get({
       repo: bob,
       rkey: 'self',
     })

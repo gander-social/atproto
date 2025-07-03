@@ -71,7 +71,7 @@ describe('app_passwords', () => {
   })
 
   it('allows actions to be performed from app', async () => {
-    await appAgent.api.app.bsky.feed.post.create(
+    await appAgent.api.app.gndr.feed.post.create(
       {
         repo: appAgent.assertDid,
       },
@@ -80,7 +80,7 @@ describe('app_passwords', () => {
         createdAt: new Date().toISOString(),
       },
     )
-    await priviAgent.api.app.bsky.feed.post.create(
+    await priviAgent.api.app.gndr.feed.post.create(
       {
         repo: priviAgent.assertDid,
       },
@@ -103,12 +103,12 @@ describe('app_passwords', () => {
   })
 
   it('restricts privileged app password actions', async () => {
-    const attempt = appAgent.api.chat.bsky.convo.listConvos({})
+    const attempt = appAgent.api.chat.gndr.convo.listConvos({})
     await expect(attempt).rejects.toThrow('Bad token method')
   })
 
   it('restricts privileged app password actions', async () => {
-    const attempt = appAgent.api.chat.bsky.convo.listConvos()
+    const attempt = appAgent.api.chat.gndr.convo.listConvos()
     await expect(attempt).rejects.toThrow('Bad token method')
   })
 
@@ -140,7 +140,7 @@ describe('app_passwords', () => {
     )
 
     // allows any access auth
-    await appAgent.api.app.bsky.feed.post.create(
+    await appAgent.api.app.gndr.feed.post.create(
       {
         repo: appAgent.assertDid,
       },
@@ -186,7 +186,7 @@ describe('app_passwords', () => {
     )
 
     // allows any access auth
-    await priviAgent.api.app.bsky.feed.post.create(
+    await priviAgent.api.app.gndr.feed.post.create(
       {
         repo: priviAgent.assertDid,
       },

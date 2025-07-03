@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.notification.putPreferences",
+  "id": "app.gndr.notification.putPreferences",
   "defs": {
     "main": {
       "type": "procedure",

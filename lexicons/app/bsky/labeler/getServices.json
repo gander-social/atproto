@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.labeler.getServices",
+  "id": "app.gndr.labeler.getServices",
   "defs": {
     "main": {
       "type": "query",
@@ -30,8 +30,8 @@
               "items": {
                 "type": "union",
                 "refs": [
-                  "app.bsky.labeler.defs#labelerView",
-                  "app.bsky.labeler.defs#labelerViewDetailed"
+                  "app.gndr.labeler.defs#labelerView",
+                  "app.gndr.labeler.defs#labelerViewDetailed"
                 ]
               }
             }

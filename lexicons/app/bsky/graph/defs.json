@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.defs",
+  "id": "app.gndr.graph.defs",
   "defs": {
     "listViewBasic": {
       "type": "object",
@@ -26,7 +26,7 @@
       "properties": {
         "uri": { "type": "string", "format": "at-uri" },
         "cid": { "type": "string", "format": "cid" },
-        "creator": { "type": "ref", "ref": "app.bsky.actor.defs#profileView" },
+        "creator": { "type": "ref", "ref": "app.gndr.actor.defs#profileView" },
         "name": { "type": "string", "maxLength": 64, "minLength": 1 },
         "purpose": { "type": "ref", "ref": "#listPurpose" },
         "description": {
@@ -36,7 +36,7 @@
         },
         "descriptionFacets": {
           "type": "array",
-          "items": { "type": "ref", "ref": "app.bsky.richtext.facet" }
+          "items": { "type": "ref", "ref": "app.gndr.richtext.facet" }
         },
         "avatar": { "type": "string", "format": "uri" },
         "listItemCount": { "type": "integer", "minimum": 0 },
@@ -53,7 +53,7 @@
       "required": ["uri", "subject"],
       "properties": {
         "uri": { "type": "string", "format": "at-uri" },
-        "subject": { "type": "ref", "ref": "app.bsky.actor.defs#profileView" }
+        "subject": { "type": "ref", "ref": "app.gndr.actor.defs#profileView" }
       }
     },
     "starterPackView": {
@@ -65,7 +65,7 @@
         "record": { "type": "unknown" },
         "creator": {
           "type": "ref",
-          "ref": "app.bsky.actor.defs#profileViewBasic"
+          "ref": "app.gndr.actor.defs#profileViewBasic"
         },
         "list": { "type": "ref", "ref": "#listViewBasic" },
         "listItemsSample": {
@@ -76,7 +76,7 @@
         "feeds": {
           "type": "array",
           "maxLength": 3,
-          "items": { "type": "ref", "ref": "app.bsky.feed.defs#generatorView" }
+          "items": { "type": "ref", "ref": "app.gndr.feed.defs#generatorView" }
         },
         "joinedWeekCount": { "type": "integer", "minimum": 0 },
         "joinedAllTimeCount": { "type": "integer", "minimum": 0 },
@@ -96,7 +96,7 @@
         "record": { "type": "unknown" },
         "creator": {
           "type": "ref",
-          "ref": "app.bsky.actor.defs#profileViewBasic"
+          "ref": "app.gndr.actor.defs#profileViewBasic"
         },
         "listItemCount": { "type": "integer", "minimum": 0 },
         "joinedWeekCount": { "type": "integer", "minimum": 0 },
@@ -111,9 +111,9 @@
     "listPurpose": {
       "type": "string",
       "knownValues": [
-        "app.bsky.graph.defs#modlist",
-        "app.bsky.graph.defs#curatelist",
-        "app.bsky.graph.defs#referencelist"
+        "app.gndr.graph.defs#modlist",
+        "app.gndr.graph.defs#curatelist",
+        "app.gndr.graph.defs#referencelist"
       ]
     },
     "modlist": {

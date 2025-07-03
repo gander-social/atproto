@@ -31,7 +31,7 @@ describe('notif service proxy', () => {
     notifDid = sc.dids.dan
     await plc.updateData(notifDid, network.pds.ctx.plcRotationKey, (x) => {
       const addr = notifServer.address() as AddressInfo
-      x.services['bsky_notif'] = {
+      x.services['gndr_notif'] = {
         type: 'BskyNotificationService',
         endpoint: `http://localhost:${addr.port}`,
       }
@@ -47,7 +47,7 @@ describe('notif service proxy', () => {
   })
 
   it('proxies to notif service.', async () => {
-    await agent.api.app.bsky.notification.registerPush(
+    await agent.api.app.gndr.notification.registerPush(
       {
         serviceDid: notifDid,
         token: 'tok1',
@@ -69,7 +69,7 @@ describe('notif service proxy', () => {
     const auth = await verifyJwt(
       spy.current?.['jwt'] as string,
       notifDid,
-      'app.bsky.notification.registerPush',
+      'app.gndr.notification.registerPush',
       async (did) => {
         const keypair = await network.pds.ctx.actorStore.keypair(did)
         return keypair.did()
@@ -82,7 +82,7 @@ describe('notif service proxy', () => {
 async function createMockNotifService(ref: { current: unknown }) {
   const app = express()
   const svc = createServer()
-  svc.app.bsky.notification.registerPush(({ input, req }) => {
+  svc.app.gndr.notification.registerPush(({ input, req }) => {
     ref.current = {
       input: input.body,
       jwt: req.headers.authorization?.replace('Bearer ', ''),

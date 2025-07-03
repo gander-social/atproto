@@ -173,16 +173,16 @@ export const envToCfg = (env: ServerEnvironment): ServerConfig => {
     repoBackfillLimitMs: env.repoBackfillLimitMs ?? DAY,
   }
 
-  let bskyAppViewCfg: ServerConfig['bskyAppView'] = null
-  if (env.bskyAppViewUrl) {
+  let gndrAppViewCfg: ServerConfig['gndrAppView'] = null
+  if (env.gndrAppViewUrl) {
     assert(
-      env.bskyAppViewDid,
-      'if bsky appview service url is configured, must configure its did as well.',
+      env.gndrAppViewDid,
+      'if gndr appview service url is configured, must configure its did as well.',
     )
-    bskyAppViewCfg = {
-      url: env.bskyAppViewUrl,
-      did: env.bskyAppViewDid,
-      cdnUrlPattern: env.bskyAppViewCdnUrlPattern,
+    gndrAppViewCfg = {
+      url: env.gndrAppViewUrl,
+      did: env.gndrAppViewDid,
+      cdnUrlPattern: env.gndrAppViewCdnUrlPattern,
     }
   }
 
@@ -330,7 +330,7 @@ export const envToCfg = (env: ServerEnvironment): ServerConfig => {
     email: emailCfg,
     moderationEmail: moderationEmailCfg,
     subscription: subscriptionCfg,
-    bskyAppView: bskyAppViewCfg,
+    gndrAppView: gndrAppViewCfg,
     modService: modServiceCfg,
     reportService: reportServiceCfg,
     redis: redisCfg,
@@ -353,7 +353,7 @@ export type ServerConfig = {
   email: EmailConfig | null
   moderationEmail: EmailConfig | null
   subscription: SubscriptionConfig
-  bskyAppView: BksyAppViewConfig | null
+  gndrAppView: BksyAppViewConfig | null
   modService: ModServiceConfig | null
   reportService: ReportServiceConfig | null
   redis: RedisScratchConfig | null

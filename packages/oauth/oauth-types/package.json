@@ -12,7 +12,7 @@
   "homepage": "https://atproto.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bluesky-social/atproto",
+    "url": "https://github.com/gander-social/atproto",
     "directory": "packages/oauth/oauth-types"
   },
   "type": "commonjs",

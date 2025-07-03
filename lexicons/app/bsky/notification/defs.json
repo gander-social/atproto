@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.notification.defs",
+  "id": "app.gndr.notification.defs",
   "defs": {
     "recordDeleted": {
       "type": "object",

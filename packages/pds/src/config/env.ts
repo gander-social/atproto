@@ -97,9 +97,9 @@ export const readEnv = (): ServerEnvironment => {
     repoBackfillLimitMs: envInt('PDS_REPO_BACKFILL_LIMIT_MS'),
 
     // appview
-    bskyAppViewUrl: envStr('PDS_BSKY_APP_VIEW_URL'),
-    bskyAppViewDid: envStr('PDS_BSKY_APP_VIEW_DID'),
-    bskyAppViewCdnUrlPattern: envStr('PDS_BSKY_APP_VIEW_CDN_URL_PATTERN'),
+    gndrAppViewUrl: envStr('PDS_BSKY_APP_VIEW_URL'),
+    gndrAppViewDid: envStr('PDS_BSKY_APP_VIEW_DID'),
+    gndrAppViewCdnUrlPattern: envStr('PDS_BSKY_APP_VIEW_CDN_URL_PATTERN'),
 
     // mod service
     modServiceUrl: envStr('PDS_MOD_SERVICE_URL'),
@@ -244,9 +244,9 @@ export type ServerEnvironment = {
   repoBackfillLimitMs?: number
 
   // appview
-  bskyAppViewUrl?: string
-  bskyAppViewDid?: string
-  bskyAppViewCdnUrlPattern?: string
+  gndrAppViewUrl?: string
+  gndrAppViewDid?: string
+  gndrAppViewCdnUrlPattern?: string
 
   // mod service
   modServiceUrl?: string

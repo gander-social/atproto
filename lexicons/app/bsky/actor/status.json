@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.actor.status",
+  "id": "app.gndr.actor.status",
   "defs": {
     "main": {
       "type": "record",
@@ -13,12 +13,12 @@
           "status": {
             "type": "string",
             "description": "The status for the account.",
-            "knownValues": ["app.bsky.actor.status#live"]
+            "knownValues": ["app.gndr.actor.status#live"]
           },
           "embed": {
             "type": "union",
             "description": "An optional embed associated with the status.",
-            "refs": ["app.bsky.embed.external"]
+            "refs": ["app.gndr.embed.external"]
           },
           "durationMinutes": {
             "type": "integer",

@@ -1,4 +1,4 @@
-name: build-and-push-bsky-ghcr
+name: build-and-push-gndr-ghcr
 on:
   push:
     branches:
@@ -13,8 +13,8 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  bsky-container-ghcr:
-    if: github.repository == 'bluesky-social/atproto'
+  gndr-container-ghcr:
+    if: github.repository == 'gander-social/atproto'
     runs-on: ubuntu-22.04
     permissions:
       contents: read
@@ -42,7 +42,7 @@ jobs:
           images: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=sha,enable=true,priority=100,prefix=bsky:,suffix=,format=long
+            type=sha,enable=true,priority=100,prefix=gndr:,suffix=,format=long
 
       - name: Build and push Docker image
         id: build-and-push
@@ -50,7 +50,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          file: ./services/bsky/Dockerfile
+          file: ./services/gndr/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha

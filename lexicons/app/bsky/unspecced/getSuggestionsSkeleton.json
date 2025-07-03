@@ -1,10 +1,10 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.getSuggestionsSkeleton",
+  "id": "app.gndr.unspecced.getSuggestionsSkeleton",
   "defs": {
     "main": {
       "type": "query",
-      "description": "Get a skeleton of suggested actors. Intended to be called and then hydrated through app.bsky.actor.getSuggestions",
+      "description": "Get a skeleton of suggested actors. Intended to be called and then hydrated through app.gndr.actor.getSuggestions",
       "parameters": {
         "type": "params",
         "properties": {
@@ -38,7 +38,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.unspecced.defs#skeletonSearchActor"
+                "ref": "app.gndr.unspecced.defs#skeletonSearchActor"
               }
             },
             "relativeToDid": {

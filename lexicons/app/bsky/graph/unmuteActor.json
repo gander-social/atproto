@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.unmuteActor",
+  "id": "app.gndr.graph.unmuteActor",
   "defs": {
     "main": {
       "type": "procedure",

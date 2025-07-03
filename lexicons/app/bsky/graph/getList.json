@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.getList",
+  "id": "app.gndr.graph.getList",
   "defs": {
     "main": {
       "type": "query",
@@ -30,12 +30,12 @@
           "required": ["list", "items"],
           "properties": {
             "cursor": { "type": "string" },
-            "list": { "type": "ref", "ref": "app.bsky.graph.defs#listView" },
+            "list": { "type": "ref", "ref": "app.gndr.graph.defs#listView" },
             "items": {
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.graph.defs#listItemView"
+                "ref": "app.gndr.graph.defs#listItemView"
               }
             }
           }

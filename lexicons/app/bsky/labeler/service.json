@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.labeler.service",
+  "id": "app.gndr.labeler.service",
   "defs": {
     "main": {
       "type": "record",
@@ -12,7 +12,7 @@
         "properties": {
           "policies": {
             "type": "ref",
-            "ref": "app.bsky.labeler.defs#labelerPolicies"
+            "ref": "app.gndr.labeler.defs#labelerPolicies"
           },
           "labels": {
             "type": "union",

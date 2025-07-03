@@ -10,7 +10,7 @@
   "homepage": "https://atproto.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bluesky-social/atproto",
+    "url": "https://github.com/gander-social/atproto",
     "directory": "packages/pds"
   },
   "main": "dist/index.js",
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "prepare": "[ \"$npm_config_production\" = true ] || puppeteer browsers install chrome",
-    "codegen": "lex gen-server --yes ./src/lexicon ../../lexicons/com/atproto/*/* ../../lexicons/app/bsky/*/* ../../lexicons/chat/bsky/*/* ../../lexicons/tools/ozone/*/*",
+    "codegen": "lex gen-server --yes ./src/lexicon ../../lexicons/com/atproto/*/* ../../lexicons/app/gndr/*/* ../../lexicons/chat/gndr/*/* ../../lexicons/tools/ozone/*/*",
     "build": "tsc --build tsconfig.build.json",
     "postbuild": "node ./build.templates.js",
     "dev": "node ./build.templates.js --watch",
@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@atproto/api": "workspace:^",
-    "@atproto/bsky": "workspace:^",
+    "@atproto/gndr": "workspace:^",
     "@atproto/dev-env": "workspace:^",
     "@atproto/lex-cli": "workspace:^",
     "@atproto/oauth-client-browser-example": "workspace:*",

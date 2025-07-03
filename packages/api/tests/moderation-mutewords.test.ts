@@ -79,7 +79,7 @@ describe(`hasMutedWord`, () => {
   describe(`early exits`, () => {
     it(`match: single character 希`, () => {
       /**
-       * @see https://bsky.app/profile/mukuuji.bsky.social/post/3klji4fvsdk2c
+       * @see https://gndr.app/profile/mukuuji.gndr.social/post/3klji4fvsdk2c
        */
       const rt = new RichText({
         text: `改善希望です`,
@@ -321,10 +321,10 @@ describe(`hasMutedWord`, () => {
         expect(match).toBe(true)
       })
 
-      it(`match: bluesky`, () => {
+      it(`match: gander`, () => {
         const match = hasMutedWord({
           mutedWords: [
-            { value: 'bluesky', targets: ['content'], actorTarget: 'all' },
+            { value: 'gander', targets: ['content'], actorTarget: 'all' },
           ],
           text: rt.text,
           facets: rt.facets,
@@ -334,10 +334,10 @@ describe(`hasMutedWord`, () => {
         expect(match).toBe(true)
       })
 
-      it(`match: blueskys`, () => {
+      it(`match: ganders`, () => {
         const match = hasMutedWord({
           mutedWords: [
-            { value: 'blueskys', targets: ['content'], actorTarget: 'all' },
+            { value: 'ganders', targets: ['content'], actorTarget: 'all' },
           ],
           text: rt.text,
           facets: rt.facets,
@@ -802,11 +802,11 @@ describe(`hasMutedWord`, () => {
           {
             features: [
               {
-                $type: 'app.bsky.richtext.facet#tag',
+                $type: 'app.gndr.richtext.facet#tag',
                 tag: 'good',
               },
               {
-                $type: 'app.bsky.richtext.facet#tag',
+                $type: 'app.gndr.richtext.facet#tag',
                 tag: 'bad',
               },
             ],
@@ -835,7 +835,7 @@ describe(`hasMutedWord`, () => {
                 foo: 'bar',
               },
               {
-                $type: 'app.bsky.richtext.facet#tag',
+                $type: 'app.gndr.richtext.facet#tag',
                 tag: 'bad',
               },
             ],

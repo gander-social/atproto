@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.getRelationships",
+  "id": "app.gndr.graph.getRelationships",
   "defs": {
     "main": {
       "type": "query",
@@ -37,8 +37,8 @@
               "items": {
                 "type": "union",
                 "refs": [
-                  "app.bsky.graph.defs#relationship",
-                  "app.bsky.graph.defs#notFoundActor"
+                  "app.gndr.graph.defs#relationship",
+                  "app.gndr.graph.defs#notFoundActor"
                 ]
               }
             }

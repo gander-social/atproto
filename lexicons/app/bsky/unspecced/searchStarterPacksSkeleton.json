@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.searchStarterPacksSkeleton",
+  "id": "app.gndr.unspecced.searchStarterPacksSkeleton",
   "defs": {
     "main": {
       "type": "query",
@@ -47,7 +47,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.unspecced.defs#skeletonSearchStarterPack"
+                "ref": "app.gndr.unspecced.defs#skeletonSearchStarterPack"
               }
             }
           }

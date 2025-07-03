@@ -4522,7 +4522,7 @@ export const schemaDict = {
   },
   AppBskyActorDefs: {
     lexicon: 1,
-    id: 'app.bsky.actor.defs',
+    id: 'app.gndr.actor.defs',
     defs: {
       profileViewBasic: {
         type: 'object',
@@ -4547,11 +4547,11 @@ export const schemaDict = {
           },
           associated: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#profileAssociated',
+            ref: 'lex:app.gndr.actor.defs#profileAssociated',
           },
           viewer: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#viewerState',
+            ref: 'lex:app.gndr.actor.defs#viewerState',
           },
           labels: {
             type: 'array',
@@ -4566,11 +4566,11 @@ export const schemaDict = {
           },
           verification: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#verificationState',
+            ref: 'lex:app.gndr.actor.defs#verificationState',
           },
           status: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#statusView',
+            ref: 'lex:app.gndr.actor.defs#statusView',
           },
         },
       },
@@ -4602,7 +4602,7 @@ export const schemaDict = {
           },
           associated: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#profileAssociated',
+            ref: 'lex:app.gndr.actor.defs#profileAssociated',
           },
           indexedAt: {
             type: 'string',
@@ -4614,7 +4614,7 @@ export const schemaDict = {
           },
           viewer: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#viewerState',
+            ref: 'lex:app.gndr.actor.defs#viewerState',
           },
           labels: {
             type: 'array',
@@ -4625,11 +4625,11 @@ export const schemaDict = {
           },
           verification: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#verificationState',
+            ref: 'lex:app.gndr.actor.defs#verificationState',
           },
           status: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#statusView',
+            ref: 'lex:app.gndr.actor.defs#statusView',
           },
         },
       },
@@ -4674,11 +4674,11 @@ export const schemaDict = {
           },
           associated: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#profileAssociated',
+            ref: 'lex:app.gndr.actor.defs#profileAssociated',
           },
           joinedViaStarterPack: {
             type: 'ref',
-            ref: 'lex:app.bsky.graph.defs#starterPackViewBasic',
+            ref: 'lex:app.gndr.graph.defs#starterPackViewBasic',
           },
           indexedAt: {
             type: 'string',
@@ -4690,7 +4690,7 @@ export const schemaDict = {
           },
           viewer: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#viewerState',
+            ref: 'lex:app.gndr.actor.defs#viewerState',
           },
           labels: {
             type: 'array',
@@ -4705,11 +4705,11 @@ export const schemaDict = {
           },
           verification: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#verificationState',
+            ref: 'lex:app.gndr.actor.defs#verificationState',
           },
           status: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#statusView',
+            ref: 'lex:app.gndr.actor.defs#statusView',
           },
         },
       },
@@ -4730,7 +4730,7 @@ export const schemaDict = {
           },
           chat: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#profileAssociatedChat',
+            ref: 'lex:app.gndr.actor.defs#profileAssociatedChat',
           },
         },
       },
@@ -4754,7 +4754,7 @@ export const schemaDict = {
           },
           mutedByList: {
             type: 'ref',
-            ref: 'lex:app.bsky.graph.defs#listViewBasic',
+            ref: 'lex:app.gndr.graph.defs#listViewBasic',
           },
           blockedBy: {
             type: 'boolean',
@@ -4765,7 +4765,7 @@ export const schemaDict = {
           },
           blockingByList: {
             type: 'ref',
-            ref: 'lex:app.bsky.graph.defs#listViewBasic',
+            ref: 'lex:app.gndr.graph.defs#listViewBasic',
           },
           following: {
             type: 'string',
@@ -4777,7 +4777,7 @@ export const schemaDict = {
           },
           knownFollowers: {
             type: 'ref',
-            ref: 'lex:app.bsky.actor.defs#knownFollowers',
+            ref: 'lex:app.gndr.actor.defs#knownFollowers',
           },
         },
       },
@@ -4795,7 +4795,7 @@ export const schemaDict = {
             maxLength: 5,
             items: {
               type: 'ref',
-              ref: 'lex:app.bsky.actor.defs#profileViewBasic',
+              ref: 'lex:app.gndr.actor.defs#profileViewBasic',
             },
           },
         },
@@ -4812,7 +4812,7 @@ export const schemaDict = {
               'All verifications issued by trusted verifiers on behalf of this user. Verifications by untrusted verifiers are not included.',
             items: {
               type: 'ref',
-              ref: 'lex:app.bsky.actor.defs#verificationView',
+              ref: 'lex:app.gndr.actor.defs#verificationView',
             },
           },
           verifiedStatus: {
@@ -4859,8 +4859,8 @@ export const schemaDict = {
         items: {
           type: 'union',
           refs: [
-            'lex:app.bsky.actor.defs#adultContentPref',
-            'lex:app.bsky.actor.defs#contentLabelPref',
+            'lex:app.gndr.actor.defs#adultContentPref',
+            'lex:app.gndr.actor.defs#contentLabelPref',
             'lex:app.bsky.actor.defs#savedFeedsPref',
             'lex:app.bsky.actor.defs#savedFeedsPrefV2',
             'lex:app.bsky.actor.defs#personalDetailsPref',

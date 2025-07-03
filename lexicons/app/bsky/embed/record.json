@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.embed.record",
+  "id": "app.gndr.embed.record",
   "description": "A representation of a record embedded in a Bluesky record (eg, a post). For example, a quote-post, or sharing a feed generator record.",
   "defs": {
     "main": {
@@ -21,10 +21,10 @@
             "#viewNotFound",
             "#viewBlocked",
             "#viewDetached",
-            "app.bsky.feed.defs#generatorView",
-            "app.bsky.graph.defs#listView",
-            "app.bsky.labeler.defs#labelerView",
-            "app.bsky.graph.defs#starterPackViewBasic"
+            "app.gndr.feed.defs#generatorView",
+            "app.gndr.graph.defs#listView",
+            "app.gndr.labeler.defs#labelerView",
+            "app.gndr.graph.defs#starterPackViewBasic"
           ]
         }
       }
@@ -37,7 +37,7 @@
         "cid": { "type": "string", "format": "cid" },
         "author": {
           "type": "ref",
-          "ref": "app.bsky.actor.defs#profileViewBasic"
+          "ref": "app.gndr.actor.defs#profileViewBasic"
         },
         "value": {
           "type": "unknown",
@@ -56,11 +56,11 @@
           "items": {
             "type": "union",
             "refs": [
-              "app.bsky.embed.images#view",
-              "app.bsky.embed.video#view",
-              "app.bsky.embed.external#view",
-              "app.bsky.embed.record#view",
-              "app.bsky.embed.recordWithMedia#view"
+              "app.gndr.embed.images#view",
+              "app.gndr.embed.video#view",
+              "app.gndr.embed.external#view",
+              "app.gndr.embed.record#view",
+              "app.gndr.embed.recordWithMedia#view"
             ]
           }
         },
@@ -81,7 +81,7 @@
       "properties": {
         "uri": { "type": "string", "format": "at-uri" },
         "blocked": { "type": "boolean", "const": true },
-        "author": { "type": "ref", "ref": "app.bsky.feed.defs#blockedAuthor" }
+        "author": { "type": "ref", "ref": "app.gndr.feed.defs#blockedAuthor" }
       }
     },
     "viewDetached": {

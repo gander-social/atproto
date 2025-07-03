@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.getMutes",
+  "id": "app.gndr.graph.getMutes",
   "defs": {
     "main": {
       "type": "query",
@@ -28,7 +28,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.actor.defs#profileView"
+                "ref": "app.gndr.actor.defs#profileView"
               }
             }
           }

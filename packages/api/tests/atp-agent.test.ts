@@ -31,7 +31,7 @@ describe('agent', () => {
     agent: AtpAgent,
   ): Promise<string | undefined> => {
     try {
-      const res = await agent.app.bsky.actor.profile.get({
+      const res = await agent.app.gndr.actor.profile.get({
         repo: agent.accountDid,
         rkey: 'self',
       })
@@ -97,10 +97,10 @@ describe('agent', () => {
       if (!hasConflicted) {
         await agent.com.atproto.repo.putRecord({
           repo: agent.accountDid,
-          collection: 'app.bsky.actor.profile',
+          collection: 'app.gndr.actor.profile',
           rkey: 'self',
           record: {
-            $type: 'app.bsky.actor.profile',
+            $type: 'app.gndr.actor.profile',
             displayName: String(Math.random()),
           },
         })
@@ -132,10 +132,10 @@ describe('agent', () => {
     const p = agent.upsertProfile(async (_existing) => {
       await agent.com.atproto.repo.putRecord({
         repo: agent.accountDid,
-        collection: 'app.bsky.actor.profile',
+        collection: 'app.gndr.actor.profile',
         rkey: 'self',
         record: {
-          $type: 'app.bsky.actor.profile',
+          $type: 'app.gndr.actor.profile',
           displayName: String(Math.random()),
         },
       })
@@ -274,7 +274,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -323,7 +323,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -372,7 +372,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -421,7 +421,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -474,7 +474,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -488,7 +488,7 @@ describe('agent', () => {
         },
       })
 
-      await agent.addSavedFeed('at://bob.com/app.bsky.feed.generator/fake')
+      await agent.addSavedFeed('at://bob.com/app.gndr.feed.generator/fake')
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         savedFeeds: [
           {
@@ -500,7 +500,7 @@ describe('agent', () => {
         ],
         feeds: {
           pinned: [],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -530,7 +530,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -544,7 +544,7 @@ describe('agent', () => {
         },
       })
 
-      await agent.addPinnedFeed('at://bob.com/app.bsky.feed.generator/fake')
+      await agent.addPinnedFeed('at://bob.com/app.gndr.feed.generator/fake')
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         savedFeeds: [
           {
@@ -555,8 +555,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -586,7 +586,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -600,7 +600,7 @@ describe('agent', () => {
         },
       })
 
-      await agent.removePinnedFeed('at://bob.com/app.bsky.feed.generator/fake')
+      await agent.removePinnedFeed('at://bob.com/app.gndr.feed.generator/fake')
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         savedFeeds: [
           {
@@ -612,7 +612,7 @@ describe('agent', () => {
         ],
         feeds: {
           pinned: [],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -642,7 +642,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -656,7 +656,7 @@ describe('agent', () => {
         },
       })
 
-      await agent.removeSavedFeed('at://bob.com/app.bsky.feed.generator/fake')
+      await agent.removeSavedFeed('at://bob.com/app.gndr.feed.generator/fake')
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         savedFeeds: [
           {
@@ -698,7 +698,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -712,7 +712,7 @@ describe('agent', () => {
         },
       })
 
-      await agent.addPinnedFeed('at://bob.com/app.bsky.feed.generator/fake')
+      await agent.addPinnedFeed('at://bob.com/app.gndr.feed.generator/fake')
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         savedFeeds: [
           {
@@ -723,8 +723,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -754,7 +754,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -768,7 +768,7 @@ describe('agent', () => {
         },
       })
 
-      await agent.addPinnedFeed('at://bob.com/app.bsky.feed.generator/fake2')
+      await agent.addPinnedFeed('at://bob.com/app.gndr.feed.generator/fake2')
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         savedFeeds: [
           {
@@ -780,12 +780,12 @@ describe('agent', () => {
         ],
         feeds: {
           pinned: [
-            'at://bob.com/app.bsky.feed.generator/fake',
-            'at://bob.com/app.bsky.feed.generator/fake2',
+            'at://bob.com/app.gndr.feed.generator/fake',
+            'at://bob.com/app.gndr.feed.generator/fake2',
           ],
           saved: [
-            'at://bob.com/app.bsky.feed.generator/fake',
-            'at://bob.com/app.bsky.feed.generator/fake2',
+            'at://bob.com/app.gndr.feed.generator/fake',
+            'at://bob.com/app.gndr.feed.generator/fake2',
           ],
         },
         moderationPrefs: {
@@ -816,7 +816,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -830,7 +830,7 @@ describe('agent', () => {
         },
       })
 
-      await agent.removeSavedFeed('at://bob.com/app.bsky.feed.generator/fake')
+      await agent.removeSavedFeed('at://bob.com/app.gndr.feed.generator/fake')
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         savedFeeds: [
           {
@@ -841,8 +841,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake2'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake2'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake2'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake2'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -872,7 +872,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -897,8 +897,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake2'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake2'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake2'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake2'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -928,7 +928,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -953,8 +953,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake2'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake2'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake2'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake2'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -984,7 +984,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -1009,8 +1009,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake2'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake2'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake2'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake2'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -1040,7 +1040,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -1065,8 +1065,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake2'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake2'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake2'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake2'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -1103,7 +1103,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -1128,8 +1128,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake2'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake2'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake2'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake2'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -1166,7 +1166,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -1191,8 +1191,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake2'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake2'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake2'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake2'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -1229,7 +1229,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -1254,8 +1254,8 @@ describe('agent', () => {
           },
         ],
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake2'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake2'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake2'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake2'],
         },
         moderationPrefs: {
           adultContentEnabled: false,
@@ -1292,7 +1292,7 @@ describe('agent', () => {
         interests: {
           tags: ['foo', 'bar'],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: [],
           nuxs: [],
@@ -1316,30 +1316,30 @@ describe('agent', () => {
         password: 'password',
       })
 
-      await agent.app.bsky.actor.putPreferences({
+      await agent.app.gndr.actor.putPreferences({
         preferences: [
           {
-            $type: 'app.bsky.actor.defs#contentLabelPref',
+            $type: 'app.gndr.actor.defs#contentLabelPref',
             label: 'porn',
             visibility: 'show',
           },
           {
-            $type: 'app.bsky.actor.defs#contentLabelPref',
+            $type: 'app.gndr.actor.defs#contentLabelPref',
             label: 'porn',
             visibility: 'hide',
           },
           {
-            $type: 'app.bsky.actor.defs#contentLabelPref',
+            $type: 'app.gndr.actor.defs#contentLabelPref',
             label: 'porn',
             visibility: 'show',
           },
           {
-            $type: 'app.bsky.actor.defs#contentLabelPref',
+            $type: 'app.gndr.actor.defs#contentLabelPref',
             label: 'porn',
             visibility: 'warn',
           },
           {
-            $type: 'app.bsky.actor.defs#labelersPref',
+            $type: 'app.gndr.actor.defs#labelersPref',
             labelers: [
               {
                 did: 'did:plc:first-labeler',
@@ -1347,7 +1347,7 @@ describe('agent', () => {
             ],
           },
           {
-            $type: 'app.bsky.actor.defs#labelersPref',
+            $type: 'app.gndr.actor.defs#labelersPref',
             labelers: [
               {
                 did: 'did:plc:first-labeler',
@@ -1358,43 +1358,43 @@ describe('agent', () => {
             ],
           },
           {
-            $type: 'app.bsky.actor.defs#adultContentPref',
+            $type: 'app.gndr.actor.defs#adultContentPref',
             enabled: true,
           },
           {
-            $type: 'app.bsky.actor.defs#adultContentPref',
+            $type: 'app.gndr.actor.defs#adultContentPref',
             enabled: false,
           },
           {
-            $type: 'app.bsky.actor.defs#adultContentPref',
+            $type: 'app.gndr.actor.defs#adultContentPref',
             enabled: true,
           },
           {
-            $type: 'app.bsky.actor.defs#savedFeedsPref',
+            $type: 'app.gndr.actor.defs#savedFeedsPref',
             pinned: [
-              'at://bob.com/app.bsky.feed.generator/fake',
-              'at://bob.com/app.bsky.feed.generator/fake2',
+              'at://bob.com/app.gndr.feed.generator/fake',
+              'at://bob.com/app.gndr.feed.generator/fake2',
             ],
             saved: [
-              'at://bob.com/app.bsky.feed.generator/fake',
-              'at://bob.com/app.bsky.feed.generator/fake2',
+              'at://bob.com/app.gndr.feed.generator/fake',
+              'at://bob.com/app.gndr.feed.generator/fake2',
             ],
           },
           {
-            $type: 'app.bsky.actor.defs#savedFeedsPref',
+            $type: 'app.gndr.actor.defs#savedFeedsPref',
             pinned: [],
             saved: [],
           },
           {
-            $type: 'app.bsky.actor.defs#personalDetailsPref',
+            $type: 'app.gndr.actor.defs#personalDetailsPref',
             birthDate: '2023-09-11T18:05:42.556Z',
           },
           {
-            $type: 'app.bsky.actor.defs#personalDetailsPref',
+            $type: 'app.gndr.actor.defs#personalDetailsPref',
             birthDate: '2021-09-11T18:05:42.556Z',
           },
           {
-            $type: 'app.bsky.actor.defs#feedViewPref',
+            $type: 'app.gndr.actor.defs#feedViewPref',
             feed: 'home',
             hideReplies: false,
             hideRepliesByUnfollowed: true,
@@ -1403,7 +1403,7 @@ describe('agent', () => {
             hideQuotePosts: false,
           },
           {
-            $type: 'app.bsky.actor.defs#feedViewPref',
+            $type: 'app.gndr.actor.defs#feedViewPref',
             feed: 'home',
             hideReplies: true,
             hideRepliesByUnfollowed: false,
@@ -1412,21 +1412,21 @@ describe('agent', () => {
             hideQuotePosts: true,
           },
           {
-            $type: 'app.bsky.actor.defs#threadViewPref',
+            $type: 'app.gndr.actor.defs#threadViewPref',
             sort: 'oldest',
             prioritizeFollowedUsers: true,
           },
           {
-            $type: 'app.bsky.actor.defs#threadViewPref',
+            $type: 'app.gndr.actor.defs#threadViewPref',
             sort: 'newest',
             prioritizeFollowedUsers: false,
           },
           {
-            $type: 'app.bsky.actor.defs#bskyAppStatePref',
+            $type: 'app.gndr.actor.defs#gndrAppStatePref',
             queuedNudges: ['one'],
           },
           {
-            $type: 'app.bsky.actor.defs#bskyAppStatePref',
+            $type: 'app.gndr.actor.defs#gndrAppStatePref',
             activeProgressGuide: undefined,
             queuedNudges: ['two'],
           },
@@ -1482,7 +1482,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: ['two'],
           nuxs: [],
@@ -1547,7 +1547,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: ['two'],
           nuxs: [],
@@ -1613,7 +1613,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: ['two'],
           nuxs: [],
@@ -1675,7 +1675,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: ['two'],
           nuxs: [],
@@ -1689,11 +1689,11 @@ describe('agent', () => {
         },
       })
 
-      await agent.addPinnedFeed('at://bob.com/app.bsky.feed.generator/fake')
+      await agent.addPinnedFeed('at://bob.com/app.gndr.feed.generator/fake')
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake'],
         },
         savedFeeds: [
           {
@@ -1737,7 +1737,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: ['two'],
           nuxs: [],
@@ -1754,8 +1754,8 @@ describe('agent', () => {
       await agent.setPersonalDetails({ birthDate: '2023-09-11T18:05:42.556Z' })
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake'],
         },
         savedFeeds: [
           {
@@ -1799,7 +1799,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: ['two'],
           nuxs: [],
@@ -1825,11 +1825,11 @@ describe('agent', () => {
         prioritizeFollowedUsers: true,
       })
       await agent.setPersonalDetails({ birthDate: '2023-09-11T18:05:42.556Z' })
-      await agent.bskyAppQueueNudges('three')
+      await agent.gndrAppQueueNudges('three')
       await expect(agent.getPreferences()).resolves.toStrictEqual({
         feeds: {
-          pinned: ['at://bob.com/app.bsky.feed.generator/fake'],
-          saved: ['at://bob.com/app.bsky.feed.generator/fake'],
+          pinned: ['at://bob.com/app.gndr.feed.generator/fake'],
+          saved: ['at://bob.com/app.gndr.feed.generator/fake'],
         },
         savedFeeds: [
           {
@@ -1873,7 +1873,7 @@ describe('agent', () => {
         interests: {
           tags: [],
         },
-        bskyAppState: {
+        gndrAppState: {
           activeProgressGuide: undefined,
           queuedNudges: ['two', 'three'],
           nuxs: [],
@@ -1887,11 +1887,11 @@ describe('agent', () => {
         },
       })
 
-      const res = await agent.app.bsky.actor.getPreferences()
+      const res = await agent.app.gndr.actor.getPreferences()
       expect(res.data.preferences.sort(byType)).toStrictEqual(
         [
           {
-            $type: 'app.bsky.actor.defs#bskyAppStatePref',
+            $type: 'app.gndr.actor.defs#gndrAppStatePref',
             queuedNudges: ['two', 'three'],
           },
           {

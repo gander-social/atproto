@@ -43,7 +43,7 @@
           "refs": [
             "com.atproto.admin.defs#repoRef",
             "com.atproto.repo.strongRef",
-            "chat.bsky.convo.defs#messageRef"
+            "chat.gndr.convo.defs#messageRef"
           ]
         },
         "subjectBlobCids": { "type": "array", "items": { "type": "string" } },
@@ -116,7 +116,7 @@
           "refs": [
             "com.atproto.admin.defs#repoRef",
             "com.atproto.repo.strongRef",
-            "chat.bsky.convo.defs#messageRef"
+            "chat.gndr.convo.defs#messageRef"
           ]
         },
         "hosting": {

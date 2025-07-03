@@ -19,7 +19,7 @@ describe('proxies view requests', () => {
     })
     agent = network.pds.getClient()
     sc = network.getSeedClient()
-    await basicSeed(sc, { addModLabels: network.bsky })
+    await basicSeed(sc, { addModLabels: network.gndr })
     alice = sc.dids.alice
     bob = sc.dids.bob
     carol = sc.dids.carol
@@ -31,7 +31,7 @@ describe('proxies view requests', () => {
   })
 
   beforeAll(async () => {
-    await agent.app.bsky.feed.generator.create(
+    await agent.app.gndr.feed.generator.create(
       { repo: alice, rkey: 'all' },
       {
         did: 'did:example:feedgen',
@@ -49,7 +49,7 @@ describe('proxies view requests', () => {
   })
 
   it('actor.getProfile', async () => {
-    const res = await agent.app.bsky.actor.getProfile(
+    const res = await agent.app.gndr.actor.getProfile(
       {
         actor: bob,
       },
@@ -61,7 +61,7 @@ describe('proxies view requests', () => {
   })
 
   it('actor.getProfiles', async () => {
-    const res = await agent.app.bsky.actor.getProfiles(
+    const res = await agent.app.gndr.actor.getProfiles(
       {
         actors: [alice, bob],
       },
@@ -79,19 +79,19 @@ describe('proxies view requests', () => {
       { did: sc.dids.carol, order: 2 },
       { did: sc.dids.dan, order: 3 },
     ]
-    await network.bsky.db.db
+    await network.gndr.db.db
       .insertInto('suggested_follow')
       .values(suggestions)
       .execute()
 
-    const res = await agent.app.bsky.actor.getSuggestions(
+    const res = await agent.app.gndr.actor.getSuggestions(
       {},
       {
         headers: { ...sc.getHeaders(carol) },
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.actor.getSuggestions(
+    const pt1 = await agent.app.gndr.actor.getSuggestions(
       {
         limit: 1,
       },
@@ -99,7 +99,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(carol) },
       },
     )
-    const pt2 = await agent.app.bsky.actor.getSuggestions(
+    const pt2 = await agent.app.gndr.actor.getSuggestions(
       {
         cursor: pt1.data.cursor,
       },
@@ -111,7 +111,7 @@ describe('proxies view requests', () => {
   })
 
   it('actor.searchActor', async () => {
-    const res = await agent.app.bsky.actor.searchActors(
+    const res = await agent.app.gndr.actor.searchActors(
       {
         term: '.test',
       },
@@ -124,7 +124,7 @@ describe('proxies view requests', () => {
       a.handle > b.handle ? 1 : -1,
     )
     expect(forSnapshot(sortedFull)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.actor.searchActors(
+    const pt1 = await agent.app.gndr.actor.searchActors(
       {
         term: '.test',
         limit: 1,
@@ -133,7 +133,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.actor.searchActors(
+    const pt2 = await agent.app.gndr.actor.searchActors(
       {
         term: '.test',
         cursor: pt1.data.cursor,
@@ -149,7 +149,7 @@ describe('proxies view requests', () => {
   })
 
   it('actor.searchActorTypeahead', async () => {
-    const res = await agent.app.bsky.actor.searchActorsTypeahead(
+    const res = await agent.app.gndr.actor.searchActorsTypeahead(
       {
         term: '.test',
       },
@@ -164,7 +164,7 @@ describe('proxies view requests', () => {
   })
 
   it('feed.getAuthorFeed', async () => {
-    const res = await agent.app.bsky.feed.getAuthorFeed(
+    const res = await agent.app.gndr.feed.getAuthorFeed(
       {
         actor: bob,
       },
@@ -173,7 +173,7 @@ describe('proxies view requests', () => {
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.feed.getAuthorFeed(
+    const pt1 = await agent.app.gndr.feed.getAuthorFeed(
       {
         actor: bob,
         limit: 1,
@@ -182,7 +182,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.feed.getAuthorFeed(
+    const pt2 = await agent.app.gndr.feed.getAuthorFeed(
       {
         actor: bob,
         cursor: pt1.data.cursor,
@@ -196,7 +196,7 @@ describe('proxies view requests', () => {
 
   it('feed.getListFeed', async () => {
     const list = Object.values(sc.lists[alice])[0].ref.uriStr
-    const res = await agent.app.bsky.feed.getListFeed(
+    const res = await agent.app.gndr.feed.getListFeed(
       {
         list,
       },
@@ -205,7 +205,7 @@ describe('proxies view requests', () => {
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.feed.getListFeed(
+    const pt1 = await agent.app.gndr.feed.getListFeed(
       {
         list,
         limit: 1,
@@ -214,7 +214,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice), 'x-appview-proxy': 'true' },
       },
     )
-    const pt2 = await agent.app.bsky.feed.getListFeed(
+    const pt2 = await agent.app.gndr.feed.getListFeed(
       {
         list,
         cursor: pt1.data.cursor,
@@ -228,7 +228,7 @@ describe('proxies view requests', () => {
 
   it('feed.getLikes', async () => {
     const postUri = sc.posts[carol][0].ref.uriStr
-    const res = await agent.app.bsky.feed.getLikes(
+    const res = await agent.app.gndr.feed.getLikes(
       {
         uri: postUri,
       },
@@ -237,7 +237,7 @@ describe('proxies view requests', () => {
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.feed.getLikes(
+    const pt1 = await agent.app.gndr.feed.getLikes(
       {
         uri: postUri,
         limit: 1,
@@ -246,7 +246,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.feed.getLikes(
+    const pt2 = await agent.app.gndr.feed.getLikes(
       {
         uri: postUri,
         cursor: pt1.data.cursor,
@@ -260,7 +260,7 @@ describe('proxies view requests', () => {
 
   it('feed.getRepostedBy', async () => {
     const postUri = sc.posts[dan][1].ref.uriStr
-    const res = await agent.app.bsky.feed.getRepostedBy(
+    const res = await agent.app.gndr.feed.getRepostedBy(
       {
         uri: postUri,
       },
@@ -269,7 +269,7 @@ describe('proxies view requests', () => {
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.feed.getRepostedBy(
+    const pt1 = await agent.app.gndr.feed.getRepostedBy(
       {
         uri: postUri,
         limit: 1,
@@ -278,7 +278,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.feed.getRepostedBy(
+    const pt2 = await agent.app.gndr.feed.getRepostedBy(
       {
         uri: postUri,
         cursor: pt1.data.cursor,
@@ -294,7 +294,7 @@ describe('proxies view requests', () => {
 
   it('feed.getPosts', async () => {
     const uris = [sc.posts[bob][0].ref.uriStr, sc.posts[carol][0].ref.uriStr]
-    const res = await agent.app.bsky.feed.getPosts(
+    const res = await agent.app.gndr.feed.getPosts(
       {
         uris,
       },
@@ -306,7 +306,7 @@ describe('proxies view requests', () => {
   })
 
   it('feed.getTimeline', async () => {
-    const res = await agent.app.bsky.feed.getTimeline(
+    const res = await agent.app.gndr.feed.getTimeline(
       {},
       {
         headers: { ...sc.getHeaders(alice) },
@@ -314,7 +314,7 @@ describe('proxies view requests', () => {
     )
 
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.feed.getTimeline(
+    const pt1 = await agent.app.gndr.feed.getTimeline(
       {
         limit: 2,
       },
@@ -322,7 +322,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.feed.getTimeline(
+    const pt2 = await agent.app.gndr.feed.getTimeline(
       {
         cursor: pt1.data.cursor,
       },
@@ -335,7 +335,7 @@ describe('proxies view requests', () => {
 
   // @TODO disabled during appview v2 buildout
   it('unspecced.getPopularFeedGenerators', async () => {
-    const res = await agent.app.bsky.unspecced.getPopularFeedGenerators(
+    const res = await agent.app.gndr.unspecced.getPopularFeedGenerators(
       {},
       {
         headers: { ...sc.getHeaders(alice) },
@@ -348,7 +348,7 @@ describe('proxies view requests', () => {
   it('feed.getFeedGenerator', async () => {
     feedUri = AtUri.make(
       sc.dids.alice,
-      'app.bsky.feed.generator',
+      'app.gndr.feed.generator',
       'my-feed',
     ).toString()
     const gen = await network.createFeedGen({
@@ -359,7 +359,7 @@ describe('proxies view requests', () => {
         }
       },
     })
-    await agent.app.bsky.feed.generator.create(
+    await agent.app.gndr.feed.generator.create(
       { repo: sc.dids.alice, rkey: 'my-feed' },
       {
         did: gen.did,
@@ -369,7 +369,7 @@ describe('proxies view requests', () => {
       sc.getHeaders(sc.dids.alice),
     )
     await network.processAll()
-    const res = await agent.app.bsky.feed.getFeedGenerator(
+    const res = await agent.app.gndr.feed.getFeedGenerator(
       { feed: feedUri },
       {
         headers: { ...sc.getHeaders(sc.dids.alice) },
@@ -379,7 +379,7 @@ describe('proxies view requests', () => {
   })
 
   it('feed.getFeedGenerators', async () => {
-    const res = await agent.app.bsky.feed.getFeedGenerators(
+    const res = await agent.app.gndr.feed.getFeedGenerators(
       { feeds: [feedUri.toString()] },
       {
         headers: { ...sc.getHeaders(sc.dids.alice) },
@@ -392,14 +392,14 @@ describe('proxies view requests', () => {
     await sc.block(alice, bob)
     await sc.block(alice, carol)
     await network.processAll()
-    const res = await agent.app.bsky.graph.getBlocks(
+    const res = await agent.app.gndr.graph.getBlocks(
       {},
       {
         headers: { ...sc.getHeaders(alice) },
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.graph.getBlocks(
+    const pt1 = await agent.app.gndr.graph.getBlocks(
       {
         limit: 1,
       },
@@ -407,7 +407,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.graph.getBlocks(
+    const pt2 = await agent.app.gndr.graph.getBlocks(
       {
         cursor: pt1.data.cursor,
       },
@@ -422,14 +422,14 @@ describe('proxies view requests', () => {
   })
 
   it('graph.getFollows', async () => {
-    const res = await agent.app.bsky.graph.getFollows(
+    const res = await agent.app.gndr.graph.getFollows(
       { actor: bob },
       {
         headers: { ...sc.getHeaders(alice) },
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.graph.getFollows(
+    const pt1 = await agent.app.gndr.graph.getFollows(
       {
         actor: bob,
         limit: 1,
@@ -438,7 +438,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.graph.getFollows(
+    const pt2 = await agent.app.gndr.graph.getFollows(
       {
         actor: bob,
         cursor: pt1.data.cursor,
@@ -451,14 +451,14 @@ describe('proxies view requests', () => {
   })
 
   it('graph.getFollowers', async () => {
-    const res = await agent.app.bsky.graph.getFollowers(
+    const res = await agent.app.gndr.graph.getFollowers(
       { actor: bob },
       {
         headers: { ...sc.getHeaders(alice) },
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.graph.getFollowers(
+    const pt1 = await agent.app.gndr.graph.getFollowers(
       {
         actor: bob,
         limit: 1,
@@ -467,7 +467,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.graph.getFollowers(
+    const pt2 = await agent.app.gndr.graph.getFollowers(
       {
         actor: bob,
         cursor: pt1.data.cursor,
@@ -484,28 +484,28 @@ describe('proxies view requests', () => {
   let listUri: string
 
   it('graph.getList', async () => {
-    const bobList = await agent.app.bsky.graph.list.create(
+    const bobList = await agent.app.gndr.graph.list.create(
       { repo: bob },
       {
         name: 'bob mutes',
-        purpose: 'app.bsky.graph.defs#modlist',
+        purpose: 'app.gndr.graph.defs#modlist',
         description: "bob's list of mutes",
         createdAt: new Date().toISOString(),
       },
       sc.getHeaders(bob),
     )
     listUri = bobList.uri.toString()
-    await agent.app.bsky.graph.list.create(
+    await agent.app.gndr.graph.list.create(
       { repo: bob },
       {
         name: 'another list',
-        purpose: 'app.bsky.graph.defs#modlist',
+        purpose: 'app.gndr.graph.defs#modlist',
         description: 'a second list',
         createdAt: new Date().toISOString(),
       },
       sc.getHeaders(bob),
     )
-    await agent.app.bsky.graph.listitem.create(
+    await agent.app.gndr.graph.listitem.create(
       { repo: bob },
       {
         subject: alice,
@@ -514,7 +514,7 @@ describe('proxies view requests', () => {
       },
       sc.getHeaders(bob),
     )
-    await agent.app.bsky.graph.listitem.create(
+    await agent.app.gndr.graph.listitem.create(
       { repo: bob },
       {
         subject: carol,
@@ -525,14 +525,14 @@ describe('proxies view requests', () => {
     )
     await network.processAll()
 
-    const res = await agent.app.bsky.graph.getList(
+    const res = await agent.app.gndr.graph.getList(
       { list: listUri },
       {
         headers: { ...sc.getHeaders(alice) },
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.graph.getList(
+    const pt1 = await agent.app.gndr.graph.getList(
       {
         list: listUri,
         limit: 1,
@@ -541,7 +541,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.graph.getList(
+    const pt2 = await agent.app.gndr.graph.getList(
       {
         list: listUri,
         cursor: pt1.data.cursor,
@@ -554,14 +554,14 @@ describe('proxies view requests', () => {
   })
 
   it('graph.getLists', async () => {
-    const res = await agent.app.bsky.graph.getLists(
+    const res = await agent.app.gndr.graph.getLists(
       { actor: bob },
       {
         headers: { ...sc.getHeaders(alice) },
       },
     )
     expect(forSnapshot(res.data)).toMatchSnapshot()
-    const pt1 = await agent.app.bsky.graph.getLists(
+    const pt1 = await agent.app.gndr.graph.getLists(
       {
         actor: bob,
         limit: 1,
@@ -570,7 +570,7 @@ describe('proxies view requests', () => {
         headers: { ...sc.getHeaders(alice) },
       },
     )
-    const pt2 = await agent.app.bsky.graph.getLists(
+    const pt2 = await agent.app.gndr.graph.getLists(
       {
         actor: bob,
         cursor: pt1.data.cursor,
@@ -583,7 +583,7 @@ describe('proxies view requests', () => {
   })
 
   it('graph.getListBlocks', async () => {
-    await agent.app.bsky.graph.listblock.create(
+    await agent.app.gndr.graph.listblock.create(
       { repo: bob },
       {
         subject: listUri,
@@ -592,12 +592,12 @@ describe('proxies view requests', () => {
       sc.getHeaders(bob),
     )
     await network.processAll()
-    const pt1 = await agent.app.bsky.graph.getListBlocks(
+    const pt1 = await agent.app.gndr.graph.getListBlocks(
       {},
       { headers: sc.getHeaders(bob) },
     )
     expect(forSnapshot(pt1.data)).toMatchSnapshot()
-    const pt2 = await agent.app.bsky.graph.getListBlocks(
+    const pt2 = await agent.app.gndr.graph.getListBlocks(
       { cursor: pt1.data.cursor },
       { headers: sc.getHeaders(bob) },
     )

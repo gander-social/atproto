@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.getStarterPack",
+  "id": "app.gndr.graph.getStarterPack",
   "defs": {
     "main": {
       "type": "query",
@@ -24,7 +24,7 @@
           "properties": {
             "starterPack": {
               "type": "ref",
-              "ref": "app.bsky.graph.defs#starterPackView"
+              "ref": "app.gndr.graph.defs#starterPackView"
             }
           }
         }

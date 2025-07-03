@@ -17,7 +17,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:bob.test',
-            uri: 'at://did:web:bob.test/app.bsky.actor.profile/self',
+            uri: 'at://did:web:bob.test/app.gndr.actor.profile/self',
             val: 'porn',
             cts: new Date().toISOString(),
           },
@@ -51,7 +51,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:bob.test',
-            uri: 'at://did:web:bob.test/app.bsky.actor.profile/self',
+            uri: 'at://did:web:bob.test/app.gndr.actor.profile/self',
             val: 'porn',
             cts: new Date().toISOString(),
           },
@@ -87,7 +87,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.actor.profile/self',
+            uri: 'at://did:web:bob.test/app.gndr.actor.profile/self',
             val: 'porn',
             cts: new Date().toISOString(),
           },
@@ -131,7 +131,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.actor.profile/self',
+            uri: 'at://did:web:bob.test/app.gndr.actor.profile/self',
             val: 'porn',
             cts: new Date().toISOString(),
           },
@@ -177,7 +177,7 @@ describe('Moderation', () => {
     const res1 = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -215,7 +215,7 @@ describe('Moderation', () => {
     const res1 = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -226,13 +226,13 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: 'porn',
             cts: new Date().toISOString(),
           },
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: '!hide',
             cts: new Date().toISOString(),
           },
@@ -295,7 +295,7 @@ describe('Moderation', () => {
     const res = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -306,7 +306,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: 'porn',
             cts: new Date().toISOString(),
           },
@@ -357,7 +357,7 @@ describe('Moderation', () => {
     const res = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -368,7 +368,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: '!hide',
             cts: new Date().toISOString(),
           },
@@ -434,7 +434,7 @@ describe('Moderation', () => {
     const res = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -445,13 +445,13 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: 'BadLabel',
             cts: new Date().toISOString(),
           },
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: 'bad/label',
             cts: new Date().toISOString(),
           },
@@ -523,7 +523,7 @@ describe('Moderation', () => {
     const res1 = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -534,7 +534,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: 'default-hide',
             cts: new Date().toISOString(),
           },
@@ -555,7 +555,7 @@ describe('Moderation', () => {
     const res2 = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -566,7 +566,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: 'default-warn',
             cts: new Date().toISOString(),
           },
@@ -587,7 +587,7 @@ describe('Moderation', () => {
     const res3 = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -598,7 +598,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: 'default-ignore',
             cts: new Date().toISOString(),
           },
@@ -653,7 +653,7 @@ describe('Moderation', () => {
     const res = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -664,7 +664,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: 'adult',
             cts: new Date().toISOString(),
           },
@@ -707,7 +707,7 @@ describe('Moderation', () => {
     const res = moderatePost(
       mock.postView({
         record: {
-          $type: 'app.bsky.feed.post',
+          $type: 'app.gndr.feed.post',
           text: 'Hello',
           createdAt: new Date().toISOString(),
         },
@@ -718,7 +718,7 @@ describe('Moderation', () => {
         labels: [
           {
             src: 'did:web:labeler.test',
-            uri: 'at://did:web:bob.test/app.bsky.post/fake',
+            uri: 'at://did:web:bob.test/app.gndr.post/fake',
             val: 'porn',
             cts: new Date().toISOString(),
           },

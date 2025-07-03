@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.defs",
+  "id": "app.gndr.unspecced.defs",
   "defs": {
     "skeletonSearchPost": {
       "type": "object",
@@ -82,7 +82,7 @@
           "type": "array",
           "items": {
             "type": "ref",
-            "ref": "app.bsky.actor.defs#profileViewBasic"
+            "ref": "app.gndr.actor.defs#profileViewBasic"
           }
         }
       }

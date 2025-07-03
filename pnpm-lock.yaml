@@ -158,7 +158,7 @@ importers:
         specifier: ^5.6.3
         version: 5.8.2
 
-  packages/bsky:
+  packages/gndr:
     dependencies:
       '@atproto-labs/fetch-node':
         specifier: workspace:*
@@ -465,9 +465,9 @@ importers:
       '@atproto/api':
         specifier: workspace:^
         version: link:../api
-      '@atproto/bsky':
+      '@atproto/gndr':
         specifier: workspace:^
-        version: link:../bsky
+        version: link:../gndr
       '@atproto/bsync':
         specifier: workspace:^
         version: link:../bsync
@@ -1533,9 +1533,9 @@ importers:
         specifier: ^3.23.8
         version: 3.24.2
     devDependencies:
-      '@atproto/bsky':
+      '@atproto/gndr':
         specifier: workspace:^
-        version: link:../bsky
+        version: link:../gndr
       '@atproto/dev-env':
         specifier: workspace:^
         version: link:../dev-env
@@ -1760,11 +1760,11 @@ importers:
         specifier: ^5.6.3
         version: 5.8.2
 
-  services/bsky:
+  services/gndr:
     dependencies:
-      '@atproto/bsky':
+      '@atproto/gndr':
         specifier: workspace:^
-        version: link:../../packages/bsky
+        version: link:../../packages/gndr
       '@atproto/crypto':
         specifier: workspace:^
         version: link:../../packages/crypto

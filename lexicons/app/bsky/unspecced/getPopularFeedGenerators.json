@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.unspecced.getPopularFeedGenerators",
+  "id": "app.gndr.unspecced.getPopularFeedGenerators",
   "defs": {
     "main": {
       "type": "query",
@@ -29,7 +29,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "app.bsky.feed.defs#generatorView"
+                "ref": "app.gndr.feed.defs#generatorView"
               }
             }
           }

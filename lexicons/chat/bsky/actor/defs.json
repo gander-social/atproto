@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "chat.bsky.actor.defs",
+  "id": "chat.gndr.actor.defs",
   "defs": {
     "profileViewBasic": {
       "type": "object",
@@ -16,9 +16,9 @@
         "avatar": { "type": "string", "format": "uri" },
         "associated": {
           "type": "ref",
-          "ref": "app.bsky.actor.defs#profileAssociated"
+          "ref": "app.gndr.actor.defs#profileAssociated"
         },
-        "viewer": { "type": "ref", "ref": "app.bsky.actor.defs#viewerState" },
+        "viewer": { "type": "ref", "ref": "app.gndr.actor.defs#viewerState" },
         "labels": {
           "type": "array",
           "items": { "type": "ref", "ref": "com.atproto.label.defs#label" }
@@ -29,7 +29,7 @@
         },
         "verification": {
           "type": "ref",
-          "ref": "app.bsky.actor.defs#verificationState"
+          "ref": "app.gndr.actor.defs#verificationState"
         }
       }
     }

@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { TID } from '@atproto/common-web'
 import { AtUri } from '@atproto/syntax'
 import { AppBskyActorDefs } from './client'
-import { Nux } from './client/types/app/bsky/actor/defs'
+import { Nux } from './client/types/app/gndr/actor/defs'
 
 export function sanitizeMutedWordValue(value: string) {
   return (
@@ -51,9 +51,9 @@ export function getSavedFeedType(
   const urip = new AtUri(uri)
 
   switch (urip.collection) {
-    case 'app.bsky.feed.generator':
+    case 'app.gndr.feed.generator':
       return 'feed'
-    case 'app.bsky.graph.list':
+    case 'app.gndr.graph.list':
       return 'list'
     default:
       return 'unknown'
@@ -65,8 +65,8 @@ export function validateSavedFeed(savedFeed: AppBskyActorDefs.SavedFeed) {
 
   if (['feed', 'list'].includes(savedFeed.type)) {
     const uri = new AtUri(savedFeed.value)
-    const isFeed = uri.collection === 'app.bsky.feed.generator'
-    const isList = uri.collection === 'app.bsky.graph.list'
+    const isFeed = uri.collection === 'app.gndr.feed.generator'
+    const isList = uri.collection === 'app.gndr.graph.list'
 
     if (savedFeed.type === 'feed' && !isFeed) {
       throw new Error(

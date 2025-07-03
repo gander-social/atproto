@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "chat.bsky.convo.getMessages",
+  "id": "chat.gndr.convo.getMessages",
   "defs": {
     "main": {
       "type": "query",
@@ -30,8 +30,8 @@
               "items": {
                 "type": "union",
                 "refs": [
-                  "chat.bsky.convo.defs#messageView",
-                  "chat.bsky.convo.defs#deletedMessageView"
+                  "chat.gndr.convo.defs#messageView",
+                  "chat.gndr.convo.defs#deletedMessageView"
                 ]
               }
             }

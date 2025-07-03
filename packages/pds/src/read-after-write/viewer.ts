@@ -2,42 +2,42 @@ import { AtUri, INVALID_HANDLE } from '@atproto/syntax'
 import { createServiceAuthHeaders } from '@atproto/xrpc-server'
 import { AccountManager } from '../account-manager/account-manager'
 import { ActorStoreReader } from '../actor-store/actor-store-reader'
-import { BskyAppView } from '../bsky-app-view'
+import { BskyAppView } from '../gndr-app-view'
 import { ImageUrlBuilder } from '../image/image-url-builder'
 import { ids } from '../lexicon/lexicons'
 import {
   ProfileView,
   ProfileViewBasic,
   ProfileViewDetailed,
-} from '../lexicon/types/app/bsky/actor/defs'
-import { Record as ProfileRecord } from '../lexicon/types/app/bsky/actor/profile'
+} from '../lexicon/types/app/gndr/actor/defs'
+import { Record as ProfileRecord } from '../lexicon/types/app/gndr/actor/profile'
 import {
   Main as EmbedExternal,
   View as EmbedExternalView,
   isMain as isEmbedExternal,
-} from '../lexicon/types/app/bsky/embed/external'
+} from '../lexicon/types/app/gndr/embed/external'
 import {
   Main as EmbedImages,
   View as EmbedImagesView,
   isMain as isEmbedImages,
-} from '../lexicon/types/app/bsky/embed/images'
+} from '../lexicon/types/app/gndr/embed/images'
 import {
   Main as EmbedRecord,
   View as EmbedRecordView,
   ViewRecord,
   isMain as isEmbedRecord,
-} from '../lexicon/types/app/bsky/embed/record'
+} from '../lexicon/types/app/gndr/embed/record'
 import {
   Main as EmbedRecordWithMedia,
   isMain as isEmbedRecordWithMedia,
-} from '../lexicon/types/app/bsky/embed/recordWithMedia'
+} from '../lexicon/types/app/gndr/embed/recordWithMedia'
 import {
   FeedViewPost,
   GeneratorView,
   PostView,
-} from '../lexicon/types/app/bsky/feed/defs'
-import { Record as PostRecord } from '../lexicon/types/app/bsky/feed/post'
-import { ListView } from '../lexicon/types/app/bsky/graph/defs'
+} from '../lexicon/types/app/gndr/feed/defs'
+import { Record as PostRecord } from '../lexicon/types/app/gndr/feed/post'
+import { ListView } from '../lexicon/types/app/gndr/graph/defs'
 import { $Typed } from '../lexicon/util'
 import { LocalRecords, RecordDescript } from './types'
 
@@ -52,7 +52,7 @@ export class LocalViewer {
     public readonly actorStoreReader: ActorStoreReader,
     public readonly accountManager: AccountManager,
     public readonly imageUrlBuilder: ImageUrlBuilder,
-    public readonly bskyAppView?: BskyAppView,
+    public readonly gndrAppView?: BskyAppView,
   ) {}
 
   get did() {
@@ -62,10 +62,10 @@ export class LocalViewer {
   static creator(
     accountManager: AccountManager,
     imageUrlBuilder: ImageUrlBuilder,
-    bskyAppView?: BskyAppView,
+    gndrAppView?: BskyAppView,
   ): LocalViewerCreator {
     return (actorStore) =>
-      new LocalViewer(actorStore, accountManager, imageUrlBuilder, bskyAppView)
+      new LocalViewer(actorStore, accountManager, imageUrlBuilder, gndrAppView)
   }
 
   getImageUrl(pattern: CommonSignedUris, cid: string) {
@@ -73,14 +73,14 @@ export class LocalViewer {
   }
 
   async serviceAuthHeaders(did: string, lxm: string) {
-    if (!this.bskyAppView) {
-      throw new Error('Could not find bsky appview did')
+    if (!this.gndrAppView) {
+      throw new Error('Could not find gndr appview did')
     }
     const keypair = await this.actorStoreReader.keypair()
 
     return createServiceAuthHeaders({
       iss: did,
-      aud: this.bskyAppView.did,
+      aud: this.gndrAppView.did,
       lxm,
       keypair,
     })
@@ -181,13 +181,13 @@ export class LocalViewer {
         alt: img.alt,
       }))
       return {
-        $type: 'app.bsky.embed.images#view',
+        $type: 'app.gndr.embed.images#view',
         images,
       }
     } else if (isEmbedExternal(embed)) {
       const { uri, title, description, thumb } = embed.external
       return {
-        $type: 'app.bsky.embed.external#view',
+        $type: 'app.gndr.embed.external#view',
         external: {
           uri,
           title,
@@ -208,11 +208,11 @@ export class LocalViewer {
   ): Promise<$Typed<EmbedRecordView>> {
     const view = await this.formatRecordEmbedInternal(embed)
     return {
-      $type: 'app.bsky.embed.record#view',
+      $type: 'app.gndr.embed.record#view',
       record:
         view === null
           ? {
-              $type: 'app.bsky.embed.record#viewNotFound',
+              $type: 'app.gndr.embed.record#viewNotFound',
               uri: embed.record.uri,
             }
           : view,
@@ -224,19 +224,19 @@ export class LocalViewer {
   ): Promise<
     null | $Typed<ViewRecord> | $Typed<GeneratorView> | $Typed<ListView>
   > {
-    if (!this.bskyAppView) {
+    if (!this.gndrAppView) {
       return null
     }
     const collection = new AtUri(embed.record.uri).collection
     if (collection === ids.AppBskyFeedPost) {
-      const res = await this.bskyAppView.agent.app.bsky.feed.getPosts(
+      const res = await this.gndrAppView.agent.app.gndr.feed.getPosts(
         { uris: [embed.record.uri] },
         await this.serviceAuthHeaders(this.did, ids.AppBskyFeedGetPosts),
       )
       const post = res.data.posts[0]
       if (!post) return null
       return {
-        $type: 'app.bsky.embed.record#viewRecord',
+        $type: 'app.gndr.embed.record#viewRecord',
         uri: post.uri,
         cid: post.cid,
         author: post.author,
@@ -246,7 +246,7 @@ export class LocalViewer {
         indexedAt: post.indexedAt,
       }
     } else if (collection === ids.AppBskyFeedGenerator) {
-      const res = await this.bskyAppView.agent.app.bsky.feed.getFeedGenerator(
+      const res = await this.gndrAppView.agent.app.gndr.feed.getFeedGenerator(
         { feed: embed.record.uri },
         await this.serviceAuthHeaders(
           this.did,
@@ -254,16 +254,16 @@ export class LocalViewer {
         ),
       )
       return {
-        $type: 'app.bsky.feed.defs#generatorView',
+        $type: 'app.gndr.feed.defs#generatorView',
         ...res.data.view,
       }
     } else if (collection === ids.AppBskyGraphList) {
-      const res = await this.bskyAppView.agent.app.bsky.graph.getList(
+      const res = await this.gndrAppView.agent.app.gndr.graph.getList(
         { list: embed.record.uri },
         await this.serviceAuthHeaders(this.did, ids.AppBskyGraphGetList),
       )
       return {
-        $type: 'app.bsky.graph.defs#listView',
+        $type: 'app.gndr.graph.defs#listView',
         ...res.data.list,
       }
     }
@@ -277,7 +277,7 @@ export class LocalViewer {
     const media = this.formatSimpleEmbed(embed.media)
     const record = await this.formatRecordEmbed(embed.record)
     return {
-      $type: 'app.bsky.embed.recordWithMedia#view',
+      $type: 'app.gndr.embed.recordWithMedia#view',
       record,
       media,
     }

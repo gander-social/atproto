@@ -1,6 +1,6 @@
 {
   "lexicon": 1,
-  "id": "app.bsky.graph.muteActor",
+  "id": "app.gndr.graph.muteActor",
   "defs": {
     "main": {
       "type": "procedure",
